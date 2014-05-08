@@ -1,9 +1,11 @@
-#ifndef UT_PROFILER_h
+﻿#ifndef UT_PROFILER_h
 #define UT_PROFILER_h
 
 #include <QString>
 #include <QTextStream>
 using namespace std;
+
+//salut
 
 class UTProfilerException{
 public:
