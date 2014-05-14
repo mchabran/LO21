@@ -94,3 +94,4 @@ void UVEditeur::sauverUV(){
     uv.setOuvertureAutomne(automne->isChecked());
     QMessageBox::information(this, "Sauvegarde", "UV sauvegardée...");
 }
+

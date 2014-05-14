@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QString>
 #include <QFileDialog>
-#include "fichier.h"
+#include "UTProfiler.h"
 #include "UVEditeur.h"
 
 int main(int argc, char* argv[]) {
@@ -14,3 +14,4 @@ int main(int argc, char* argv[]) {
    fenetre.show();
    return app.exec();
 }
+

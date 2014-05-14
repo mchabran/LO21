@@ -1,4 +1,4 @@
-#include "fichier.h"
+#include "UTProfiler.h"
 
 #include <sstream>
 #include <QFile>
@@ -221,4 +221,5 @@ UVManager& UVManager::getInstance(){
 void UVManager::libererInstance(){
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }
+
 
