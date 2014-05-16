@@ -1,6 +1,5 @@
 #ifndef UT_PROFILER_h
 #define UT_PROFILER_h
-//YOOOOOO
 #include <QString>
 #include <QTextStream>
 using namespace std;
@@ -180,15 +179,13 @@ class Inscription {
         Semestre semestre;
         Note resultat;
 public:
-    Inscription(const UV& u, const Semestre& s, Note res=EC):uv(&u),semestre(s),resultat(res){}
+        Inscription(const UV& u, const Semestre& s, Note res=EC):uv(&u),semestre(s),resultat(res){}
         const UV& getUV() const { return *uv; }
         Semestre getSemestre() const { return semestre; }
         Note getResultat() const { return resultat; }
         void setResultat(Note newres) { resultat=newres; }
 };
 
-class Dossier {
-};
 
 class Formation{
 };

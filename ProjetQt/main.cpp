@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include "UTProfiler.h"
 #include "UVEditeur.h"
+#include "cursus.h"
 
 int main(int argc, char* argv[]) {
    QApplication app(argc, argv);
@@ -11,6 +12,13 @@ int main(int argc, char* argv[]) {
    m.load(chemin);
    UV& uv=m.getUV("LO21");
    UVEditeur fenetre(&m,uv);
+
+   TC& tc= TC::donneInstance();
+   tc.getCredCS();
+
+   HuTech& hu= HuTech::donneInstance();
+
+
    fenetre.show();
    return app.exec();
 }
