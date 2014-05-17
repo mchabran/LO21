@@ -45,7 +45,7 @@ private slots :
    void activerSauver (QString str="");
 
 public :
-   UVEditeur(UVManager* m, UV& u, QWidget* parent=0); //on peut avoir un parent mais par d?faut on en a pas
+   UVEditeur(UVManager* m, UV& u, QWidget* parent=0); //on peut avoir un parent mais par défaut on en a pas
 public slots :
    void sauverUV();
    void addUv();

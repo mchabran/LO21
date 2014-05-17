@@ -59,7 +59,7 @@ UVEditeur::UVEditeur(UVManager *m, UV& uvToEdit, QWidget* parent): QWidget(paren
 
    sauver->setEnabled(false);
 
-   //connection du bouton sauver ? un slot que l'on va cr?er
+   //connection du bouton sauver à un slot que l'on va cr?er
    QObject::connect(newUV, SIGNAL(clicked()), this, SLOT(addUv()));
 
    QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverUV()));

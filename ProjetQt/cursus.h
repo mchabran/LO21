@@ -2,6 +2,16 @@
 #define CURSUS_H
 #include <QString>
 #include <QTextStream>
+#include <QWidget>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
+#include <QTextEdit>
+#include <QSpinBox>
+#include <QComboBox>
+#include <QCheckBox>
+#include <QVBoxLayout>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -9,7 +19,7 @@ using namespace std;
 class Cursus{
     QString nom;
 public :
-    QString getnom() const {return nom;}
+    QString getNom() const {return nom;}
     Cursus(QString s) : nom(s){}
 };
 
@@ -62,13 +72,48 @@ public :
 
 
 
-/*class CursusEditeur : public QWidget{
-
-
+class CursusEditeur : public QWidget{
+    //Q_OBJECT //pourquoi ça marche pas quand il y est ? :(
+    Cursus& cursus;
+    QLineEdit* nomCursus;
+    QLabel* nomCursusLabel;
+    QComboBox* categorie;
+    QLabel* categorieLabel;
+    QPushButton* rechercher;
+    QVBoxLayout* couche;
+    QHBoxLayout* coucheH1;
+    QHBoxLayout* coucheH2;
+    QHBoxLayout* coucheH3;
+public :
+    CursusEditeur(Cursus& c, QWidget* parent=0); //Le parent par défaut est 0 : nouvelle fenêtre
+public slots :
+   //void rechercherCursus(); //void ?
 };
-*/
 
 
+class TCEditeur : public QWidget{
+    Q_OBJECT
+    TC& tc;
+    QLineEdit* nom;
+    QLabel* nomLabel;
+    QSpinBox* credCS;
+    QLabel* CSLabel;
+    QSpinBox* credTM;
+    QLabel* TMLabel;
+    QSpinBox* credTSH;
+    QLabel* TSHLabel;
+    QSpinBox* credSP;
+    QLabel* SPLabel;
+    QComboBox* categorie;
+    QLabel* categorieLabel;
+    QPushButton* sauver;
+    QPushButton* annuler;
+public :
+    TCEditeur(Cursus& c, QWidget* parent=0); //Le parent par défaut est 0 : nouvelle fenêtre
+public slots :
+   void sauverTC();
+   void afficherTC();
+};
 
 
 #endif // CURSUS_H
