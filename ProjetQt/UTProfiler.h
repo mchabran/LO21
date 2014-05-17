@@ -134,7 +134,7 @@ public:
         iterator(UV** u):current(u){}
         friend class UVManager;
         public:
-            iterator():current(0){};
+            iterator():current(0){}
             UV& operator*() const { return **current; }
             bool operator!=(iterator it) const { return current!=it.current; }
             iterator& operator++(){ ++current; return *this; }

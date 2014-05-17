@@ -7,13 +7,17 @@ SOURCES += \
     UVEditeur.cpp \
     UTProfiler.cpp \
     cursus.cpp \
-    dossier.cpp
+    dossier.cpp \
+    TC.cpp \
+    HuTech.cpp
 
 HEADERS += \
     UTProfiler.h \
     UVEditeur.h \
     cursus.h \
-    dossier.h
+    dossier.h \
+    TC.h \
+    HuTech.h
 
 
 

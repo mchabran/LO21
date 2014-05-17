@@ -1,6 +1,8 @@
 #include "cursus.h"
+#include "TC.h"
+#include "HuTech.h"
 
-TC* TC::instanceUnique=0;
+/*TC* TC::instanceUnique=0;
 
 void TC::libereInstance(){
     if (instanceUnique!=0) delete instanceUnique;
@@ -10,30 +12,18 @@ void TC::libereInstance(){
 TC& TC::donneInstance(){
     if (instanceUnique==0) instanceUnique=new TC;
     return *instanceUnique;
-}
-
-
-HuTech* HuTech::instanceUnique=0;
-
-void HuTech::libereInstance(){
-    if (instanceUnique!=0) delete instanceUnique;
-    instanceUnique = 0;
-}
-
-HuTech& HuTech::donneInstance(){
-    if (instanceUnique==0) instanceUnique=new HuTech;
-    return *instanceUnique;
-}
+}*/
 
 
 // CursusEditeur
 
 CursusEditeur::CursusEditeur(Cursus& c, QWidget* parent) : cursus(c){
-    this->setWindowTitle(QString("Edition du cursus") +c.getNom());
+    this->setWindowTitle(QString("Edition de cursus"));
 
     nomCursusLabel = new QLabel("nom", this);
     nomCursus = new QLineEdit(c.getNom(), this);
     categorieLabel = new QLabel("Catégorie", this);
+
     categorie=new QComboBox(this);
     categorie->addItem("TC");
     categorie->addItem("Branche");
@@ -41,6 +31,7 @@ CursusEditeur::CursusEditeur(Cursus& c, QWidget* parent) : cursus(c){
     categorie->addItem("HuTech");
     categorie->addItem("Mineur");
     rechercher = new QPushButton("Rechercher");
+    annuler = new QPushButton("Annuler");
 
     coucheH1 = new QHBoxLayout;
     coucheH1->addWidget(nomCursusLabel);
@@ -56,17 +47,24 @@ CursusEditeur::CursusEditeur(Cursus& c, QWidget* parent) : cursus(c){
     couche->addItem(coucheH3);
     setLayout(couche);
 
-    //QObject::connect(rechercher, SIGNAL(clicked()), this, SLOT(rechercherCursus()));
+    QObject::connect(rechercher, SIGNAL(clicked()), this, SLOT(rechercherCursus(QString))); //marche pas : QObject::connect: No such slot QWidget::rechercherCursus(QString) in ..\ProjetQt\cursus.cpp:72
+    QObject::connect(annuler, SIGNAL(clicked()), this, SLOT(close()));
 }
 
-/*
-QSpinBox* categorie;
-QLabel* categorieLabel;
-QPushButton* rechercher;
-QPushButton* annuler;*/
 
-/*CSLabel = new QLabel("CS", this);
-TMLabel = new QLabel("TM", this);
-//TSHLabel = new QLabel("TSH", this);
-SPLabel = new QLabel("SP", this);
-categorieLabel = new QLabel("Catégorie", this);*/
+
+
+
+void CursusEditeur::rechercherCursus(QString str){
+   if (str == "Tronc commun") {
+        TC& tc = TC::donneInstance();
+        TCEditeur fenetre(tc);
+        fenetre.show();
+    }
+    /*else if (c=="HuTech") {
+        HuTechEditeur ht = new HuTech::donneInstance();
+        ht.show();
+    }*/
+}
+
+

@@ -53,8 +53,7 @@ QTextStream& operator<<(QTextStream& f, const Categorie& cat){
     return f<<CategorieToString(cat);
 }
 
-UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){
-}
+UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){}
 
 void UVManager::load(const QString& f){
     if (file!=f) this->~UVManager();

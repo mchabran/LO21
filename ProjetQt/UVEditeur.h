@@ -10,11 +10,6 @@
 #include <QCheckBox>
 #include <QVBoxLayout>
 #include <QMessageBox>
-/*#include <>
-#include <>
-#include <>
-#include <>
-#include <>*/
 #include "UTProfiler.h"
 
 class UVEditeur : public QWidget {
