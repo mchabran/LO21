@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Dossier{
+class Dossier{ //singleton
     Cursus** cursus;
     //Inscription** inscriptions;
     //Equivalence** equivalences; //a decommenter quand la classe sera implémentée
@@ -16,6 +16,7 @@ class Dossier{
     bool niveauB2;
 
     static Dossier* instanceUnique;
+    Dossier(): cursus(new Cursus*){}
     Dossier(Cursus** c): cursus(c), /*inscriptions(new Inscription*), equivalences(new Equivalence*),*/ activiteExtraScolaire(false), niveauB2(false) {}
     Dossier(const Dossier* instance);
     virtual ~Dossier();
@@ -28,12 +29,40 @@ public :
     bool getnivB2(){return niveauB2;}
     void validerNivB2(){niveauB2=true;}
     void validerActiviteES(){activiteExtraScolaire=true;}
+    void setCursus(Cursus** c){cursus=c;}
+    //void setInscriptions(Inscription** i){inscriptions=i;}
+    //void setEquivalences(Equivalence** e){equivalences=e}
+    void setAES(bool val){activiteExtraScolaire = val;}
+    void setNivB2(bool val){niveauB2 = val;}
 
     static Dossier& donneInstance();
     static void libereInstance();
 };
 
 
+class DossierEditeur : public QWidget{
+    Q_OBJECT
+    Dossier& doss;
+    QLabel* nomCursusLabel;
+    QLineEdit* nomCursus;
+    QLabel* categorieLabel;
+    QComboBox* categorie;
+    QLabel* nomUVLabel;
+    QLineEdit* nomUV;
+    QLabel* resultatLabel;
+    QComboBox* resultat;
+    QCheckBox* activiteES;
+    QCheckBox* B2;
+    QPushButton* sauver;
+    QPushButton* annuler;
+    QVBoxLayout* couche;
+    QHBoxLayout* coucheH1;
+    QHBoxLayout* coucheH2;
+public :
+    DossierEditeur(Dossier& d, QWidget* parent=0);
 
+//public slots :
+    //void sauverDossier();
+};
 
 #endif // DOSSIER_H

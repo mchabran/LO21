@@ -1,0 +1,13 @@
+INPUT(
+./debug\main.o
+./debug\UVEditeur.o
+./debug\UTProfiler.o
+./debug\cursus.o
+./debug\dossier.o
+./debug\TC.o
+./debug\HuTech.o
+./debug\moc_UVEditeur.o
+./debug\moc_cursus.o
+./debug\moc_dossier.o
+./debug\moc_TC.o
+);

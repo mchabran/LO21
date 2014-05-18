@@ -37,8 +37,9 @@ public :
 };
 
 
-class TCEditeur : public QWidget{
-    //Q_OBJECT
+class TCEditeur :  public QWidget {
+    Q_OBJECT //fait tout foirer <3
+private :
     TC& tc;
     QLineEdit* nom;
     QLabel* nomLabel;

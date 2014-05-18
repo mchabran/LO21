@@ -18,16 +18,18 @@
 #include <QFile>
 #include <QTextCodec>
 #include <QtXml>
+#include "UTProfiler.h"
 
 using namespace std;
 
 
 class Cursus{
     QString nom;
-
+    Categorie categorie;
 public :
     QString file; //Je sais pas comment faire autrement que le mettre en public, je sais pas comment c'est fait pour UVManager
     QString getNom() const {return nom;}
+    const Categorie& getCategorie() const {return categorie;}
     Cursus(QString s) : nom(s), file(""){}
     void load(const QString& f);
 };
@@ -38,7 +40,7 @@ public :
 
 
 class CursusEditeur : public QWidget{
-    //Q_OBJECT //pourquoi ça marche pas quand il y est ? :(
+    Q_OBJECT
     Cursus& cursus;
     QLineEdit* nomCursus;
     QLabel* nomCursusLabel;
@@ -53,7 +55,7 @@ class CursusEditeur : public QWidget{
 public :
     CursusEditeur(Cursus& c, QWidget* parent=0); //Le parent par défaut est 0 : nouvelle fenêtre
 public slots :
-    void rechercherCursus(QString str="Tronc commun");
+    void rechercherCursus();
 };
 
 

@@ -92,6 +92,6 @@ void UVEditeur::sauverUV(){
     uv.setCategorie(Categorie(categorie->currentIndex()));
     uv.setOuverturePrintemps(printemps->isChecked());
     uv.setOuvertureAutomne(automne->isChecked());
-    QMessageBox::information(this, "Sauvegarde", "UV sauvegardée...");
+    QMessageBox::information(this, "Sauvegarde", "UV sauvegardée");
 }
 

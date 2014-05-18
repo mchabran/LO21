@@ -17,7 +17,7 @@ TC& TC::donneInstance(){
 
 
 
-TCEditeur::TCEditeur(TC& t, QWidget* parent) : tc(t){
+TCEditeur::TCEditeur(TC& t, QWidget* parent) : QWidget(parent), tc(t){
     this->setWindowTitle(QString("Edition de cursus "));
 
     nomLabel = new QLabel("Nom cursus", this);
@@ -78,6 +78,7 @@ void TCEditeur::sauverTC(){
     tc.setCredTM(credTM->text());
     //tc->setCredTSH(credTSH->text());
     tc.setCredSP(credSP->text());
+    QMessageBox::information(this, "Sauvegarde", "TC sauvegardé");
 }
 
 
