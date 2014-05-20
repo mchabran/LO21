@@ -77,7 +77,7 @@ void UVManager::load(const QString& f){
             // If it's named uvs, we'll go to the next.
             if(xml.name() == "uvs") continue;
             // If it's named uv, we'll dig the information from there.
-            if(xml.name() == "uv"  ) {
+            if(xml.name() == "uv") {
                 QString code;
                 QString titre;
                 unsigned int nbCredits;
@@ -183,7 +183,8 @@ void UVManager::addItem(UV* uv){
 void UVManager::ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p){
         if (trouverUV(c)) {
         throw UTProfilerException(QString("erreur, UVManager, UV ")+c+QString("déja existante"));
-        }else{
+        }
+        else{
         UV* newuv=new UV(c,t,nbc,cat,a,p);
                 addItem(newuv);
                 modification=true;

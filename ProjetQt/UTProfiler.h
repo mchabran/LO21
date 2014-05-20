@@ -105,6 +105,7 @@ public:
     void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
     const UV& getUV(const QString& code) const;
     UV& getUV(const QString& code);
+
     class Iterator {
         friend class UVManager;
         UV** currentUV;

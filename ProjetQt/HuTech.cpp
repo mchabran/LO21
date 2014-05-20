@@ -1,7 +1,7 @@
 #include "cursus.h"
 #include "HuTech.h"
 
-HuTech::HuTech(): Cursus("Humanites et Technologie"), credCS("48"), credTM("24"), credSP("0"){} //reste à initialiser credTSH si on en met
+HuTech::HuTech(): Cursus("Humanites et Technologie", C_HuTech), credCS("48"), credTM("24"), credSP("0"){} //reste à initialiser credTSH si on en met
 
 HuTech* HuTech::instanceUnique=0;
 
@@ -33,7 +33,7 @@ HTEditeur::HTEditeur(HuTech& t, QWidget* parent) : ht(t){
     //credTSH=new QLineEdit(tc.getCredTSH(), this);
     credSP=new QLineEdit(t.getCredSP(), this);
     categorie=new QComboBox(this);
-    categorie->addItem("TC");
+    categorie->addItem("HuTech");
     sauver = new QPushButton("Sauver", this);
     annuler = new QPushButton("Annuler", this);
 

@@ -28,13 +28,14 @@ CursusEditeur::CursusEditeur(Cursus& c, QWidget* parent) : cursus(c){
     coucheH2->addWidget(categorie);
     coucheH3 = new QHBoxLayout;
     coucheH3->addWidget(rechercher);
+    coucheH3->addWidget(annuler);
     couche= new QVBoxLayout;
     couche->addItem(coucheH1);
     couche->addItem(coucheH2);
     couche->addItem(coucheH3);
     setLayout(couche);
 
-    QObject::connect(rechercher, SIGNAL(clicked()), this, SLOT(rechercherCursus()));
+    QObject::connect( rechercher, SIGNAL(clicked()), this , SLOT(rechercherCursus()));
     QObject::connect(annuler, SIGNAL(clicked()), this, SLOT(close()));
 }
 
@@ -42,16 +43,17 @@ CursusEditeur::CursusEditeur(Cursus& c, QWidget* parent) : cursus(c){
 
 
 
-void CursusEditeur::rechercherCursus(){ // Fenêtre ne reste pas affichée
-   //if (str == "Tronc commun") {
+void CursusEditeur::rechercherCursus(){
+   if (nomCursus->text() == "Tronc commun") {
         TC& tc = TC::donneInstance();
-        TCEditeur fenetre(tc);
-        fenetre.show();
-    //}
-    /*else if (c=="HuTech") {
-        HuTechEditeur ht = new HuTech::donneInstance();
-        ht.show();
-    }*/
+        TCEditeur* fenetre2 = new TCEditeur(tc);
+        fenetre2->show();
+    }
+    else if (nomCursus->text()=="HuTech") {
+        HuTech& h = HuTech::donneInstance();
+        HTEditeur* ht = new HTEditeur(h);
+        ht->show();
+    }
 }
 
 

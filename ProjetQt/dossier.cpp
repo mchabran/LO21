@@ -7,8 +7,9 @@ void Dossier::libereInstance(){
     instanceUnique = 0;
 }
 
-Dossier& Dossier::donneInstance(){
+Dossier& Dossier::donneInstance(Cursus** c){
     if (instanceUnique==0) instanceUnique= new Dossier;
+    instanceUnique->setCursus(c);
     return *instanceUnique;
 }
 
@@ -22,16 +23,22 @@ Dossier::~Dossier() {
 DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), doss(d){
     this->setWindowTitle(QString("Consultation du dossier"));
     nomCursusLabel = new QLabel("Cursus", this);
-    categorieLabel = new QLabel("Catégorie", this);
-    nomUVLabel = new QLabel("UV", this);
-    resultatLabel = new QLabel("Résultat", this);
-    nomCursus = new QLineEdit(this);
-    categorie=new QComboBox(this);
-    categorie->addItem("CS");
-    categorie->addItem("TM");
-    categorie->addItem("SP");
-    categorie->addItem("TSH");
-    resultat = new QComboBox(this);
+    //categorieUVLabel = new QLabel("Catégorie UV", this);
+    categorieCursusLabel = new QLabel("Catégorie Cursus", this);
+    //nomUVLabel = new QLabel("UV", this);
+    //resultatLabel = new QLabel("Résultat", this);
+    categorieCursus=new QComboBox(this);
+    categorieCursus->addItem("TC");
+    categorieCursus->addItem("HuTech");
+    categorieCursus->addItem("Branche");
+    categorieCursus->addItem("Filière");
+    categorieCursus->addItem("Mineur");
+    /*categorieUV=new QComboBox(this);
+    categorieUV->addItem("CS");
+    categorieUV->addItem("TM");
+    categorieUV->addItem("SP");
+    categorieUV->addItem("TSH");*/
+    /*resultat = new QComboBox(this);
     resultat->addItem("A");
     resultat->addItem("B");
     resultat->addItem("C");
@@ -41,7 +48,7 @@ DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), d
     resultat->addItem("FX");
     resultat->addItem("EC");
     resultat->addItem("ABS");
-    resultat->addItem("RES");
+    resultat->addItem("RES");*/
     activiteES = new QCheckBox("Activité extra-scolaire", this);
     activiteES->setChecked(d.getActiviteES());
     B2 = new QCheckBox("Niveau B2 validé", this);
@@ -55,12 +62,12 @@ DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), d
     unsigned int i=0;
     while(cur[i]!=0){
         nomCursus = new QLineEdit(cur[i]->getNom(), this);
-        categorie->setCurrentIndex((int)cur[i]->getCategorie());
+        categorieCursus->setCurrentIndex(1); // A REMODIFIER
         QHBoxLayout* coucheH = new QHBoxLayout;
         coucheH->addWidget(nomCursusLabel);
         coucheH->addWidget(nomCursus);
-        coucheH->addWidget(categorieLabel);
-        coucheH->addWidget(categorie);
+        coucheH->addWidget(categorieCursusLabel);
+        coucheH->addWidget(categorieCursus);
         couche->addItem(coucheH);
         i++;
     }
@@ -92,3 +99,5 @@ DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), d
     //QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverDossier()));
     QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
 }
+
+

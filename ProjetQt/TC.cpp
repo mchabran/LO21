@@ -1,7 +1,7 @@
 #include "cursus.h"
 #include "TC.h"
 
-TC::TC(): Cursus("Tronc Commun"), credCS("48"), credTM("24"), credSP("6"){} //reste à initialiser credTSH si on en met
+TC::TC(): Cursus("Tronc Commun", C_TC), credCS("48"), credTM("24"), credSP("6"){} //reste à initialiser credTSH si on en met
 
 TC* TC::instanceUnique=0;
 
@@ -73,6 +73,15 @@ TCEditeur::TCEditeur(TC& t, QWidget* parent) : QWidget(parent), tc(t){
 }
 
 
+void TCEditeur::ajouterTC(QString nbCS, QString nbTM, /*QString nbTSH,*/ QString nbSP){
+    TC& tc = TC::donneInstance();
+    tc.setCredCS(nbCS);
+    tc.setCredTM(nbTM);
+    //tc.setCredTSH(nbTSH);
+    tc.setCredSP(nbSP);
+}
+
+
 void TCEditeur::sauverTC(){
     tc.setCredCS(credCS->text());
     tc.setCredTM(credTM->text());
@@ -104,15 +113,15 @@ void TC::save(const QString& f){
 
 
 
-
-void TC::load(const QString& f){//pas d'erreur de compilation :)
-    if (file!=f) this->~Cursus();
+/********* ca ne marche pas **************/
+void TC::load(const QString& f){
+    if (file!=f) this->~TC();
     file=f;
 
     QFile fin(file);
     // If we can't open it, let's show an error message.
     if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        throw "Erreur ouverture fichier cursus";
+        throw ("Erreur ouverture fichier UV");
     }
     // QXmlStreamReader takes any QIODevice.
     QXmlStreamReader xml(&fin);
@@ -124,12 +133,25 @@ void TC::load(const QString& f){//pas d'erreur de compilation :)
         if(token == QXmlStreamReader::StartDocument) continue;
         // If token is StartElement, we'll see if we can read it.
         if(token == QXmlStreamReader::StartElement) {
-            // If it's named TC, we'll dig the information from there.
-            if(xml.name() == "TC"  ) {
+            // If it's named uvs, we'll go to the next.
+            //********if(xml.name() == "uvs") continue;
+            // If it's named uv, we'll dig the information from there.
+            if(xml.name() == "TC") {
                 QString credCS;
                 QString credTM;
-                //QString credTSH; //Idem que pour TC (:
+                //QString credTSH; //comment on fait pour les TSH sachant qu'il faut 52 crédits branche + TC confondus ? (:
                 QString credSP;
+
+                //*********QXmlStreamAttributes attributes = xml.attributes();
+                /* Let's check that uvs has attribute. */
+                //if(attributes.hasAttribute("automne")) {
+                //    QString val =attributes.value("automne").toString();
+                //    automne=(val == "true" ? true : false);
+                //}
+                //if(attributes.hasAttribute("printemps")) {
+                //    QString val =attributes.value("printemps").toString();
+                //    printemps=(val == "true" ? true : false);
+                //}
 
                 xml.readNext();
                 //We're going to loop over the things because the order might change.
@@ -138,35 +160,41 @@ void TC::load(const QString& f){//pas d'erreur de compilation :)
 
                 while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "TC")) {
                     if(xml.tokenType() == QXmlStreamReader::StartElement) {
-                        // We've found CS.
+                        // We've found code.
                         if(xml.name() == "CS") {
                             xml.readNext(); credCS=xml.text().toString();
                         }
-                        // We've found TM.
+                        // We've found titre.
                         if(xml.name() == "TM") {
                             xml.readNext(); credTM=xml.text().toString();
                         }
-                        // We've found TSH.
                         /*if(xml.name() == "TSH") {
-                            xml.readNext(); credTSH=xml.text().toString().toString();
+                            xml.readNext(); credTSH=xml.text().toString();
                         }*/
-                        // We've found SP
+                        // We've found titre.
                         if(xml.name() == "SP") {
                             xml.readNext(); credSP=xml.text().toString();
                         }
+
                     }
                     // ...and next...
                     xml.readNext();
                 }
-                //**************CLEMENCE QUI COMMENTE********************
-                //pas besoin de changer qc ?
+                //ajouterUV(code,titre,nbCredits,cat,automne,printemps); // Pourquoi est-ce qu'on ajoute une UV quand on a trouvé ?
 
+               TC& tc = TC::donneInstance();
+               tc.setCredCS(credCS);
+               tc.setCredTM(credTM);
+               //tc.setCredTSH(credTSH);
+               tc.setCredSP(credSP);
+               TCEditeur t(tc);
+               t.show();
             }
         }
     }
     // Error handling.
     if(xml.hasError()) {
-        throw "Erreur lecteur fichier UV, parser xml";
+        throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
     }
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();

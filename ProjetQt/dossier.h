@@ -27,15 +27,14 @@ public :
     //Equivalence** getEquivalences(){return equivalences;}
     bool getActiviteES(){return activiteExtraScolaire;}
     bool getnivB2(){return niveauB2;}
-    void validerNivB2(){niveauB2=true;}
-    void validerActiviteES(){activiteExtraScolaire=true;}
+
     void setCursus(Cursus** c){cursus=c;}
     //void setInscriptions(Inscription** i){inscriptions=i;}
     //void setEquivalences(Equivalence** e){equivalences=e}
     void setAES(bool val){activiteExtraScolaire = val;}
     void setNivB2(bool val){niveauB2 = val;}
 
-    static Dossier& donneInstance();
+    static Dossier& donneInstance(Cursus** c);
     static void libereInstance();
 };
 
@@ -45,12 +44,14 @@ class DossierEditeur : public QWidget{
     Dossier& doss;
     QLabel* nomCursusLabel;
     QLineEdit* nomCursus;
-    QLabel* categorieLabel;
-    QComboBox* categorie;
+    QLabel* categorieCursusLabel;
+    QComboBox* categorieCursus;
     QLabel* nomUVLabel;
     QLineEdit* nomUV;
-    QLabel* resultatLabel;
-    QComboBox* resultat;
+    //QLabel* categorieUVLabel;
+    //QComboBox* categorieUV;
+    //QLabel* resultatLabel;
+    //QComboBox* resultat;
     QCheckBox* activiteES;
     QCheckBox* B2;
     QPushButton* sauver;
@@ -66,3 +67,4 @@ public :
 };
 
 #endif // DOSSIER_H
+

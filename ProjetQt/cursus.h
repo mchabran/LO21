@@ -22,15 +22,19 @@
 
 using namespace std;
 
+enum CategorieCursus {
+ C_TC,C_Branche,C_Filiere,C_HuTech, C_Mineur
+};
+
 
 class Cursus{
     QString nom;
-    Categorie categorie;
+    CategorieCursus categorie;
 public :
     QString file; //Je sais pas comment faire autrement que le mettre en public, je sais pas comment c'est fait pour UVManager
     QString getNom() const {return nom;}
-    const Categorie& getCategorie() const {return categorie;}
-    Cursus(QString s) : nom(s), file(""){}
+    CategorieCursus getCategorie() const {return categorie;}
+    Cursus(QString n, CategorieCursus cat) : nom(n), categorie(cat), file(""){}
     void load(const QString& f);
 };
 

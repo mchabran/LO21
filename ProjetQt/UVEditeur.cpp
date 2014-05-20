@@ -82,16 +82,15 @@ void UVEditeur::addUv(){
     manager->ajouterUV(code->text(), titre->toPlainText(), credits->value(), (Categorie)categorie->currentIndex(), automne->isChecked(), printemps->isChecked());
 
     // void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
-
 }
 
 void UVEditeur::sauverUV(){
-    uv.setCode(code->text());
-    uv.setTitre(titre->toPlainText());
+    uv.setCode(code->text());//on modifie le code avec le texte qui est dans le qlineedit qui s'appelle code
+    uv.setCategorie(Categorie(categorie->currentIndex())); // parce que les catégories sont des énumérations donc renvoie un entier au lieu de CS TM TSH etc. & conversion implicite de int en categorie impossible
     uv.setNbCredits(credits->value());
-    uv.setCategorie(Categorie(categorie->currentIndex()));
-    uv.setOuverturePrintemps(printemps->isChecked());
     uv.setOuvertureAutomne(automne->isChecked());
+    uv.setOuverturePrintemps(printemps->isChecked());
+    uv.setTitre(titre->toPlainText());
     QMessageBox::information(this, "Sauvegarde", "UV sauvegardée");
 }
 

@@ -8,10 +8,12 @@
 using namespace std;
 
 class TC : public Cursus{ //Singleton (un seul cursus TC à créer)
+
     QString credCS;
     QString credTM;
     //QString credTSH; //comment on fait pour les TSH sachant qu'il faut 52 crédits branche + TC confondus ? (:
     QString credSP;
+
         //Implémentation du Singleton
     static TC* instanceUnique;
     TC();
@@ -66,6 +68,7 @@ private :
 
 public :
     TCEditeur(TC& t, QWidget* parent=0); //Le parent par défaut est 0 : nouvelle fenêtre
+    void ajouterTC(QString nbCS, QString nbTM, /*QString nbTSH, */ QString nbSP);
 
 public slots :
    void sauverTC();
