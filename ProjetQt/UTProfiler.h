@@ -74,7 +74,6 @@ public:
 
 QTextStream& operator<<(QTextStream& f, const UV& uv);
 
-
 class UVManager {
 private:
     UV** uvs;
@@ -174,7 +173,6 @@ public:
      }
 };
 
-
 class Inscription {
         const UV* uv;
         Semestre semestre;
@@ -186,7 +184,6 @@ public:
         Note getResultat() const { return resultat; }
         void setResultat(Note newres) { resultat=newres; }
 };
-
 
 class Formation{
 };

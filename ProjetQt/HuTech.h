@@ -15,6 +15,8 @@ class HuTech : public Cursus{ //Singleton (un seul cursus TC à créer)
     QString credSP;
         //Implémentation du Singleton
     static HuTech* instanceUnique;
+
+    ///manque le constructeur avec paramètres ?
     HuTech();
     HuTech(const HuTech* instance);
     virtual ~HuTech() {}
@@ -38,7 +40,7 @@ public :
 };
 
 
-class HTEditeur : public QWidget{
+class HTEditeur : public QWidget{ ///pareil que pour TCEditeur ?
     //Q_OBJECT
     HuTech& ht;
     QLineEdit* nom;

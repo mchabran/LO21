@@ -17,7 +17,9 @@ HEADERS += \
     cursus.h \
     dossier.h \
     TC.h \
-    HuTech.h
+    HuTech.h \
+    Branche.h \
+    Equivalence.h
 
 
 

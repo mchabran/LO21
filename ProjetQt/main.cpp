@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QString>
+#include <iostream>
 #include <QFileDialog>
 #include "UTProfiler.h"
 #include "UVEditeur.h"
@@ -7,9 +8,12 @@
 #include "TC.h"
 #include "HuTech.h"
 #include "dossier.h"
+#include "Branche.h"
+#include "Equivalence.h"
 
 int main(int argc, char* argv[]) {
    QApplication app(argc, argv);
+
 
    /*UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();

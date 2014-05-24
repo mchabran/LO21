@@ -10,12 +10,14 @@ using namespace std;
 
 class Dossier{ //singleton
     Cursus** cursus;
+    ///pourquoi il est commenté Inscription ?
     //Inscription** inscriptions;
     //Equivalence** equivalences; //a decommenter quand la classe sera implémentée
     bool activiteExtraScolaire;
     bool niveauB2;
 
     static Dossier* instanceUnique;
+    ///manque pas un constructeur avec paramètres ?
     Dossier(): cursus(new Cursus*){}
     Dossier(Cursus** c): cursus(c), /*inscriptions(new Inscription*), equivalences(new Equivalence*),*/ activiteExtraScolaire(false), niveauB2(false) {}
     Dossier(const Dossier* instance);
@@ -63,7 +65,7 @@ public :
     DossierEditeur(Dossier& d, QWidget* parent=0);
 
 //public slots :
-    //void sauverDossier();
+    //void sauverDossier(); ///tu ne l'as pas implémenté dans le .cpp ?
 };
 
 #endif // DOSSIER_H

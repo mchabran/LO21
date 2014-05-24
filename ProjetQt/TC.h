@@ -9,17 +9,19 @@ using namespace std;
 
 class TC : public Cursus{ //Singleton (un seul cursus TC à créer)
 
-    QString credCS;
+    QString credCS; ///pourquoi QString et pas unsigned int ?
     QString credTM;
     //QString credTSH; //comment on fait pour les TSH sachant qu'il faut 52 crédits branche + TC confondus ? (:
     QString credSP;
 
         //Implémentation du Singleton
     static TC* instanceUnique;
+
+    ///manque constructeur avec paramètres ?
     TC();
     TC(const TC* instance);
     virtual ~TC() {}
-    virtual void operator=(const TC&){}
+    virtual void operator=(const TC&){} ///pourquoi virtual ?
 public :
     QString getCredCS()const {return credCS;}
     QString getCredTM()const {return credTM;}
@@ -34,12 +36,13 @@ public :
     static TC& donneInstance();
     static void libereInstance();
 
+    ///A faire dans le CursusManager ?
     void save(const QString& f); //sauvegarder le TC dans un fichier
     void load(const QString &f);
 };
 
 
-class TCEditeur :  public QWidget {
+class TCEditeur :  public QWidget { ///pour moi c'est CursusManager qui doit s'occuper de ca (ajouter et modifier des cursus ?)
     Q_OBJECT //fait tout foirer <3
 private :
     TC& tc;
@@ -68,7 +71,7 @@ private :
 
 public :
     TCEditeur(TC& t, QWidget* parent=0); //Le parent par défaut est 0 : nouvelle fenêtre
-    void ajouterTC(QString nbCS, QString nbTM, /*QString nbTSH, */ QString nbSP);
+    void ajouterTC(QString nbCS, QString nbTM, /*QString nbTSH, */ QString nbSP); ///comprend pas ce que ca doit faire... ajouter un deuxième cursus TC ?
 
 public slots :
    void sauverTC();
