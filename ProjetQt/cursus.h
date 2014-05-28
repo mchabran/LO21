@@ -28,13 +28,15 @@ enum CategorieCursus {
 
 
 class Cursus{
-    static unsigned int nbCursus;
+    UV* tabUV;
+    Cursus parent; //la branche où la filière est (par défaut =NULL)
     QString nom;
     CategorieCursus categorie;
     QString credCS;
     QString credTM;
     QString credTSH;
     QString credSP;
+    //friend class cursusManager
 public :
     QString file; //Je sais pas comment faire autrement que le mettre en public, je sais pas comment c'est fait pour UVManager
     QString getNom() const {return nom;}
@@ -48,14 +50,10 @@ public :
     void setCredTSH(QString n){credTSH=n;}
     void setCredSP(QString n){credSP=n;}
 
+    //à mettre en partie privée quand cursusManager sera créé
     Cursus(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP) : nom(n), categorie(cat), credCS(nbCS), credTM(nbTM), credTSH(nbTSH), credSP(nbSP) ,file(""){}
     Cursus& find(const QString& f, const QString& nomcherche);
 };
-
-
-
-
-
 
 class CursusFinder : public QWidget{
     Q_OBJECT
