@@ -1,7 +1,7 @@
 #include "cursus.h"
 #include "TC.h"
 
-TC::TC(): Cursus("Tronc Commun", C_TC), credCS("48"), credTM("24"), credSP("6"){} //reste à initialiser credTSH si on en met
+TC::TC(): Cursus("Tronc Commun", C_TC, "48", "24", "0", "6"){}
 
 TC* TC::instanceUnique=0;
 
@@ -114,6 +114,7 @@ void TC::save(const QString& f){
 
 
 /********* ca ne marche pas **************/
+
 void TC::load(const QString& f){
     if (file!=f) this->~TC();
     file=f;
@@ -153,7 +154,7 @@ void TC::load(const QString& f){
                 //    printemps=(val == "true" ? true : false);
                 //}
 
-                xml.readNext();
+         //       xml.readNext();
                 //We're going to loop over the things because the order might change.
                 //We'll continue the loop until we hit an EndElement named uv.
 
@@ -172,7 +173,7 @@ void TC::load(const QString& f){
                             xml.readNext(); credTSH=xml.text().toString();
                         }*/
                         // We've found titre.
-                        if(xml.name() == "SP") {
+                         if(xml.name() == "SP") {
                             xml.readNext(); credSP=xml.text().toString();
                         }
 
@@ -199,3 +200,4 @@ void TC::load(const QString& f){
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();
 }
+
