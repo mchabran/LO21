@@ -79,7 +79,7 @@ public slots :
 
 
 class CursusEditeur :  public QWidget {
-    Q_OBJECT //fait tout foirer <3
+    Q_OBJECT
 private :
     Cursus& c;
     QLineEdit* nom;
