@@ -1,7 +1,7 @@
 #include "cursus.h"
 #include "HuTech.h"
 
-HuTech::HuTech(): Cursus("Humanites et Technologie", C_HuTech), credCS("48"), credTM("24"), credSP("0"){} //reste à initialiser credTSH si on en met
+HuTech::HuTech(): Cursus("Humanites et Technologie", C_HuTech, "48", "24", "0", "0"){}
 
 HuTech* HuTech::instanceUnique=0;
 
