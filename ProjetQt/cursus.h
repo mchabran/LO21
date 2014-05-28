@@ -27,59 +27,35 @@ enum CategorieCursus {
 };
 
 
-class Cursus{ ///si UV compose cursus, on devrait avoir un tableau d'UVs ?
-protected : ///je crois qu'il faut qu'ils soient protected pour l'héritage ?
+class Cursus{
+    UV* tabUV;
+    Cursus parent; //la branche où la filière est (par défaut =NULL)
     QString nom;
-    CategorieCursus categorie; ///c'est quoi ? Ah jviens de regarder en haut, c'est pas la même chose que le nom ?
+    CategorieCursus categorie;
+    QString credCS;
+    QString credTM;
+    QString credTSH;
+    QString credSP;
+    //friend class cursusManager
 public :
     QString file; //Je sais pas comment faire autrement que le mettre en public, je sais pas comment c'est fait pour UVManager
-    ///justement on est pas dans cursusManager, on est juste dans cursus ;-)
     QString getNom() const {return nom;}
     CategorieCursus getCategorie() const {return categorie;}
-    Cursus(QString n, CategorieCursus cat) : nom(n), categorie(cat), file(""){}
-    void load(const QString& f); ///pareil, à mettre dans cursusManager
+    QString getCredCS()const {return credCS;}
+    QString getCredTM()const {return credTM;}
+    QString getCredTSH() const {return credTSH;}
+    QString getCredSP() const {return credSP;}
+    void setCredCS(QString n){credCS=n;}
+    void setCredTM(QString n){credTM=n;}
+    void setCredTSH(QString n){credTSH=n;}
+    void setCredSP(QString n){credSP=n;}
+
+    //à mettre en partie privée quand cursusManager sera créé
+    Cursus(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP) : nom(n), categorie(cat), credCS(nbCS), credTM(nbTM), credTSH(nbTSH), credSP(nbSP) ,file(""){}
+    Cursus& find(const QString& f, const QString& nomcherche);
 };
 
-//en faite, en faisant la classe, je me suis rendu compte qu'on s'est un peu planté dans notre modélisation...
-//j't'explique quand je te vois, pour l'instant je laisse commenter ce que j'ai commencé
-/*
-class CursusManager { //singleton
-private:
-    Cursus** cursus;
-    unsigned int nbCursus;
-    unsigned int nbMaxCursus;
-    void addCursus(Cursus* c);
-    //bool modification;
-    Cursus* trouverCursus(const QString& c) const;
-    CursusManager(const CursusManager& cm);
-    CursusManager& operator=(const CursusManager& cm);
-    CursusManager();
-    ~CursusManager();
-    QString file;
-    friend struct Handler;
-    struct Handler{
-        UVManager* instance;
-        Handler():instance(0){}
-        ~Handler(){ if (instance) delete instance; instance=0; }
-    };
-    static Handler handler;
-
-public:
-
-    void load(const QString& f);
-    void save(const QString& f);
-    static CursusManager& getInstance();
-    static void libererInstance();
-    void ajouterCursus(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
-    const Cursus& getCursus(const QString& nom) const;
-    UV& getCursus(const QString& nom);
-
-   //ajouter peut-etre iterator, mais plus tard
-};
-*/
-
-///pareil ;-)
-class CursusEditeur : public QWidget{
+class CursusFinder : public QWidget{
     Q_OBJECT
     Cursus& cursus;
     QLineEdit* nomCursus;
@@ -93,11 +69,47 @@ class CursusEditeur : public QWidget{
     QHBoxLayout* coucheH2;
     QHBoxLayout* coucheH3;
 public :
-    CursusEditeur(Cursus& c, QWidget* parent=0); //Le parent par défaut est 0 : nouvelle fenêtre
+    CursusFinder(Cursus& c, QWidget* parent=0); //Le parent par défaut est 0 : nouvelle fenêtre
 public slots :
     void rechercherCursus();
 };
 
+
+
+class CursusEditeur :  public QWidget {
+    Q_OBJECT
+private :
+    Cursus& c;
+    QLineEdit* nom;
+    QLabel* nomLabel;
+    QLineEdit* credCS;
+    QLabel* CSLabel;
+    QLineEdit* credTM;
+    QLabel* TMLabel;
+    QLineEdit* credTSH;
+    QLabel* TSHLabel;
+    QLineEdit* credSP;
+    QLabel* SPLabel;
+    QComboBox* categorie;
+    QLabel* categorieLabel;
+    QPushButton* sauver;
+    QPushButton* annuler;
+    QVBoxLayout* couche;
+    QHBoxLayout* coucheH1;
+    QHBoxLayout* coucheH2;
+    QHBoxLayout* coucheH3;
+    QHBoxLayout* coucheH4;
+    QHBoxLayout* coucheH5;
+    QHBoxLayout* coucheH6;
+
+
+public :
+    CursusEditeur(Cursus& cur, QWidget* parent=0);
+    void ajouterCursus(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP);
+
+public slots :
+   void sauverCursus();
+};
 
 
 #endif // CURSUS_H
