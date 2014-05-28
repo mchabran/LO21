@@ -30,7 +30,8 @@ enum CategorieCursus {
 class Cursus{ ///si UV compose cursus, on devrait avoir un tableau d'UVs ?
 protected : ///je crois qu'il faut qu'ils soient protected pour l'héritage ?
     QString nom;
-    CategorieCursus categorie; ///c'est quoi ? Ah jviens de regarder en haut, c'est pas la même chose que le nom ?
+    CategorieCursus categorie;
+    ///c'est quoi ? Ah jviens de regarder en haut, c'est pas la même chose que le nom ?
 public :
     QString file; //Je sais pas comment faire autrement que le mettre en public, je sais pas comment c'est fait pour UVManager
     ///justement on est pas dans cursusManager, on est juste dans cursus ;-)
