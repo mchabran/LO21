@@ -2,13 +2,15 @@
 #include "TC.h"
 #include "HuTech.h"
 
-QString CategorieCursusToString(Categorie c){
+
+QString CategorieCursusToString(CategorieCursus c){
     switch(c){
     case C_TC: return "C_TC";
     case C_Filiere: return "C_Filiere";
         case C_Branche: return "C_Branche";
     case C_HuTech: return "C_HuTech";
     case C_Mineur: return "C_Mineur";
+    case autre:return "autre";
     default: throw UTProfilerException("erreur, categorie non traitee",__FILE__,__LINE__);
     }
 }
@@ -23,11 +25,11 @@ CategorieCursus StringToCategorieCursus(const QString& str){
     if (str=="C_HuTech") return C_HuTech;
     else
     if (str=="C_Mineur") return C_Mineur;
+    if (str=="autre")return autre;
     else {
         throw UTProfilerException(QString("erreur, StringToCategorie, categorie ")+str+" inexistante");
     }
 }
-
 
 CursusFinder::CursusFinder(Cursus& c, QWidget* parent) : cursus(c){
     this->setWindowTitle(QString("Edition de cursus"));
@@ -65,7 +67,6 @@ CursusFinder::CursusFinder(Cursus& c, QWidget* parent) : cursus(c){
     QObject::connect(annuler, SIGNAL(clicked()), this, SLOT(close()));
 }
 
-
 void CursusFinder::rechercherCursus(){ // Il faudrait une fonction qui récupère les infos dans un fichier cursus.xml LOL
    /*if (nomCursus->text() == "Tronc commun") {
         TC& tc = TC::donneInstance();
@@ -86,12 +87,7 @@ void CursusFinder::rechercherCursus(){ // Il faudrait une fonction qui récupèr
 
     CursusEditeur* fenetre2 = new CursusEditeur(newCur);
     fenetre2->show();
-
-
 }
-
-
-
 
 CursusEditeur::CursusEditeur(Cursus& cur, QWidget* parent) : QWidget(parent), c(cur){
     this->setWindowTitle(QString("Edition de cursus "));
@@ -148,7 +144,6 @@ CursusEditeur::CursusEditeur(Cursus& cur, QWidget* parent) : QWidget(parent), c(
     QObject::connect(annuler, SIGNAL(clicked()), this, SLOT(close()));
 }
 
-
 void CursusEditeur::sauverCursus(){
     c.setCredCS(credCS->text());
     c.setCredTM(credTM->text());
@@ -156,9 +151,6 @@ void CursusEditeur::sauverCursus(){
     c.setCredSP(credSP->text());
     QMessageBox::information(this, "Sauvegarde", "Cursus sauvegardé");
 }
-
-
-
 
 Cursus& Cursus::find(const QString& f, const QString& nomcherche){
     //if (file!=f) this->~Cursus();
@@ -242,5 +234,137 @@ Cursus& Cursus::find(const QString& f, const QString& nomcherche){
     }
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();
+}
 
+Cursus* CursusManager::trouverCursus(const QString &c) const{
+    for(unsigned int i=0; i<nbCursus;i++){
+        if (mesCursus[i]->nom==c) return mesCursus[i];
+    };
+    return 0;
+
+}
+
+CursusManager::~CursusManager(){
+    if (file!="") save(file);
+        for(unsigned int i=0; i<nbCursus; i++) delete mesCursus[i];
+        delete[] mesCursus;
+}
+
+//modif
+void CursusManager::load(const QSring& f){
+    if (file!=f) this->~CursusManager();
+    file=f;
+
+    QFile fin(file);
+    // If we can't open it, let's show an error message.
+    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        throw UTProfilerException("Erreur ouverture fichier UV");
+    }
+    // QXmlStreamReader takes any QIODevice.
+    QXmlStreamReader xml(&fin);
+    // We'll parse the XML until we reach end of it.
+    while(!xml.atEnd() && !xml.hasError()) {
+        // Read next element.
+        QXmlStreamReader::TokenType token = xml.readNext();
+        // If token is just StartDocument, we'll go to next.
+        if(token == QXmlStreamReader::StartDocument) continue;
+        // If token is StartElement, we'll see if we can read it.
+        if(token == QXmlStreamReader::StartElement) {
+            // If it's named uvs, we'll go to the next.
+            if(xml.name() == "Cursus") continue;
+            // If it's named uv, we'll dig the information from there.
+            if(xml.name() == "cursus") {
+                QString nom;
+                CategorieCursus cat;
+                QString* uvs;
+                unsigned int nUV=0; //nb d'UV
+                unsigned int nMUV=0;//nb MAX d'UV
+                QString codeUV;
+                unsigned int nbCS;
+                unsigned int nbTM;
+                unsigned int nbTSH;
+                unsigned int nbSP;
+                Cursus p;
+
+                xml.readNext();
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "cursus")) {
+                    if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                        // We've found code.
+                        if(xml.name() == "nom") {
+                            xml.readNext(); nom=xml.text().toString();
+                        }
+                        if(xml.name()=="categorie"){
+                            xml.readNext(); cat=StringToCategorieCursus(xml.text().toString());
+                        }
+                        if(xml.name() == "CS") {
+                            xml.readNext(); nbCS=xml.text().toString().toUInt();
+                        }
+                        if(xml.name() == "TM") {
+                            xml.readNext(); nbTM=xml.text().toString().toUInt();
+                        }
+                        if(xml.name() == "TSH") {
+                            xml.readNext(); nbTSH=xml.text().toString().toUInt();
+                        }
+                        if(xml.name() == "SP") {
+                            xml.readNext(); nbSP=xml.text().toString().toUInt();
+                        }
+                        if(xml.name()=="UVs"){
+                                xml.readNext();
+                                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "UVs")) {
+                                    if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                                         QXmlStreamAttributes attributes = xml.attributes();
+                                         if(attributes.hasAttribute("code")) {
+                                             codeUV =attributes.value("code").toString();
+                                         }
+                                    }
+                                    if (nUV==nMUV){
+                                            QString* newtab=new QString[nMUV+10];
+                                            for(unsigned int i=0; i<nUV; i++) newtab[i]=uvs[i];
+                                            nMUV+=10;
+                                            QString* old=uvs;
+                                            uvs=newtab;
+                                            delete[] old;
+                                    }
+                                    uvs[nbUV++]=codeUV;
+                                }
+                        }
+
+
+                    }
+                }
+                xml.readNext();
+            }//fin cursus
+            ajouterCursus(nom, uvs, nUV, cat, nbCS, nbTM, nbTSH, nbSP,p);
+
+        }
+    }
+    if(xml.hasError()) {
+        throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+    }
+    // Removes any device() or data from the reader * and resets its internal state to the initial state.
+    xml.clear();
+}
+
+void CursusManager::ajouterCursus(const QString n, const QString* t, unsigned int nbU, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP, Cursus p){
+    if (trouverCursus(n)) {
+    throw UTProfilerException(QString("erreur, CursusManager, Cursus")+n+QString("déja existant"));
+    }
+    else{
+    Cursus* newcursus=new Cursus(n,c,CS,TM,TSH,SP,p);
+    for(unsigned int i=0;i<nbU;i++)
+        newcursus->addUV(t[i]);
+    addItem(newcursus);
+    }
+}
+
+void Cursus::addUV(UV u){
+    if (nbUV==nbMaxUV){
+            QString* newtab=new QString[nbMaxUV+10];
+            for(unsigned int i=0; i<nbUV; i++) newtab[i]=tabUV[i];
+            nbMaxUV+=10;
+            QString* old=tabUV;
+            tabUV=newtab;
+            delete[] old;
+    }
+    tabUV[nbUV++]=u;
 }
