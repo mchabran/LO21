@@ -61,8 +61,8 @@ UVEditeur::UVEditeur(UVManager *m, UV& uvToEdit, QWidget* parent): QWidget(paren
 
    //connection du bouton sauver à un slot que l'on va cr?er
    QObject::connect(newUV, SIGNAL(clicked()), this, SLOT(addUv()));
-
    QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverUV()));
+   QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
 
 
    QObject::connect(code,SIGNAL(textEdited(QString)),this,SLOT(activerSauver(QString)));
@@ -94,3 +94,38 @@ void UVEditeur::sauverUV(){
     QMessageBox::information(this, "Sauvegarde", "UV sauvegardée");
 }
 
+
+
+UVFinder::UVFinder(UVManager* m, QWidget* parent) : QWidget(parent), manager(m){
+    this->setWindowTitle(QString("Recherche d'e l''une UV"));
+
+    codeLabel = new QLabel("code", this);
+    code = new QLineEdit("", this);
+    rechercher = new QPushButton("Rechercher", this);
+    annuler = new QPushButton("Annuler", this);
+
+    coucheH1 = new QHBoxLayout;
+    coucheH1->addWidget(codeLabel);
+    coucheH1->addWidget(code);
+
+    coucheH2 = new QHBoxLayout;
+    coucheH2->addWidget(annuler);
+    coucheH2->addWidget(rechercher);
+    couche= new QVBoxLayout;
+    couche->addItem(coucheH1);
+    couche->addItem(coucheH2);
+    setLayout(couche);
+
+    QObject::connect(rechercher,SIGNAL(clicked()), this, SLOT(rechercherUV()));
+    QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
+
+}
+
+void UVFinder::rechercherUV(){
+    UV& uv=manager->getUV(code->text());
+
+    UVEditeur* fenetre2 = new UVEditeur(manager, uv);
+    fenetre2->show();
+
+
+}

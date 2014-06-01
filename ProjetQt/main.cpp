@@ -11,16 +11,17 @@
 int main(int argc, char* argv[]) {
    QApplication app(argc, argv);
 
-   /*UVManager& m=UVManager::getInstance();
+   UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
-   UV& uv=m.getUV("LO21");
+   /*UV& uv=m.getUV("LO21");
    UVEditeur fenetre(&m,uv);*/
+   UVFinder fenetre(&m);
    //********Ajout d'UV ne marche pas*******
 
-   Cursus c("Tronc commun", C_TC, "42", "36", "12", "6");
+   //Cursus c("Tronc commun", C_TC, "42", "36", "12", "6");
    //(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP)
-   CursusFinder fenetre(c);
+   //CursusFinder fenetre(c);
 
    //TC& t = TC::donneInstance();
    //QString chemin = QFileDialog::getOpenFileName();

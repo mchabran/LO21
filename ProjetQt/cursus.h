@@ -29,7 +29,7 @@ enum CategorieCursus {
 
 class Cursus{
     UV* tabUV;
-    Cursus parent; //la branche où la filière est (par défaut =NULL)
+    //Cursus& parent; //la branche où la filière est (par défaut =NULL) A rajouter dans le constructeur mais comment mettre une valeur par défaut si 0 ne marche pas ?
     QString nom;
     CategorieCursus categorie;
     QString credCS;
@@ -38,7 +38,7 @@ class Cursus{
     QString credSP;
     //friend class cursusManager
 public :
-    QString file; //Je sais pas comment faire autrement que le mettre en public, je sais pas comment c'est fait pour UVManager
+    QString file; //a mettre dans CursusManager en fait
     QString getNom() const {return nom;}
     CategorieCursus getCategorie() const {return categorie;}
     QString getCredCS()const {return credCS;}
@@ -51,7 +51,7 @@ public :
     void setCredSP(QString n){credSP=n;}
 
     //à mettre en partie privée quand cursusManager sera créé
-    Cursus(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP) : nom(n), categorie(cat), credCS(nbCS), credTM(nbTM), credTSH(nbTSH), credSP(nbSP) ,file(""){}
+    Cursus(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP) : nom(n), categorie(cat), credCS(nbCS), credTM(nbTM), credTSH(nbTSH), credSP(nbSP) , file(""){}
     Cursus& find(const QString& f, const QString& nomcherche);
 };
 
