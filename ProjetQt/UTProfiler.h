@@ -102,6 +102,7 @@ public:
     static UVManager& getInstance();
     static void libererInstance();
     void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
+    void supprimerUV(UV& u);
     const UV& getUV(const QString& code) const;
     UV& getUV(const QString& code);
 

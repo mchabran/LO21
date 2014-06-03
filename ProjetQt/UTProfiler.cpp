@@ -221,3 +221,13 @@ void UVManager::libererInstance(){
 }
 
 
+void UVManager::supprimerUV(UV& u){
+    unsigned int i;
+    for(i=0; i<nbUV; i++)
+            if (u.getCode()==uvs[i]->getCode()) break;
+    if (i==nbUV) UTProfilerException("Erreur, UV inexistante ne peut être supprimée");
+    for(unsigned int j=i; j<nbUV; j++)
+        uvs[j]=uvs[j+1];
+    nbUV--;
+}
+

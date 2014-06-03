@@ -1411,11 +1411,7 @@ release/main.o: ../ProjetQt/main.cpp ../../../../../../../../../../Qt/5.2.1/ming
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qdom.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qxml.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qtxmlversion.h \
-		../ProjetQt/TC.h \
-		../ProjetQt/HuTech.h \
-		../ProjetQt/dossier.h \
-		../ProjetQt/Branche.h \
-		../ProjetQt/Equivalence.h
+		../ProjetQt/dossier.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\ProjetQt\main.cpp
 
 release/UVEditeur.o: ../ProjetQt/UVEditeur.cpp ../ProjetQt/UVEditeur.h \

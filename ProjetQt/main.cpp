@@ -39,7 +39,6 @@ int main(int argc, char* argv[]) {
    Dossier& d= Dossier::donneInstance(tab);
    //d.setCursus(c);
    DossierEditeur fenetre(d);*/
-   //fenetre.ajouterTC("6", "24", "3"); // ??
    fenetre.show();
    return app.exec();
 }

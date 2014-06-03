@@ -29,6 +29,7 @@ class UVEditeur : public QWidget {
    QPushButton* newUV;
    QPushButton* sauver;
    QPushButton* annuler;
+   QPushButton* supprimer;
    QVBoxLayout* couche;
    QHBoxLayout* coucheH1;
    QHBoxLayout* coucheH2;
@@ -44,6 +45,7 @@ public :
 public slots :
    void sauverUV();
    void addUv();
+   void supprimerUV();
 
 };
 
