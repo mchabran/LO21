@@ -15,7 +15,6 @@ int main(int argc, char* argv[]) {
    QApplication app(argc, argv);
    QLabel *fen;
 
-<<<<<<< HEAD
    //CursusManager
    CursusManager& m=CursusManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
@@ -26,8 +25,9 @@ int main(int argc, char* argv[]) {
    fenetre.show();
 
 /*
-=======
->>>>>>> e23a9215f49d1a7338465221fad6516ef0844a5f
+     UVManager& m=UVManager::getInstance();
+   QString chemin = QFileDialog::getOpenFileName();
+   m.load(chemin);
    UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
@@ -56,12 +56,8 @@ int main(int argc, char* argv[]) {
    Dossier& d= Dossier::donneInstance(tab);
    //d.setCursus(c);
    DossierEditeur fenetre(d);*/
-<<<<<<< HEAD
    //fenetre.ajouterTC("6", "24", "3"); // ??
-
-=======
-   fenetre.show();
->>>>>>> e23a9215f49d1a7338465221fad6516ef0844a5f
+ fenetre.show();
    return app.exec();
 }
 

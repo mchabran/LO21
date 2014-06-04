@@ -81,11 +81,9 @@ void UVEditeur::activerSauver(QString){
 
 void UVEditeur::addUv(){
     manager->ajouterUV(code->text(), titre->toPlainText(), credits->value(), (Categorie)categorie->currentIndex(), automne->isChecked(), printemps->isChecked());
-<<<<<<< HEAD
     // void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
-=======
     QMessageBox::information(this, "aJOUT uv", "UV ajoutée");
->>>>>>> e23a9215f49d1a7338465221fad6516ef0844a5f
+
 }
 
 void UVEditeur::sauverUV(){
