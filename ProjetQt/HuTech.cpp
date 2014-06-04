@@ -1,6 +1,6 @@
 #include "cursus.h"
 #include "HuTech.h"
-
+/*
 HuTech::HuTech(): Cursus("Humanites et Technologie", C_HuTech, "48", "24", "0", "0"){}
 
 HuTech* HuTech::instanceUnique=0;
@@ -150,7 +150,7 @@ void HuTech::load(const QString& f){//pas d'erreur de compilation :)
                             xml.readNext(); credTSH=xml.text().toString().toString();
                         }*/
                         // We've found SP
-                        if(xml.name() == "SP") {
+                   /*     if(xml.name() == "SP") {
                             xml.readNext(); credSP=xml.text().toString();
                         }
                     }
@@ -170,4 +170,4 @@ void HuTech::load(const QString& f){//pas d'erreur de compilation :)
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();
 }
-
+*/

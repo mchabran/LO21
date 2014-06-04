@@ -163,7 +163,7 @@ void UVManager::save(const QString& f){
 }
 
 UVManager::~UVManager(){
-    if (file!="") save(file);
+    //if (file!="") save(file);
         for(unsigned int i=0; i<nbUV; i++) delete uvs[i];
         delete[] uvs;
 }

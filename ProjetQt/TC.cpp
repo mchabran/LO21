@@ -1,7 +1,7 @@
 #include "cursus.h"
 #include "TC.h"
 
-TC::TC(): Cursus("Tronc Commun", C_TC, "48", "24", "0", "6"){}
+/*TC::TC(): Cursus("Tronc Commun", C_TC, "48", "24", "0", "6"){}
 
 TC* TC::instanceUnique=0;
 
@@ -73,7 +73,7 @@ TCEditeur::TCEditeur(TC& t, QWidget* parent) : QWidget(parent), tc(t){
 }
 
 
-void TCEditeur::ajouterTC(QString nbCS, QString nbTM, /*QString nbTSH,*/ QString nbSP){
+void TCEditeur::ajouterTC(QString nbCS, QString nbTM, /*QString nbTSH,* QString nbSP){
     TC& tc = TC::donneInstance();
     tc.setCredCS(nbCS);
     tc.setCredTM(nbTM);
@@ -111,10 +111,10 @@ void TC::save(const QString& f){
 
 }
 
-
+*/
 
 /********* ca ne marche pas **************/
-
+/*
 void TC::load(const QString& f){
     if (file!=f) this->~TC();
     file=f;
@@ -157,7 +157,7 @@ void TC::load(const QString& f){
          //       xml.readNext();
                 //We're going to loop over the things because the order might change.
                 //We'll continue the loop until we hit an EndElement named uv.
-
+/*
 
                 while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "TC")) {
                     if(xml.tokenType() == QXmlStreamReader::StartElement) {
@@ -173,7 +173,8 @@ void TC::load(const QString& f){
                             xml.readNext(); credTSH=xml.text().toString();
                         }*/
                         // We've found titre.
-                         if(xml.name() == "SP") {
+/*
+                      if(xml.name() == "SP") {
                             xml.readNext(); credSP=xml.text().toString();
                         }
 
@@ -199,5 +200,5 @@ void TC::load(const QString& f){
     }
     // Removes any device() or data from the reader * and resets its internal state to the initial state.
     xml.clear();
-}
+}*/
 

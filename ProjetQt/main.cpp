@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <iostream>
 #include <QString>
 #include <QFileDialog>
 #include "UTProfiler.h"
@@ -7,20 +8,33 @@
 /*#include "TC.h"
 #include "HuTech.h"*/
 #include "dossier.h"
+#include "CursusManager.h"
+#include "CursusEditeur.h"
 
 int main(int argc, char* argv[]) {
    QApplication app(argc, argv);
+   QLabel *fen;
 
-   /*UVManager& m=UVManager::getInstance();
+   //CursusManager
+   CursusManager& m=CursusManager::getInstance();
+   QString chemin = QFileDialog::getOpenFileName();
+   m.load(chemin);
+   const Cursus& nnewCursus=m.getCursus("GI");
+
+   CursusEditeur fenetre(&m,&nnewCursus);
+   fenetre.show();
+
+/*
+   UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
    UV& uv=m.getUV("LO21");
    UVEditeur fenetre(&m,uv);*/
    //********Ajout d'UV ne marche pas*******
 
-   Cursus c("Tronc commun", C_TC, "42", "36", "12", "6");
+   //Cursus c("Tronc commun", C_TC, "42", "36", "12", "6");
    //(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP)
-   CursusFinder fenetre(c);
+   //CursusFinder fenetre(c);
 
    //TC& t = TC::donneInstance();
    //QString chemin = QFileDialog::getOpenFileName();
@@ -39,7 +53,7 @@ int main(int argc, char* argv[]) {
    //d.setCursus(c);
    DossierEditeur fenetre(d);*/
    //fenetre.ajouterTC("6", "24", "3"); // ??
-   fenetre.show();
+
    return app.exec();
 }
 

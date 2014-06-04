@@ -4,10 +4,10 @@ INPUT(
 ./release\UTProfiler.o
 ./release\cursus.o
 ./release\dossier.o
-./release\TC.o
-./release\HuTech.o
+./release\CursusFinder.o
+./release\CursusManager.o
+./release\CursusEditeur.o
 ./release\moc_UVEditeur.o
-./release\moc_cursus.o
 ./release\moc_dossier.o
-./release\moc_TC.o
+./release\moc_CursusEditeur.o
 );

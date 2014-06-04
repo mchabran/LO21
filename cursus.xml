@@ -1,52 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Cursus>
-	<cursus>
-		<nom>TC<nom>
-		<categorie>C_TC<categorie>
-		<CS>48<CS>
-		<TM>36<TM>
-		<TSH>24<TSH>
-		<SP>6<SP>
+	<unCursus>
+		<nom>TC</nom>
+		<categorie>C_TC</categorie>
+		<CS>48</CS>
+		<TM>36</TM>
+		<TSH>24</TSH>
+		<SP>6</SP>
 		<UVs>
-			<uv code=MT90>
-			<uv code=MT91>
-			<uv code=PS90>
-			<uv code=BL01>
-			<uv code=NF01>
-			<uv code=PS91>
-			<uv code=TN01>
+			<uv>MT90</uv>
+			<uv>PS91</uv>
+			<uv>TN01</uv>
 		</UVs>
-	</cursus>
-	<cursus>
-		<nom>GI<nom>
-		<categorie>C_Branche<categorie>
-		<CS>48<CS>
-		<TM>36<TM>
-		<TSH>24<TSH>
-		<SP>60<SP>
+	</unCursus>
+	<unCursus>
+		<nom>GI</nom>
+		<categorie>C_Branche</categorie>
+		<CS>60</CS>
+		<TM>45</TM>
+		<TSH>24</TSH>
+		<SP>120</SP>
 		<UVs>
-			<uv code=SY02>
-			<uv code=MT09>
-			<uv code=MT10>
-			<uv code=FQ01>
-			<uv code=NF16>
-			<uv code=SR01>
-			<uv code=IA01>
+			<uv>NF16</uv>
+			<uv>IA02</uv>
+			<uv>SR01</uv>
 		</UVs>
-	</cursus>
-	<cursus>
-		<nom>GB<nom>
-		<categorie>C_Branche<categorie>
-		<CS>48<CS>
-		<TM>36<TM>
-		<TSH>24<TSH>
-		<SP>6<SP>
-		<UVs>
-			<uv code=SY02>
-			<uv code=MT10>
-			<uv code=BL09>
-			<uv code=FQ01>
-			<uv code=NX17>
-		</UVs>
-nom
+	</unCursus>
 </Cursus>

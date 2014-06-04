@@ -1,7 +1,7 @@
 
 #include "UVEditeur.h"
 
-UVEditeur::UVEditeur(UVManager *m, UV& uvToEdit, QWidget* parent): QWidget(parent), uv(uvToEdit), manager(m){
+UVEditeur::UVEditeur(UVManager *m,  UV& uvToEdit, QWidget* parent): QWidget(parent), uv(uvToEdit), manager(m){
 
 
    this->setWindowTitle(QString("Edition de l'UV") +uv.getCode());
@@ -78,9 +78,7 @@ void UVEditeur::activerSauver(QString){
 }
 
 void UVEditeur::addUv(){
-
     manager->ajouterUV(code->text(), titre->toPlainText(), credits->value(), (Categorie)categorie->currentIndex(), automne->isChecked(), printemps->isChecked());
-
     // void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
 }
 
