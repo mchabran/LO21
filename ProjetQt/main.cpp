@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
    m.load(chemin);
    /*UV& uv=m.getUV("LO21");
    UVEditeur fenetre(&m,uv);*/
-   UVFinder fenetre(&m);
+  // UVFinder fenetre(&m);
    //********Ajout d'UV ne marche pas*******
 
    //Cursus c("Tronc commun", C_TC, "42", "36", "12", "6");
