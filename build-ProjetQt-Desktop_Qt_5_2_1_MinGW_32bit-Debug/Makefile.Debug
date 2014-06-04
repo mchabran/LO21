@@ -1022,6 +1022,7 @@ debug/main.o: ../ProjetQt/main.cpp ../../../../../../../../../Qt/5.2.1/mingw48_3
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QMessageBox \
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qmessagebox.h \
 		../ProjetQt/cursus.h \
+<<<<<<< HEAD
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QFile \
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QTextCodec \
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtextcodec.h \
@@ -1133,6 +1134,119 @@ debug/main.o: ../ProjetQt/main.cpp ../../../../../../../../../Qt/5.2.1/mingw48_3
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qdom.h \
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qxml.h \
 		../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qtxmlversion.h \
+=======
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QFile \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QTextCodec \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtextcodec.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/QtXml \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/QtXmlDepends \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QtCore \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QtCoreDepends \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qabstractanimation.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qanimationgroup.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qparallelanimationgroup.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qpauseanimation.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qpropertyanimation.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qvariantanimation.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qeasingcurve.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsequentialanimationgroup.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qendian.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qlibraryinfo.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qdatetime.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qnumeric.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qbuffer.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qdiriterator.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfileselector.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QObject \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QStringList \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfilesystemwatcher.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qlockfile.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qloggingcategory.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qprocess.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qresource.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsavefile.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsettings.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qstandardpaths.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtemporarydir.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/QScopedPointer \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtemporaryfile.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qabstractproxymodel.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qidentityproxymodel.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qitemselectionmodel.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsortfilterproxymodel.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qstringlistmodel.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qjsonarray.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qjsonvalue.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qjsondocument.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qjsonobject.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qabstracteventdispatcher.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qabstractnativeeventfilter.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qbasictimer.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qmath.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qmetaobject.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qmimedata.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qobjectcleanuphandler.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qpointer.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsharedmemory.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsignalmapper.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsocketnotifier.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsystemsemaphore.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtimer.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtranslator.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qwineventnotifier.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qmimedatabase.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qmimetype.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfactoryinterface.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qlibrary.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qplugin.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qpluginloader.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/quuid.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qabstractstate.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qabstracttransition.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qeventtransition.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfinalstate.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qhistorystate.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsignaltransition.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qstate.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qstatemachine.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qexception.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfuture.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfutureinterface.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qrunnable.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qresultstore.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfuturesynchronizer.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qfuturewatcher.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qreadwritelock.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qsemaphore.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qthread.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qthreadpool.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qthreadstorage.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qwaitcondition.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qarraydataops.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qarraydatapointer.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qbitarray.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qbytearraymatcher.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qcache.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qcollator.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qcommandlineoption.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qcommandlineparser.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qcryptographichash.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qelapsedtimer.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qlinkedlist.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qmessageauthenticationcode.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qqueue.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qscopedvaluerollback.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qstack.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtextboundaryfinder.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtimeline.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtimezone.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qxmlstream.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtCore/qtcoreversion.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qtxmlglobal.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qdom.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qxml.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtXml/qtxmlversion.h \
+>>>>>>> e23a9215f49d1a7338465221fad6516ef0844a5f
 		../ProjetQt/dossier.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\ProjetQt\main.cpp
 

@@ -20,25 +20,25 @@ Dossier::~Dossier() {
 }
 
 
-DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), doss(d){
+DossierEditeur::DossierEditeur(Dossier& d, Cursus **c, QWidget* parent) : QWidget(parent), doss(d), cur(c){
     this->setWindowTitle(QString("Consultation du dossier"));
-    nomCursusLabel = new QLabel("Cursus", this);
-    //categorieUVLabel = new QLabel("Catégorie UV", this);
+    nomCursusLabel = new QLabel("Nom Cursus", this);
+    categorieUVLabel = new QLabel("Catégorie UV", this);
     categorieCursusLabel = new QLabel("Catégorie Cursus", this);
-    //nomUVLabel = new QLabel("UV", this);
-    //resultatLabel = new QLabel("Résultat", this);
+    nomUVLabel = new QLabel("UV", this);
+    resultatLabel = new QLabel("Résultat", this);
     categorieCursus=new QComboBox(this);
     categorieCursus->addItem("TC");
     categorieCursus->addItem("HuTech");
     categorieCursus->addItem("Branche");
     categorieCursus->addItem("Filière");
     categorieCursus->addItem("Mineur");
-    /*categorieUV=new QComboBox(this);
+    categorieUV=new QComboBox(this);
     categorieUV->addItem("CS");
     categorieUV->addItem("TM");
     categorieUV->addItem("SP");
-    categorieUV->addItem("TSH");*/
-    /*resultat = new QComboBox(this);
+    categorieUV->addItem("TSH");
+    resultat = new QComboBox(this);
     resultat->addItem("A");
     resultat->addItem("B");
     resultat->addItem("C");
@@ -48,7 +48,7 @@ DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), d
     resultat->addItem("FX");
     resultat->addItem("EC");
     resultat->addItem("ABS");
-    resultat->addItem("RES");*/
+    resultat->addItem("RES");
     activiteES = new QCheckBox("Activité extra-scolaire", this);
     activiteES->setChecked(d.getActiviteES());
     B2 = new QCheckBox("Niveau B2 validé", this);
@@ -72,10 +72,10 @@ DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), d
         i++;
     }
 
-    /*Inscription** ins=d.getInscriptions(); // a décommenter quand la classe Inscriptions sera implémentée
+    Inscription** ins=d.getInscriptions();
     i=0;
     while(ins[i]!=0){
-        nomUV = new QLineEdit(ins[i]->getNomUv(), this);
+        nomUV = new QLineEdit("LO21", this); // A REMODIFIER, LO21 c'est pas vrai tout le temps !!
         resultat->setCurrentIndex((int)ins[i]->getResultat());
         QHBoxLayout* coucheHbis = new QHBoxLayout;
         coucheHbis->addWidget(nomUVLabel);
@@ -84,7 +84,7 @@ DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), d
         coucheHbis->addWidget(resultat);
         couche->addItem(coucheHbis);
         i++;
-    }*/
+    }
 
     coucheH1 = new QHBoxLayout;
     coucheH1->addWidget(activiteES);
@@ -101,3 +101,7 @@ DossierEditeur::DossierEditeur(Dossier& d, QWidget* parent) : QWidget(parent), d
 }
 
 
+/*void DossierEditeur::sauverDossier(){
+    cur = Cursus::
+    doss.setCursus();
+}*/

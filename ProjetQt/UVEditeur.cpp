@@ -29,6 +29,7 @@ UVEditeur::UVEditeur(UVManager *m,  UV& uvToEdit, QWidget* parent): QWidget(pare
    printemps=new QCheckBox("printemps", this);
    printemps->setChecked(uv.ouverturePrintemps());
    sauver = new QPushButton("Sauver", this);
+   supprimer = new QPushButton("Supprimer", this);
    annuler = new QPushButton("Annuler", this);
    newUV = new QPushButton("Ajouter UV", this);
 
@@ -49,6 +50,7 @@ UVEditeur::UVEditeur(UVManager *m,  UV& uvToEdit, QWidget* parent): QWidget(pare
    coucheH4 = new QHBoxLayout;
    coucheH4->addWidget(annuler);
    coucheH4->addWidget(sauver);
+   coucheH4->addWidget(supprimer);
    coucheH4->addWidget(newUV);
    couche= new QVBoxLayout;
    couche->addItem(coucheH1);
@@ -59,10 +61,10 @@ UVEditeur::UVEditeur(UVManager *m,  UV& uvToEdit, QWidget* parent): QWidget(pare
 
    sauver->setEnabled(false);
 
-   //connection du bouton sauver à un slot que l'on va cr?er
    QObject::connect(newUV, SIGNAL(clicked()), this, SLOT(addUv()));
-
    QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverUV()));
+   QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
+   QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(supprimerUV()));
 
 
    QObject::connect(code,SIGNAL(textEdited(QString)),this,SLOT(activerSauver(QString)));
@@ -79,7 +81,11 @@ void UVEditeur::activerSauver(QString){
 
 void UVEditeur::addUv(){
     manager->ajouterUV(code->text(), titre->toPlainText(), credits->value(), (Categorie)categorie->currentIndex(), automne->isChecked(), printemps->isChecked());
+<<<<<<< HEAD
     // void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
+=======
+    QMessageBox::information(this, "aJOUT uv", "UV ajoutée");
+>>>>>>> e23a9215f49d1a7338465221fad6516ef0844a5f
 }
 
 void UVEditeur::sauverUV(){
@@ -92,3 +98,42 @@ void UVEditeur::sauverUV(){
     QMessageBox::information(this, "Sauvegarde", "UV sauvegardée");
 }
 
+void UVEditeur::supprimerUV(){
+    manager->supprimerUV(uv);
+    QMessageBox::information(this, "Supression", "UV supprimée");
+}
+
+
+UVFinder::UVFinder(UVManager* m, QWidget* parent) : QWidget(parent), manager(m){
+    this->setWindowTitle(QString("Recherche d'e l''une UV"));
+
+    codeLabel = new QLabel("code", this);
+    code = new QLineEdit("", this);
+    rechercher = new QPushButton("Rechercher", this);
+    annuler = new QPushButton("Annuler", this);
+
+    coucheH1 = new QHBoxLayout;
+    coucheH1->addWidget(codeLabel);
+    coucheH1->addWidget(code);
+
+    coucheH2 = new QHBoxLayout;
+    coucheH2->addWidget(annuler);
+    coucheH2->addWidget(rechercher);
+    couche= new QVBoxLayout;
+    couche->addItem(coucheH1);
+    couche->addItem(coucheH2);
+    setLayout(couche);
+
+    QObject::connect(rechercher,SIGNAL(clicked()), this, SLOT(rechercherUV()));
+    QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
+
+}
+
+void UVFinder::rechercherUV(){
+    UV& uv=manager->getUV(code->text());
+
+    UVEditeur* fenetre2 = new UVEditeur(manager, uv);
+    fenetre2->show();
+
+
+}

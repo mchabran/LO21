@@ -10,8 +10,7 @@ using namespace std;
 
 class Dossier{ //singleton
     Cursus** cursus;
-    ///pourquoi il est commenté Inscription ?
-    //Inscription** inscriptions;
+    Inscription** inscriptions;
     //Equivalence** equivalences; //a decommenter quand la classe sera implémentée
     bool activiteExtraScolaire;
     bool niveauB2;
@@ -25,13 +24,13 @@ class Dossier{ //singleton
     virtual void operator=(const Dossier&){}
 public :
     Cursus** getCursus(){return cursus;}
-    //Inscription** getInscriptions(){return inscriptions;}
+    Inscription** getInscriptions(){return inscriptions;}
     //Equivalence** getEquivalences(){return equivalences;}
     bool getActiviteES(){return activiteExtraScolaire;}
     bool getnivB2(){return niveauB2;}
 
     void setCursus(Cursus** c){cursus=c;}
-    //void setInscriptions(Inscription** i){inscriptions=i;}
+    void setInscriptions(Inscription** i){inscriptions=i;}
     //void setEquivalences(Equivalence** e){equivalences=e}
     void setAES(bool val){activiteExtraScolaire = val;}
     void setNivB2(bool val){niveauB2 = val;}
@@ -44,16 +43,17 @@ public :
 class DossierEditeur : public QWidget{
     Q_OBJECT
     Dossier& doss;
+    Cursus** cur;
     QLabel* nomCursusLabel;
     QLineEdit* nomCursus;
     QLabel* categorieCursusLabel;
     QComboBox* categorieCursus;
     QLabel* nomUVLabel;
     QLineEdit* nomUV;
-    //QLabel* categorieUVLabel;
-    //QComboBox* categorieUV;
-    //QLabel* resultatLabel;
-    //QComboBox* resultat;
+    QLabel* categorieUVLabel;
+    QComboBox* categorieUV;
+    QLabel* resultatLabel;
+    QComboBox* resultat;
     QCheckBox* activiteES;
     QCheckBox* B2;
     QPushButton* sauver;
@@ -62,10 +62,10 @@ class DossierEditeur : public QWidget{
     QHBoxLayout* coucheH1;
     QHBoxLayout* coucheH2;
 public :
-    DossierEditeur(Dossier& d, QWidget* parent=0);
+    DossierEditeur(Dossier& d, Cursus** c, QWidget* parent=0);
 
 //public slots :
-    //void sauverDossier(); ///tu ne l'as pas implémenté dans le .cpp ?
+    void sauverDossier(); ///tu ne l'as pas implémenté dans le .cpp ? //Non pas encore
 };
 
 #endif // DOSSIER_H

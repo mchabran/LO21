@@ -29,6 +29,7 @@ class UVEditeur : public QWidget {
    QPushButton* newUV;
    QPushButton* sauver;
    QPushButton* annuler;
+   QPushButton* supprimer;
    QVBoxLayout* couche;
    QHBoxLayout* coucheH1;
    QHBoxLayout* coucheH2;
@@ -40,11 +41,29 @@ private slots :
    void activerSauver (QString str="");
 
 public :
-   UVEditeur(UVManager* m, UV& u, QWidget* parent=0); //on peut avoir un parent mais par défaut on en a pas
+   UVEditeur(UVManager* m, UV& u, QWidget* parent=0);
 public slots :
    void sauverUV();
    void addUv();
+   void supprimerUV();
 
+};
+
+
+class UVFinder : public QWidget{ //Créé pour pouvoir répondre à la question 1 du sujet
+    Q_OBJECT
+    UVManager* manager;
+    QLineEdit* code;
+    QLabel* codeLabel;
+    QPushButton* rechercher;
+    QPushButton* annuler;
+    QVBoxLayout* couche;
+    QHBoxLayout* coucheH1;
+    QHBoxLayout* coucheH2;
+public :
+   UVFinder(UVManager* m, QWidget* parent=0);
+public slots :
+   void rechercherUV();
 };
 
 
