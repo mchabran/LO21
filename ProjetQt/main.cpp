@@ -16,6 +16,7 @@ int main(int argc, char* argv[]) {
    QLabel *fen;
 
    //CursusManager
+   /*
    CursusManager& m=CursusManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
@@ -23,11 +24,9 @@ int main(int argc, char* argv[]) {
 
    CursusEditeur fenetre(&m,&nnewCursus);
    fenetre.show();
+   */
 
-/*
-     UVManager& m=UVManager::getInstance();
-   QString chemin = QFileDialog::getOpenFileName();
-   m.load(chemin);
+
    UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
@@ -36,7 +35,7 @@ int main(int argc, char* argv[]) {
   // UVFinder fenetre(&m);
    //********Ajout d'UV ne marche pas*******
 
-   //Cursus c("Tronc commun", C_TC, "42", "36", "12", "6");
+   Cursus* c = new Cursus("Tronc commun", C_TC, 42, 36, 12, 6);
    //(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP)
    //CursusFinder fenetre(c);
 
@@ -57,7 +56,15 @@ int main(int argc, char* argv[]) {
    //d.setCursus(c);
    DossierEditeur fenetre(d);*/
    //fenetre.ajouterTC("6", "24", "3"); // ??
- fenetre.show();
+
+
+   /****** TEST DOSSIER *****/
+   Inscription* i1 = new Inscription(m.getUV("LO21"), A);
+   Inscription* i2 = new Inscription(m.getUV("MT22"), E);
+   Inscription* tabInscr[2]={i1, i2};
+   Dossier* doss = new Dossier(&c, tabInscr, NULL, true, false);
+   DossierEditeur fenetre(m, *doss);
+   fenetre.show();
    return app.exec();
 }
 

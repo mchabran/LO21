@@ -21,7 +21,8 @@ HEADERS += \
     Equivalence.h \
     CursusFinder.h \
     CursusManager.h \
-    CursusEditeur.h
+    CursusEditeur.h \
+    Inscription.h
 
 
 

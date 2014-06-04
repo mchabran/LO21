@@ -1,4 +1,5 @@
 #include "dossier.h"
+#include <QDesktopWidget>
 
 Dossier* Dossier::instanceUnique=0;
 
@@ -20,24 +21,10 @@ Dossier::~Dossier() {
 }
 
 
-DossierEditeur::DossierEditeur(Dossier& d, Cursus **c, QWidget* parent) : QWidget(parent), doss(d), cur(c){
+DossierEditeur::DossierEditeur(UVManager& m, Dossier& d, QWidget* parent) : manager(m), QWidget(parent), doss(d){
     this->setWindowTitle(QString("Consultation du dossier"));
-    nomCursusLabel = new QLabel("Nom Cursus", this);
-    categorieUVLabel = new QLabel("Catégorie UV", this);
-    categorieCursusLabel = new QLabel("Catégorie Cursus", this);
-    nomUVLabel = new QLabel("UV", this);
-    resultatLabel = new QLabel("Résultat", this);
-    categorieCursus=new QComboBox(this);
-    categorieCursus->addItem("TC");
-    categorieCursus->addItem("HuTech");
-    categorieCursus->addItem("Branche");
-    categorieCursus->addItem("Filière");
-    categorieCursus->addItem("Mineur");
-    categorieUV=new QComboBox(this);
-    categorieUV->addItem("CS");
-    categorieUV->addItem("TM");
-    categorieUV->addItem("SP");
-    categorieUV->addItem("TSH");
+    cursusLabel = new QLabel("Cursus", this);
+    /*resultatLabel = new QLabel("Résultat", this);
     resultat = new QComboBox(this);
     resultat->addItem("A");
     resultat->addItem("B");
@@ -48,7 +35,7 @@ DossierEditeur::DossierEditeur(Dossier& d, Cursus **c, QWidget* parent) : QWidge
     resultat->addItem("FX");
     resultat->addItem("EC");
     resultat->addItem("ABS");
-    resultat->addItem("RES");
+    resultat->addItem("RES");*/
     activiteES = new QCheckBox("Activité extra-scolaire", this);
     activiteES->setChecked(d.getActiviteES());
     B2 = new QCheckBox("Niveau B2 validé", this);
@@ -56,44 +43,122 @@ DossierEditeur::DossierEditeur(Dossier& d, Cursus **c, QWidget* parent) : QWidge
     sauver = new QPushButton("Sauver", this);
     annuler = new QPushButton("Annuler", this);
 
-    couche= new QVBoxLayout;
+
 
     Cursus** cur = d.getCursus();
+    cursus = new QComboBox(this);
     unsigned int i=0;
-    while(cur[i]!=0){
-        nomCursus = new QLineEdit(cur[i]->getNom(), this);
-        categorieCursus->setCurrentIndex(1); // A REMODIFIER
-        QHBoxLayout* coucheH = new QHBoxLayout;
-        coucheH->addWidget(nomCursusLabel);
-        coucheH->addWidget(nomCursus);
-        coucheH->addWidget(categorieCursusLabel);
-        coucheH->addWidget(categorieCursus);
-        couche->addItem(coucheH);
+    while(i<1){
+        cursus->addItem(cur[i]->getNom());
         i++;
     }
 
-    Inscription** ins=d.getInscriptions();
+    unsigned int totCredCS=0, totCredTM = 0, totCredTSH=0, totCredSP=0;
+
+    /*
+    Equivalence** equi = d.getEquivalences();
+    equivalences = new QTableWidget(this);
+    equivalences->setColumnCount(5);
+    equivalences->setRowCount(1);
+    equivalences->setGeometry(QApplication::desktop()->screenGeometry());
+    equivalences->setItem(0, 0, new QTableWidgetItem("Nom établissement"));
+    equivalences->setItem(0, 1, new QTableWidgetItem("CS"));
+    equivalences->setItem(0, 2, new QTableWidgetItem("TM"));
+    equivalences->setItem(0, 3, new QTableWidgetItem("TSH"));
+    equivalences->setItem(0, 4, new QTableWidgetItem("SP"));
     i=0;
-    while(ins[i]!=0){
-        nomUV = new QLineEdit("LO21", this); // A REMODIFIER, LO21 c'est pas vrai tout le temps !!
-        resultat->setCurrentIndex((int)ins[i]->getResultat());
-        QHBoxLayout* coucheHbis = new QHBoxLayout;
-        coucheHbis->addWidget(nomUVLabel);
-        coucheHbis->addWidget(nomUV);
-        coucheHbis->addWidget(resultatLabel);
-        coucheHbis->addWidget(resultat);
-        couche->addItem(coucheHbis);
-        i++;
+    while(i<2){
+        QTableWidgetItem* nomEt = new QTableWidgetItem((QTableWidgetItem)equi[i]->getNomEtablissement());
+        QTableWidgetItem* crCS = new QTableWidgetItem((QTableWidgetItem)equi[i]->getEquiCS());
+        QTableWidgetItem* crTM = new QTableWidgetItem((QTableWidgetItem)equi[i]->getEquiTM());
+        QTableWidgetItem* crTSH = new QTableWidgetItem((QTableWidgetItem)equi[i]->getEquiTSH());
+        QTableWidgetItem* crSP = new QTableWidgetItem((QTableWidgetItem)equi[i]->getEquiSP());
+        equivalences->insertRow(i+1);
+        equivalences->setItem(i+1, 0, nomEt);
+        equivalences->setItem(i+1, 1, crCS);
+        equivalences->setItem(i+1, 1, crTM);
+        equivalences->setItem(i+1, 1, crTSH);
+        equivalences->setItem(i+1, 1, crSP);
+
+        totCredCS+=equi[i]->getEquiCS();
+        totCredTM+=equi[i]->getEquiTM();
+        totCredTSH+=equi[i]->getEquiTSH();
+        totCredSP+=equi[i]->getEquiSP();
     }
+    coucheH6 = new QHBoxLayout;
+    coucheH6->addWidget(equivalences);*/
 
     coucheH1 = new QHBoxLayout;
-    coucheH1->addWidget(activiteES);
-    coucheH1->addWidget(B2);
+    coucheH1->addWidget(cursusLabel);
+    coucheH1->addWidget(cursus);
+
+
+
+    Inscription** ins=d.getInscriptions();
+    tabUV = new QTableWidget(this);
+    tabUV->setColumnCount(2);
+    tabUV->setRowCount(1);
+    tabUV->setGeometry(QApplication::desktop()->screenGeometry());
+    tabUV->setItem(0, 0, new QTableWidgetItem("UVs suivies"));
+    tabUV->setItem(0, 1, new QTableWidgetItem("Résultat"));
+    i=0;
+    while(i<2){
+        QTableWidgetItem* nomUV = new QTableWidgetItem((QTableWidgetItem)ins[i]->getUV().getCode());
+        QTableWidgetItem* resUV = new QTableWidgetItem((QTableWidgetItem)NoteToString(ins[i]->getResultat()));
+        //QString res = (QString)A;
+       // QTableWidgetItem* resUV = new QTableWidgetItem((QTableWidgetItem)res);
+        tabUV->insertRow(i+1);
+        tabUV->setItem(i+1, 0, nomUV);
+        tabUV->setItem(i+1, 1, resUV);
+
+        if (ins[i]->getUV().getCategorie() == CS && ins[i]->uvResussie())
+            totCredCS+=ins[i]->getUV().getNbCredits();
+        else if (ins[i]->getUV().getCategorie() == TM && ins[i]->uvResussie())
+            totCredTM+=ins[i]->getUV().getNbCredits();
+        else if (ins[i]->getUV().getCategorie() == TSH && ins[i]->uvResussie())
+            totCredTSH+=ins[i]->getUV().getNbCredits();
+        else if (ins[i]->getUV().getCategorie() == SP && ins[i]->uvResussie())
+            totCredSP+=ins[i]->getUV().getNbCredits();
+        i++;
+    }
     coucheH2 = new QHBoxLayout;
-    coucheH2->addWidget(sauver);
-    coucheH2->addWidget(annuler);
+    coucheH2->addWidget(tabUV);
+
+
+    recapCred = new QTableWidget(this);
+    recapCred->setColumnCount(5);
+    recapCred->setRowCount(2);
+    recapCred->setGeometry(QApplication::desktop()->screenGeometry());
+    recapCred->setItem(0, 0, new QTableWidgetItem("CS"));
+    recapCred->setItem(0, 1, new QTableWidgetItem("TM"));
+    recapCred->setItem(0, 2, new QTableWidgetItem("TSH"));
+    recapCred->setItem(0, 3, new QTableWidgetItem("SP"));
+    recapCred->setItem(0, 4, new QTableWidgetItem("Total"));
+    recapCred->setItem(1, 0, new QTableWidgetItem(QString::number(totCredCS)));
+    recapCred->setItem(1, 1, new QTableWidgetItem(QString::number(totCredTM)));
+    recapCred->setItem(1, 2, new QTableWidgetItem(QString::number(totCredTSH)));
+    recapCred->setItem(1, 3, new QTableWidgetItem(QString::number(totCredSP)));
+    unsigned int grandTotal = totCredCS + totCredSP + totCredTM + totCredTSH;
+    recapCred->setItem(1, 4, new QTableWidgetItem(QString::number(grandTotal)));
+
+
+    coucheH3 = new QHBoxLayout;
+    coucheH3->addWidget(recapCred);
+
+
+    couche= new QVBoxLayout;
+    coucheH4 = new QHBoxLayout;
+    coucheH4->addWidget(activiteES);
+    coucheH4->addWidget(B2);
+    coucheH5 = new QHBoxLayout;
+    coucheH5->addWidget(sauver);
+    coucheH5->addWidget(annuler);
     couche->addItem(coucheH1);
     couche->addItem(coucheH2);
+    //couche->addItem(coucheH6);
+    couche->addItem(coucheH3);
+    couche->addItem(coucheH4);
+    couche->addItem(coucheH5);
     setLayout(couche);
 
     //QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverDossier()));
