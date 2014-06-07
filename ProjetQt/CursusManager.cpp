@@ -186,6 +186,12 @@ void CursusManager::ajouterCursus(const QString n, const QString* t, unsigned in
     return;
 }
 
+void CursusManager::ajouterCursus(Cursus* cur){
+    if (trouverCursus(cur->getNom())) throw UTProfilerException(QString("erreur, CursusManager, Cursus")+cur->getNom()+QString("déja existant"));
+
+    addItem(cur);
+}
+
 Cursus& CursusManager::getCursus(const QString& nom){
         Cursus* cu=trouverCursus(nom);
     if (!cu) throw UTProfilerException("erreur, CursusManager, Cursus inexistante",__FILE__,__LINE__);

@@ -35,7 +35,8 @@ int main(int argc, char* argv[]) {
   // UVFinder fenetre(&m);
    //********Ajout d'UV ne marche pas*******
 
-   Cursus* c = new Cursus("Tronc commun", C_TC, 42, 36, 12, 6);
+   Cursus* c1 = new Cursus("Tronc commun", C_TC, 42, 36, 12, 6);
+   Cursus* c2 = new Cursus("GI", C_Branche, 42, 36, 12, 6);
    //(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP)
    //CursusFinder fenetre(c);
 
@@ -59,10 +60,24 @@ int main(int argc, char* argv[]) {
 
 
    /****** TEST DOSSIER *****/
-   Inscription* i1 = new Inscription(m.getUV("LO21"), A);
-   Inscription* i2 = new Inscription(m.getUV("MT22"), E);
+   Semestre* a13 = new Semestre(Automne, 2013);
+   Cursus* tabCur[2];
+   tabCur[0]=c1,
+   tabCur[1]=c2;
+   Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
+   Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
    Inscription* tabInscr[2]={i1, i2};
-   Dossier* doss = new Dossier(&c, tabInscr, NULL, true, false);
+
+   QString L1[3]={"MT22", "PS04", "CM11"};
+   QString L2[3]={"LO21", "NF17", "SR02"};
+
+   CursusManager& cm = CursusManager::getInstance();
+   cm.ajouterCursus("Tronc commun", L1, 3, C_TC, 42, 36, 12, 6);
+   cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);
+
+   Equivalence* e1 = new Equivalence("Harvard", "Salut", 13, 3, 4);
+   Equivalence* tabEq[1]={e1};
+   Dossier* doss = new Dossier(cm, tabInscr, tabEq, true, false);
    DossierEditeur fenetre(m, *doss);
    fenetre.show();
    return app.exec();

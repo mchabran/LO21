@@ -557,10 +557,13 @@ release/moc_dossier.cpp: ../../../../../../../../../../Qt/5.2.1/mingw48_32/inclu
 		../ProjetQt/UTProfiler.h \
 		../ProjetQt/Inscription.h \
 		../ProjetQt/Equivalence.h \
+		../ProjetQt/CursusManager.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QTableWidget \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qtablewidget.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qtableview.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qabstractitemview.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QListView \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qlistview.h \
 		../ProjetQt/dossier.h
 	C:\Qt\5.2.1\mingw48_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 $(INCPATH) ..\ProjetQt\dossier.h -o release\moc_dossier.cpp
 
@@ -1142,11 +1145,13 @@ release/main.o: ../ProjetQt/main.cpp ../../../../../../../../../../Qt/5.2.1/ming
 		../ProjetQt/dossier.h \
 		../ProjetQt/Inscription.h \
 		../ProjetQt/Equivalence.h \
+		../ProjetQt/CursusManager.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QTableWidget \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qtablewidget.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qtableview.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qabstractitemview.h \
-		../ProjetQt/CursusManager.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QListView \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qlistview.h \
 		../ProjetQt/CursusEditeur.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\ProjetQt\main.cpp
 
@@ -2099,10 +2104,14 @@ release/dossier.o: ../ProjetQt/dossier.cpp ../ProjetQt/dossier.h \
 		../ProjetQt/UTProfiler.h \
 		../ProjetQt/Inscription.h \
 		../ProjetQt/Equivalence.h \
+		../ProjetQt/CursusManager.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QTableWidget \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qtablewidget.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qtableview.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qabstractitemview.h \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QListView \
+		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/qlistview.h \
+		../ProjetQt/CursusEditeur.h \
 		../../../../../../../../../../Qt/5.2.1/mingw48_32/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\dossier.o ..\ProjetQt\dossier.cpp
 
