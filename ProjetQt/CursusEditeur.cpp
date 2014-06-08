@@ -1,7 +1,7 @@
 #include "CursusEditeur.h"
 #define MAXCredit 100
 
-CursusEditeur::CursusEditeur(CursusManager* m, const Cursus* c,QWidget* parent) : cM(m), cu(c), QWidget(parent){
+CursusEditeur::CursusEditeur(CursusManager* m, const Cursus* c, QWidget* parent) : cM(m), cu(c), QWidget(parent) {
     this->setWindowTitle(QString("Edition de cursus "));
 
     nomLabel = new QLabel("Nom cursus", this);

@@ -9,5 +9,6 @@ INPUT(
 ./release\CursusEditeur.o
 ./release\moc_UVEditeur.o
 ./release\moc_dossier.o
+./release\moc_CursusFinder.o
 ./release\moc_CursusEditeur.o
 );

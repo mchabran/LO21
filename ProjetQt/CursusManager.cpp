@@ -246,3 +246,13 @@ void CursusManager::save(const QString& f){
 
      newfile.close();
 }
+
+void CursusManager::supprimerCursus(const Cursus& cu){
+    unsigned int i;
+    for(i=0; i<nbCursus; i++)
+            if (cu.getNom()==mesCursus[i]->getNom()) break;
+    if (i==nbCursus) UTProfilerException("Erreur, UV inexistante ne peut être supprimée");
+    for(unsigned int j=i; j<nbCursus; j++)
+        mesCursus[j]=mesCursus[j+1];
+    nbCursus--;
+}

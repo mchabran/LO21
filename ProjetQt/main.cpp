@@ -10,27 +10,20 @@
 #include "dossier.h"
 #include "CursusManager.h"
 #include "CursusEditeur.h"
+#include "CursusFinder.h"
 
 int main(int argc, char* argv[]) {
    QApplication app(argc, argv);
-   QLabel *fen;
 
-   //CursusManager
-
+   //********CursusManager************//
    CursusManager& m=CursusManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
-   Cursus& nnewCursus=m.getCursus("GI");
+   CursusFinder fenetre(&m);
+   fenetre.show();
 
-   CursusEditeur fenetre(&m);
-   /*fenetre.show();
-   */
+   //***********Fin*CursusManager********//
 
-   /*try{m.save(chemin);}
-   catch(UTProfilerException e){
-      fen=new QLabel(e.getInfo());
-       fen->show();
-   }*/
 /*
      UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();

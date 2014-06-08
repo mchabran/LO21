@@ -40,16 +40,4 @@
             <uv>Palmier</uv>
         </UVs>
     </unCursus>
-    <unCursus>
-        <nom>GB</nom>
-        <categorie>C_Branche</categorie>
-        <CS>60</CS>
-        <TM>40</TM>
-        <TSH>30</TSH>
-        <SP>100</SP>
-        <UVs>
-            <uv>BL09</uv>
-            <uv>SY02</uv>
-        </UVs>
-    </unCursus>
 </Cursus>

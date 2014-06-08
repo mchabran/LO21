@@ -46,6 +46,7 @@ class CursusEditeur :  public QWidget {
 public :
     CursusEditeur(CursusManager* m, const Cursus* c=0,QWidget* parent=0);
 
+
 public slots :
    void ajouterCursus();
    void sauverCursus();

@@ -36,6 +36,7 @@ public:
     Cursus** getMesCursus() const {return mesCursus;}
     unsigned int getNbCursus(){return nbCursus;}
     Cursus& getCursus(const QString& nom);// fait et vérifié
+    void supprimerCursus(const Cursus& cu);
 
     class Iterator {
         friend class CursusManager;
