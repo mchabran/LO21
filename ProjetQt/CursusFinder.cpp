@@ -1,6 +1,6 @@
 /*#include "cursus.h"
 #include "CursusManager.h"
-//CursusFinder
+CursusFinder
 
 CursusFinder::CursusFinder(Cursus& c, QWidget* parent) : cursus(c){
     this->setWindowTitle(QString("Edition de cursus"));

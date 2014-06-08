@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
    m.load(chemin);
    Cursus& nnewCursus=m.getCursus("GI");
 
-   CursusEditeur fenetre(&m,&nnewCursus);
+   CursusEditeur fenetre(&m);
    /*fenetre.show();
    */
 

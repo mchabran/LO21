@@ -30,6 +30,7 @@ class CursusEditeur :  public QWidget {
 
     QPushButton* sauver;
     QPushButton* annuler;
+    QPushButton* ajouter;
     //QPushButton* supprimerCursus; //a implémenter avec toutes les méthodes nécessaires dans CursusManager
     QVBoxLayout* couche;
     QHBoxLayout* coucheH1;
@@ -43,9 +44,10 @@ class CursusEditeur :  public QWidget {
 
 
 public :
-    CursusEditeur(CursusManager* m, const Cursus* c,QWidget* parent=0);
+    CursusEditeur(CursusManager* m, const Cursus* c=0,QWidget* parent=0);
 
 public slots :
+   void ajouterCursus();
    void sauverCursus();
    void ajoutUV();
 };

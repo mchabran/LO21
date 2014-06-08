@@ -12,43 +12,47 @@ CursusEditeur::CursusEditeur(CursusManager* m, const Cursus* c,QWidget* parent) 
     categorieLabel = new QLabel("Catégorie de Cursus", this);
     UVsLabel = new QLabel("Liste des UVs", this);
     UVLabel = new QLabel ("Ajouter UV au cursus", this);
-
-    nomCursus= new QLineEdit(cu->getNom(), this);
     credCS=new QSpinBox(this);
     credCS->setRange(0,MAXCredit);
-    credCS->setValue(cu->getCredCS());
     credTM=new QSpinBox(this);
     credTM->setRange(0,MAXCredit);
-    credTM->setValue(cu->getCredTM());
     credTSH=new QSpinBox(this);
     credTSH->setRange(0,MAXCredit);
-    credTSH->setValue(cu->getCredTSH());
     credSP=new QSpinBox(this);
     credSP->setRange(0,MAXCredit);
-    credSP->setValue(cu->getCredSP());
-
     categorie=new QComboBox(this);
     categorie->addItem("C_TC");
     categorie->addItem("C_Branche");
     categorie->addItem("C_HuTech");
     categorie->addItem("C_Mineur");
     categorie->addItem("autre");
-    QString cat=CategorieCursusToString(c->getCategorie());
-    categorie->setCurrentText(cat);
-
     UVs=new QComboBox(this);
-    for(unsigned int i=0; i<cu->getNbUV();i++){
-        const QString* s=cu->getTabUV();
-        UVs->addItem(s[i]);
-    }
     newUV=new QLineEdit("",this);
+    ok=new QPushButton("OK", this);
+
+    if (cu!=0){
+        nomCursus= new QLineEdit(cu->getNom(), this);
+        credCS->setValue(cu->getCredCS());
+        credTM->setValue(cu->getCredTM());
+        credTSH->setValue(cu->getCredTSH());
+        credSP->setValue(cu->getCredSP());
+        QString cat=CategorieCursusToString(c->getCategorie());
+        categorie->setCurrentText(cat);
+        for(unsigned int i=0; i<cu->getNbUV();i++){
+            const QString* s=cu->getTabUV();
+            UVs->addItem(s[i]);
+        }
+    }
+    else {
+        nomCursus= new QLineEdit("", this);
+        credCS->setValue(0);
+        credTM->setValue(0);
+        credTSH->setValue(0);
+        credSP->setValue(0);
+    }
 
     sauver = new QPushButton("Sauver", this);
     annuler = new QPushButton("Annuler", this);
-    //supprimerCursus=new QPushButton("Supprimer UV", this); //a implémenter
-    ok=new QPushButton("OK", this);
-
-
     coucheH1 = new QHBoxLayout;
     coucheH1->addWidget(nomLabel);
     coucheH1->addWidget(nomCursus);
@@ -80,6 +84,7 @@ CursusEditeur::CursusEditeur(CursusManager* m, const Cursus* c,QWidget* parent) 
     coucheH6 = new QHBoxLayout;
     coucheH6->addWidget(sauver);
     coucheH6->addWidget(annuler);
+
     couche= new QVBoxLayout;
     couche->addItem(coucheH1);
     couche->addItem(coucheH2);
@@ -92,31 +97,53 @@ CursusEditeur::CursusEditeur(CursusManager* m, const Cursus* c,QWidget* parent) 
     setLayout(couche);
 
 
-    QObject::connect(sauver, SIGNAL(clicked()), this, SLOT(sauverCursus()));
+    if (cu!=0){
+        QObject::connect(sauver, SIGNAL(clicked()), this, SLOT(sauverCursus()));}
+    else {
+        QObject::connect(sauver, SIGNAL(clicked()), this, SLOT(ajouterCursus()));
+    }
     QObject::connect(annuler, SIGNAL(clicked()), this, SLOT(close()));
     QObject::connect(ok, SIGNAL(clicked()),this, SLOT(ajoutUV()));
+
 }
 
 void CursusEditeur::ajoutUV(){
-    QString cu=nomCursus->text();
-    Cursus& cursusA=cM->getCursus(cu);
     QString uv=newUV->text();
+    if (cu!=0){
+        QString cursusN=nomCursus->text();
+        Cursus& cursusA=cM->getCursus(cursusN);
+        cursusA.addUV(uv);
+    };
+
     newUV->setText("");
-    cursusA.addUV(uv);
     UVs->addItem(uv);
     return;
 }
 
-//uv.setCategorie(Categorie(categorie->currentIndex()))
-//void ajouterCursus(const QString n, const QString* t, unsigned int nbU, unsigned int nbMax, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP); //fait mais pas vérifié
 void CursusEditeur::sauverCursus(){
-    QString cu=nomCursus->text();
+    QString cursusN=nomCursus->text();
     CategorieCursus cat=CategorieCursus(categorie->currentIndex());
-    Cursus& cursusA=cM->getCursus(cu);
+    Cursus& cursusA=cM->getCursus(cursusN);
     cursusA.setCategorie(cat);
     cursusA.setCredCS(credCS->value());
     cursusA.setCredTM(credTM->value());
     cursusA.setCredTSH(credTSH->value());
     cursusA.setCredSP(credSP->value());
     QMessageBox::information(this, "Sauvegarde", "Cursus sauvegardé");
+}
+
+//void ajouterCursus(const QString n, const QString* t, unsigned int nbU, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP); //fait et vérifié
+
+void CursusEditeur::ajouterCursus(){
+    QString cursusN=nomCursus->text();
+    CategorieCursus cat=CategorieCursus(categorie->currentIndex());
+    cM->ajouterCursus(cursusN, 0, 0, cat, credCS->value(), credTM->value(), credTSH->value(), credSP->value());
+    Cursus& cursusA=cM->getCursus(cursusN);
+    UVs->setCurrentIndex(0);
+    for (int i=0;i<UVs->count();i++){
+        cursusA.addUV(UVs->currentText());
+        UVs->setCurrentIndex(i+1);
+    }
+    QMessageBox::information(this, "Sauvegarde", "Cursus ajouté");
+    this->close();
 }

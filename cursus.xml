@@ -27,4 +27,29 @@
             <uv>MI01</uv>
         </UVs>
     </unCursus>
+    <unCursus>
+        <nom>Glandouille</nom>
+        <categorie>C_Mineur</categorie>
+        <CS>0</CS>
+        <TM>0</TM>
+        <TSH>0</TSH>
+        <SP>0</SP>
+        <UVs>
+            <uv>Sieste</uv>
+            <uv>Biere</uv>
+            <uv>Palmier</uv>
+        </UVs>
+    </unCursus>
+    <unCursus>
+        <nom>GB</nom>
+        <categorie>C_Branche</categorie>
+        <CS>60</CS>
+        <TM>40</TM>
+        <TSH>30</TSH>
+        <SP>100</SP>
+        <UVs>
+            <uv>BL09</uv>
+            <uv>SY02</uv>
+        </UVs>
+    </unCursus>
 </Cursus>
