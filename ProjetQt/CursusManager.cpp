@@ -51,15 +51,15 @@ Cursus* CursusManager::trouverCursus(const QString &c) const{
 }
 
 CursusManager::~CursusManager(){
-    //if (file!="") save(file);
-        for(unsigned int i=0; i<nbCursus; i++) delete mesCursus[i];
-        delete[] mesCursus;
+    if (file!="") save(file);
+    for(unsigned int i=0; i<nbCursus; i++) delete mesCursus[i];
+    delete[] mesCursus;
 }
 
 void CursusManager::load(const QString& f){
-    /*if (file!=f) {
+    if (file!=f) {
         this->~CursusManager();
-    }*/
+    }
     file=f;
 
     QFile fin(file);
@@ -162,7 +162,6 @@ void CursusManager::load(const QString& f){
     xml.clear();
 }
 
-
 void CursusManager::addItem(Cursus* cu){
         if (nbCursus==nbMaxCursus){
                 Cursus** newtab=new Cursus*[nbMaxCursus+10];
@@ -186,6 +185,7 @@ void CursusManager::ajouterCursus(const QString n, const QString* t, unsigned in
     return;
 }
 
+
 Cursus& CursusManager::getCursus(const QString& nom){
         Cursus* cu=trouverCursus(nom);
     if (!cu) throw UTProfilerException("erreur, CursusManager, Cursus inexistante",__FILE__,__LINE__);
@@ -208,17 +208,18 @@ void CursusManager::libererInstance(){
 }
 
 void CursusManager::save(const QString& f){
+    QLabel *fen=new QLabel("putain de bordel de merde !");
+    fen->show();
+
     file=f;
-    QFile newfile( file);
+    QFile newfile(file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
      stream.setAutoFormatting(true);
      stream.writeStartDocument();
-     stream.writeStartElement("Cursus");
-     for(unsigned int i=0; i<nbCursus; i++){
+     stream.writeStartElement("coucou");
+     /*for(unsigned int i=0; i<nbCursus; i++){
          stream.writeStartElement("unCursus");
-         //stream.writeAttribute("automne", (uvs[i]->ouvertureAutomne())?"true":"false");
-         //stream.writeAttribute("printemps", (uvs[i]->ouverturePrintemps())?"true":"false");
          stream.writeTextElement("nom",mesCursus[i]->getNom());
          stream.writeTextElement("categorie",CategorieCursusToString(mesCursus[i]->getCategorie()));
          QString cr; cr.setNum(mesCursus[i]->getCredCS());
@@ -233,11 +234,10 @@ void CursusManager::save(const QString& f){
          for(unsigned int j=0; j<mesCursus[i]->getNbUV();i++){
              stream.writeTextElement("uv",mesCursus[i]->getTabUV()[j]);
          }
-     }
+         stream.writeEndElement();
+     }*/
      stream.writeEndElement();
      stream.writeEndDocument();
 
      newfile.close();
 }
-
-

@@ -24,15 +24,19 @@ int main(int argc, char* argv[]) {
    CursusEditeur fenetre(&m,&nnewCursus);
    fenetre.show();
 
+   /*try{m.save(chemin);}
+   catch(UTProfilerException e){
+      fen=new QLabel(e.getInfo());
+       fen->show();
+   }*/
 /*
      UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
-   UVManager& m=UVManager::getInstance();
-   QString chemin = QFileDialog::getOpenFileName();
-   m.load(chemin);
-   /*UV& uv=m.getUV("LO21");
-   UVEditeur fenetre(&m,uv);*/
+
+   UV& uv=m.getUV("LO21");
+   UVEditeur fenetre(&m,uv);
+   fenetre.show();*/
   // UVFinder fenetre(&m);
    //********Ajout d'UV ne marche pas*******
 
@@ -57,7 +61,7 @@ int main(int argc, char* argv[]) {
    //d.setCursus(c);
    DossierEditeur fenetre(d);*/
    //fenetre.ajouterTC("6", "24", "3"); // ??
- fenetre.show();
+
    return app.exec();
 }
 

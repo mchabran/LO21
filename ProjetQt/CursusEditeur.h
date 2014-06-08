@@ -46,7 +46,7 @@ public :
     CursusEditeur(CursusManager* m, const Cursus* c,QWidget* parent=0);
 
 public slots :
-   //void sauverCursus();
+   void sauverCursus();
    void ajoutUV();
 };
 

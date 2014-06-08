@@ -1548,4 +1548,10 @@
         <credits>6</credits>
         <categorie>TM</categorie>
     </uv>
+    <uv automne="false" printemps="false">
+        <code>LOpoueet</code>
+        <titre>Programmation Orientée Objet</titre>
+        <credits>6</credits>
+        <categorie>TM</categorie>
+    </uv>
 </uvs>

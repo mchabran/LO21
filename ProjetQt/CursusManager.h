@@ -8,7 +8,7 @@ class CursusManager{
     Cursus** mesCursus;
     unsigned int nbCursus;
     unsigned int nbMaxCursus;
-    QString file;
+
     void addItem(Cursus* newcursus);
     //bool modification;
     CursusManager(const CursusManager& cm);//pas à faire
@@ -24,7 +24,7 @@ class CursusManager{
     static Handler handler;
 
 public:
-
+    QString file;
     Cursus* trouverCursus(const QString& c) const; //fait mais pas vérifier
     void load(const QString& f); //fait mais pas vérifier
     void save(const QString& f); // fait

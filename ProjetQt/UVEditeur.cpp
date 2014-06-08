@@ -64,7 +64,7 @@ UVEditeur::UVEditeur(UVManager *m,  UV& uvToEdit, QWidget* parent): QWidget(pare
    QObject::connect(newUV, SIGNAL(clicked()), this, SLOT(addUv()));
    QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverUV()));
    QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
-   QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(supprimerUV()));
+   QObject::connect(supprimer,SIGNAL(clicked()), this, SLOT(supprimerUV()));
 
 
    QObject::connect(code,SIGNAL(textEdited(QString)),this,SLOT(activerSauver(QString)));

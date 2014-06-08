@@ -159,11 +159,10 @@ void UVManager::save(const QString& f){
      stream.writeEndDocument();
 
      newfile.close();
-
 }
 
 UVManager::~UVManager(){
-    //if (file!="") save(file);
+    if (file!="") save(file);
         for(unsigned int i=0; i<nbUV; i++) delete uvs[i];
         delete[] uvs;
 }
@@ -203,7 +202,6 @@ UV& UVManager::getUV(const QString& code){
         return *uv;
 }
 
-
 const UV& UVManager::getUV(const QString& code)const{
         return const_cast<UVManager*>(this)->getUV(code);
                 // on peut aussi dupliquer le code de la méthode non-const
@@ -219,7 +217,6 @@ UVManager& UVManager::getInstance(){
 void UVManager::libererInstance(){
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }
-
 
 void UVManager::supprimerUV(UV& u){
     unsigned int i;
