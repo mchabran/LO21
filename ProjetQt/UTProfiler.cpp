@@ -53,6 +53,22 @@ QTextStream& operator<<(QTextStream& f, const Categorie& cat){
     return f<<CategorieToString(cat);
 }
 
+QString NoteToString(const Note& n){
+    switch(n){
+        case A : return "A";
+        case B : return "B";
+        case C : return "C";
+        case D : return "D";
+        case E : return "E";
+        case F : return "F";
+        case FX : return "FX";
+        case RES : return "RES";
+        case ABS : return "ABS";
+        case EC : return "EC";
+
+    }
+}
+
 UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){}
 
 void UVManager::load(const QString& f){

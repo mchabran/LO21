@@ -31,9 +31,12 @@ Categorie StringToCategorie(const QString& s);
 QString CategorieToString(Categorie c);
 QTextStream& operator>>(QTextStream& f, Categorie& cat);
 
-enum Note { A, B, C, D, E, F, FX, RES, ABS, /* en cours */ EC  };
+enum Note { A, B, C, D, E, F, FX, RES, ABS, EC};
+QString NoteToString(const Note& n);
+
 enum Saison { Automne, Printemps };
 inline QTextStream& operator<<(QTextStream& f, const Saison& s) { if (s==Automne) f<<"A"; else f<<"P"; return f;}
+inline QString saisonToString(const Saison& s) { QString sais; if (s==Automne) sais="A"; else sais="P"; return sais;}
 
 class Semestre {
         Saison saison;
@@ -45,6 +48,7 @@ public:
 };
 
 inline QTextStream& operator<<(QTextStream& f, const Semestre& s) { return f<<s.getSaison()<<s.getAnnee()%100; }
+inline QString semestreToString(const Semestre& s) { QString saison=saisonToString(s.getSaison()); unsigned int annee = s.getAnnee()%100; saison.append(QString(annee));return saison; }
 
 class UV {
     QString code;
@@ -174,19 +178,8 @@ public:
      }
 };
 
-class Inscription {
-        const UV* uv;
-        Semestre semestre;
-        Note resultat;
-public:
-        Inscription(const UV& u, const Semestre& s, Note res=EC):uv(&u),semestre(s),resultat(res){}
-        const UV& getUV() const { return *uv; }
-        Semestre getSemestre() const { return semestre; }
-        Note getResultat() const { return resultat; }
-        void setResultat(Note newres) { resultat=newres; }
-};
 
-class Formation{
-};
+
+
 
 #endif

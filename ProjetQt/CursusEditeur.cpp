@@ -110,11 +110,7 @@ void CursusEditeur::ajoutUV(){
 //uv.setCategorie(Categorie(categorie->currentIndex()))
 //void ajouterCursus(const QString n, const QString* t, unsigned int nbU, unsigned int nbMax, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP); //fait mais pas vérifié
 void CursusEditeur::sauverCursus(){
-    QMessageBox::information(this, "coucou", "2 :putain de bordel de merde !");
-
-    cM->save(cM->file);
-   return ;
-    /*QString cu=nomCursus->text();
+    QString cu=nomCursus->text();
     CategorieCursus cat=CategorieCursus(categorie->currentIndex());
     Cursus& cursusA=cM->getCursus(cu);
     cursusA.setCategorie(cat);
@@ -122,5 +118,5 @@ void CursusEditeur::sauverCursus(){
     cursusA.setCredTM(credTM->value());
     cursusA.setCredTSH(credTSH->value());
     cursusA.setCredSP(credSP->value());
-    QMessageBox::information(this, "Sauvegarde", "Cursus sauvegardé");*/
+    QMessageBox::information(this, "Sauvegarde", "Cursus sauvegardé");
 }

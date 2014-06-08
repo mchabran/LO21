@@ -31,7 +31,9 @@ public:
     static CursusManager& getInstance(); // fait
     static void libererInstance(); // fait
     void ajouterCursus(const QString n, const QString* t, unsigned int nbU, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP); //fait et vérifié
+    void ajouterCursus(Cursus *cur);
     const Cursus& getCursus(const QString& nom) const;// fait et vérifié
+    Cursus** getMesCursus() const {return mesCursus;}
     unsigned int getNbCursus(){return nbCursus;}
     Cursus& getCursus(const QString& nom);// fait et vérifié
 
