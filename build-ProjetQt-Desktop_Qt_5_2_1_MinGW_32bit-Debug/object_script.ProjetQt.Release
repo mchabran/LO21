@@ -7,14 +7,9 @@ INPUT(
 ./release\CursusFinder.o
 ./release\CursusManager.o
 ./release\CursusEditeur.o
-./release\Inscriptions.o
-./release\Equivalence.o
-./release\MenuEditeur.o
+./release\menu.o
 ./release\moc_UVEditeur.o
 ./release\moc_dossier.o
-./release\moc_Equivalence.o
 ./release\moc_CursusFinder.o
 ./release\moc_CursusEditeur.o
-./release\moc_Inscription.o
-./release\moc_MenuEditeur.o
 );
