@@ -11,7 +11,9 @@ SOURCES += \
     CursusFinder.cpp \
     CursusManager.cpp \
     CursusEditeur.cpp \
-    menu.cpp
+    MenuEditeur.cpp \
+    Inscriptions.cpp \
+    Equivalence.cpp
 
 HEADERS += \
     UTProfiler.h \
@@ -24,7 +26,7 @@ HEADERS += \
     CursusManager.h \
     CursusEditeur.h \
     Inscription.h \
-    menu.h
+    MenuEditeur.h
 
 
 

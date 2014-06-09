@@ -2,6 +2,8 @@
 #include "dossier.h"
 #include "CursusEditeur.h"
 #include "CursusFinder.h"
+#include "UVEditeur.h"
+#include "Inscription.h"
 
 
 MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
@@ -35,8 +37,11 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
 
     QObject::connect(ajoutDoss, SIGNAL(clicked()), this, SLOT(ajouterDossier()));
     QObject::connect(consultDoss, SIGNAL(clicked()), this, SLOT(ajouterDossier()));
-    QObject::connect(ajoutCursus, SIGNAL(clicked()), this, SLOT(ajouterCursus()));
+    QObject::connect(ajoutCursus, SIGNAL(clicked()), this, SLOT(EditionCursus()));
     QObject::connect(consultCursus, SIGNAL(clicked()), this, SLOT(consulterCursus()));
+    QObject::connect(ajoutEqui, SIGNAL(clicked()), this, SLOT(ajouterEquivalence()));
+    QObject::connect(consultUV, SIGNAL(clicked()), this, SLOT(consulterUV()));
+    QObject::connect(ajoutInscr, SIGNAL(clicked()), this, SLOT(ajouterInscription()));
 
 }
 
@@ -45,10 +50,12 @@ void MenuEditeur::ajouterDossier(){
     fen->show();
 }
 
-void MenuEditeur::ajouterCursus(){
-    CursusManager& cm = CursusManager::getInstance();
-    CursusEditeur* fen = new CursusEditeur(&cm);
-    fen->show();
+void MenuEditeur::EditionCursus(){
+    CursusManager& m=CursusManager::getInstance();
+    QString chemin = QFileDialog::getOpenFileName();
+    m.load(chemin);
+    CursusFinder* fenetre=new CursusFinder(&m);
+    fenetre->show();
 }
 
 void MenuEditeur::consulterCursus(){
@@ -57,3 +64,17 @@ void MenuEditeur::consulterCursus(){
     fen->show();
 }
 
+void MenuEditeur::ajouterEquivalence(){
+    EquivalenceEditeur* fen = new EquivalenceEditeur();
+    fen->show();
+}
+
+void MenuEditeur::consulterUV(){
+    UVFinder* fen = new UVFinder(&um);
+    fen->show();
+}
+
+void MenuEditeur::ajouterInscription(){
+    InscriptionEditeur* fen = new InscriptionEditeur();
+    fen->show();
+}

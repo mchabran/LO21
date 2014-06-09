@@ -39,7 +39,7 @@ class InscriptionEditeur : public QWidget{
     QHBoxLayout* coucheh;
     QPushButton* sauver;
 public :
-    InscriptionEditeur(Inscription *ins, QWidget* parent=0);
+    InscriptionEditeur(Inscription *ins=0, QWidget* parent=0);
 public slots :
     void modifRes();
 };

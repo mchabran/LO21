@@ -32,9 +32,10 @@ public :
     MenuEditeur(UVManager& m, QWidget* parent=0);
 public slots :
     void ajouterDossier();
-    void ajouterCursus();
-    /*void ajouterEquivalence();
-    void consulterUV();*/
+    void EditionCursus();
+    void ajouterEquivalence();
+    void ajouterInscription();
+    void consulterUV();
     void consulterCursus();
 };
 

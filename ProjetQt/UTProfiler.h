@@ -50,6 +50,12 @@ public:
 
 inline QTextStream& operator<<(QTextStream& f, const Semestre& s) { return f<<s.getSaison()<<s.getAnnee()%100; }
 inline QString semestreToString(const Semestre& s) { QString saison=saisonToString(s.getSaison()); saison.append(QString::number(s.getAnnee()));return saison; }
+inline Semestre StringToSemestre(const QString s){ Saison sais; if (s[0]==A) sais = Automne; else sais = Printemps;
+                                                   QString ann = s[1]; ann.append(s[2]); ann.append(s[3]); ann.append(s[4]);
+                                                   Semestre sem(sais, ann.toUInt());
+                                                    return sem;}
+
+
 
 class UV {
     QString code;

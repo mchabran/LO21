@@ -13,6 +13,7 @@ class Equivalence{
     unsigned int equiTSH;
     unsigned int equiSP;
 public :
+    Equivalence(Equivalence* e);
     Equivalence(QString nom, QString p, unsigned int Cs, unsigned int Tm, unsigned int Tsh, unsigned int Sp=0):nomEtablissement(nom), pays(p), equiCS(Cs), equiTM(Tm), equiTSH(Tsh), equiSP(Sp){}
     QString getNomEtablissement()const{return nomEtablissement;}
     QString getPays()const{return pays;}
@@ -49,8 +50,9 @@ class EquivalenceEditeur : public QWidget{
     QVBoxLayout* couche;
     QHBoxLayout* coucheh;
     QPushButton* sauver;
+    QPushButton* ajouter;
 public :
-    EquivalenceEditeur(Equivalence *eq, QWidget* parent=0);
+    EquivalenceEditeur(Equivalence *eq=0, QWidget* parent=0);
 public slots :
     void modifEqui();
 };

@@ -29,13 +29,10 @@ InscriptionEditeur::InscriptionEditeur(Inscription* ins, QWidget* parent) : insc
     couche = new QVBoxLayout;
 
     while(i<2){
-
-        uv->setText(ins->getUV().getCode());
-
-
-        semestre->setText(semestreToString(ins->getSemestre()));
-
-        resultat->setCurrentIndex(ins->getResultat());
+        if(inscription!=0){
+        uv->setText(inscription->getUV().getCode());
+        semestre->setText(semestreToString(inscription->getSemestre()));
+        resultat->setCurrentIndex(inscription->getResultat());}
 
         coucheh = new QHBoxLayout;
         coucheh->addWidget(UVLabel);
@@ -57,9 +54,19 @@ InscriptionEditeur::InscriptionEditeur(Inscription* ins, QWidget* parent) : insc
 }
 
 void InscriptionEditeur::modifRes(){ //La modification ne se voit pas dans le tableau quand la fenêtre de modif se ferme
+    if(inscription!=0){
     QString res = resultat->currentText();
     Note newnote = StringToNote(res);
     inscription->setResultat(newnote);
-    QMessageBox::information(this, "Note Sauvegardée", "Note Sauvegardée");
+    QMessageBox::information(this, "Note Sauvegardée", "Note Sauvegardée");}
+
+    else{
+        const QString s = uv->text();
+        UVManager& man = UVManager::getInstance();
+        UV& nuv = man.getUV(s);
+        Semestre sem = StringToSemestre(semestre->text());
+        Note res = StringToNote(resultat->currentText());
+        inscription = new Inscription(nuv, sem, res);
+    }
     close();
 }

@@ -1,5 +1,14 @@
 #include "Equivalence.h"
 
+Equivalence::Equivalence(Equivalence* e){
+    nomEtablissement = e->getNomEtablissement();
+    pays = e->getPays();
+    equiCS = e->getEquiCS();
+    equiTM = e->getEquiTM();
+    equiTSH = e->getEquiTSH();
+    equiSP = e->getEquiSP();
+}
+
 EquivalenceEditeur::EquivalenceEditeur(Equivalence* eq, QWidget* parent) : equivalence(eq){
     nomEtLabel = new QLabel("Etablissement", this);
     paysLabel = new QLabel("Pays", this);
@@ -7,12 +16,22 @@ EquivalenceEditeur::EquivalenceEditeur(Equivalence* eq, QWidget* parent) : equiv
     tmLabel = new QLabel("TM", this);
     tshLabel = new QLabel("TSH", this);
     spLabel = new QLabel("SP", this);
-    nomEt = new QLineEdit(equivalence->getNomEtablissement(), this);
-    pays = new QLineEdit(equivalence->getPays(), this);
-    cs = new QLineEdit(QString::number(equivalence->getEquiCS()), this);
-    tm = new QLineEdit(QString::number(equivalence->getEquiTM()), this);
-    tsh = new QLineEdit(QString::number(equivalence->getEquiTSH()), this);
-    sp = new QLineEdit(QString::number(equivalence->getEquiSP()), this);
+    nomEt = new QLineEdit;
+    pays = new QLineEdit;
+    cs = new QLineEdit;
+    tm = new QLineEdit;
+    tsh = new QLineEdit;
+    sp = new QLineEdit;
+
+    if(equivalence!=0){
+        nomEt->setText(equivalence->getNomEtablissement());
+        pays->setText(equivalence->getPays());
+        cs->setText(QString::number(equivalence->getEquiCS()));
+        tm->setText(QString::number(equivalence->getEquiTM()));
+        tsh->setText(QString::number(equivalence->getEquiTSH()));
+        sp->setText(QString::number(equivalence->getEquiSP()));
+    }
+
     sauver = new QPushButton("Sauver", this);
     couche = new QVBoxLayout;
     coucheh = new QHBoxLayout;
@@ -39,10 +58,17 @@ EquivalenceEditeur::EquivalenceEditeur(Equivalence* eq, QWidget* parent) : equiv
 }
 
 void EquivalenceEditeur::modifEqui(){
+    if(equivalence!=0){
     equivalence->setEquiCS(cs->text().toInt());
     equivalence->setEquiTM(tm->text().toInt());
     equivalence->setEquiTSH(tsh->text().toInt());
     equivalence->setEquiSP(sp->text().toInt());
     QMessageBox::information(this, "Equivalence Sauvegardée", "Equivalence Sauvegardée");
+    }
+
+    else{
+        equivalence = new Equivalence(nomEt->text(), pays->text(), cs->text().toUInt(), tm->text().toUInt(), tsh->text().toUInt(), sp->text().toUInt());
+        QMessageBox::information(this, "Equivalence Sauvegardée", "Equivalence ajoutée");
+    }
     close();
 }
