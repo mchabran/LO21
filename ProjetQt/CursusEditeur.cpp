@@ -130,6 +130,7 @@ void CursusEditeur::sauverCursus(){
     cursusA.setCredTSH(credTSH->value());
     cursusA.setCredSP(credSP->value());
     QMessageBox::information(this, "Sauvegarde", "Cursus sauvegardé");
+    close();
 }
 
 //void ajouterCursus(const QString n, const QString* t, unsigned int nbU, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP); //fait et vérifié

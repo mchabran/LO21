@@ -10,7 +10,8 @@ SOURCES += \
     dossier.cpp \
     CursusFinder.cpp \
     CursusManager.cpp \
-    CursusEditeur.cpp
+    CursusEditeur.cpp \
+    menu.cpp
 
 HEADERS += \
     UTProfiler.h \
@@ -22,7 +23,8 @@ HEADERS += \
     CursusFinder.h \
     CursusManager.h \
     CursusEditeur.h \
-    Inscription.h
+    Inscription.h \
+    menu.h
 
 
 

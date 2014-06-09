@@ -11,19 +11,12 @@
 #include "CursusManager.h"
 #include "CursusEditeur.h"
 #include "CursusFinder.h"
+#include "menu.h"
 
 int main(int argc, char* argv[]) {
    QApplication app(argc, argv);
 
-   //********CursusManager************//
-   CursusManager& m=CursusManager::getInstance();
-   QString chemin = QFileDialog::getOpenFileName();
-   m.load(chemin);
-   CursusFinder fenetre(&m);
-   fenetre.show();
-
-   //***********Fin*CursusManager********//
-
+    EditionCursus();
 /*
      UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
@@ -83,7 +76,6 @@ int main(int argc, char* argv[]) {
    Equivalence* tabEq[1]={e1};
    Dossier* doss = new Dossier(cm, tabInscr, tabEq, true, false);
    DossierEditeur fenetre(m, *doss);*/
-   fenetre.show();
    return app.exec();
 }
 
