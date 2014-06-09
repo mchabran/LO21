@@ -51,9 +51,9 @@ Cursus* CursusManager::trouverCursus(const QString &c) const{
 }
 
 CursusManager::~CursusManager(){
-    //if (file!="") save(file);
-        for(unsigned int i=0; i<nbCursus; i++) delete mesCursus[i];
-        delete[] mesCursus;
+    if (file!="") save(file);
+    for(unsigned int i=0; i<nbCursus; i++) delete mesCursus[i];
+    delete[] mesCursus;
 }
 
 void CursusManager::load(const QString& f){
@@ -162,7 +162,6 @@ void CursusManager::load(const QString& f){
     xml.clear();
 }
 
-
 void CursusManager::addItem(Cursus* cu){
         if (nbCursus==nbMaxCursus){
                 Cursus** newtab=new Cursus*[nbMaxCursus+10];
@@ -186,11 +185,12 @@ void CursusManager::ajouterCursus(const QString n, const QString* t, unsigned in
     return;
 }
 
+/*
 void CursusManager::ajouterCursus(Cursus* cur){
     if (trouverCursus(cur->getNom())) throw UTProfilerException(QString("erreur, CursusManager, Cursus")+cur->getNom()+QString("déja existant"));
 
     addItem(cur);
-}
+}*/
 
 Cursus& CursusManager::getCursus(const QString& nom){
         Cursus* cu=trouverCursus(nom);
@@ -215,35 +215,44 @@ void CursusManager::libererInstance(){
 
 void CursusManager::save(const QString& f){
     file=f;
-    QFile newfile( file);
+    QFile newfile(file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
      stream.setAutoFormatting(true);
      stream.writeStartDocument();
-     stream.writeStartElement("Cursus");
-     for(unsigned int i=0; i<nbCursus; i++){
-         stream.writeStartElement("unCursus");
-         //stream.writeAttribute("automne", (uvs[i]->ouvertureAutomne())?"true":"false");
-         //stream.writeAttribute("printemps", (uvs[i]->ouverturePrintemps())?"true":"false");
-         stream.writeTextElement("nom",mesCursus[i]->getNom());
-         stream.writeTextElement("categorie",CategorieCursusToString(mesCursus[i]->getCategorie()));
-         QString cr; cr.setNum(mesCursus[i]->getCredCS());
-         stream.writeTextElement("CS",cr);
-         cr.setNum(mesCursus[i]->getCredTM());
-         stream.writeTextElement("TM", cr);
-         cr.setNum(mesCursus[i]->getCredTSH());
-         stream.writeTextElement("TSH", cr);
-         cr.setNum(mesCursus[i]->getCredSP());
-         stream.writeTextElement("SP", cr);
-         stream.writeStartElement("UVs");
-         for(unsigned int j=0; j<mesCursus[i]->getNbUV();i++){
-             stream.writeTextElement("uv",mesCursus[i]->getTabUV()[j]);
-         }
-     }
-     stream.writeEndElement();
+        stream.writeStartElement("Cursus");
+            for(unsigned int i=0; i<nbCursus; i++){
+                    stream.writeStartElement("unCursus");
+                    stream.writeTextElement("nom",mesCursus[i]->getNom());
+                    stream.writeTextElement("categorie",CategorieCursusToString(mesCursus[i]->getCategorie()));
+                    QString cr;  cr.setNum(mesCursus[i]->getCredCS());
+                    stream.writeTextElement("CS",cr);
+                    cr.setNum(mesCursus[i]->getCredTM());
+                    stream.writeTextElement("TM", cr);
+                    cr.setNum(mesCursus[i]->getCredTSH());
+                    stream.writeTextElement("TSH", cr);
+                    cr.setNum(mesCursus[i]->getCredSP());
+                    stream.writeTextElement("SP", cr);
+                    stream.writeStartElement("UVs");
+                        for(unsigned int j=0; j<mesCursus[i]->getNbUV();j++){
+                            const QString* tabTemp=mesCursus[i]->getTabUV();
+                            stream.writeTextElement("uv",tabTemp[j]);
+                        }
+                    stream.writeEndElement();
+                stream.writeEndElement();
+            }
+        stream.writeEndElement();
      stream.writeEndDocument();
 
      newfile.close();
 }
 
-
+void CursusManager::supprimerCursus(const Cursus& cu){
+    unsigned int i;
+    for(i=0; i<nbCursus; i++)
+            if (cu.getNom()==mesCursus[i]->getNom()) break;
+    if (i==nbCursus) UTProfilerException("Erreur, UV inexistante ne peut être supprimée");
+    for(unsigned int j=i; j<nbCursus; j++)
+        mesCursus[j]=mesCursus[j+1];
+    nbCursus--;
+}

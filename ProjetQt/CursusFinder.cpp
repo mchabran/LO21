@@ -1,32 +1,31 @@
-/*#include "cursus.h"
-#include "CursusManager.h"
-//CursusFinder
+#include "CursusFinder.h"
+#include "CursusEditeur.h"
 
-CursusFinder::CursusFinder(Cursus& c, QWidget* parent) : cursus(c){
+CursusFinder::CursusFinder(CursusManager* M, QWidget* parent) : cM(M), QWidget(parent) {
     this->setWindowTitle(QString("Edition de cursus"));
 
-    nomCursusLabel = new QLabel("nom", this);
-    nomCursus = new QLineEdit(c.getNom(), this);
-    categorieLabel = new QLabel("Catégorie", this);
+    nomCursusLabel = new QLabel("Cursus :", this);
+    nomCursus =new QComboBox(this);
+    for (unsigned int i=0;i<M->getNbCursus();i++){
+        nomCursus->addItem(M->getMesCursus()[i]->getNom());
+    }
 
-    categorie=new QComboBox(this);
-    categorie->addItem("TC");
-    categorie->addItem("Branche");
-    categorie->addItem("Filière");
-    categorie->addItem("HuTech");
-    categorie->addItem("Mineur");
-    categorie->setCurrentIndex(int(c.getCategorie()));
-    rechercher = new QPushButton("Rechercher");
+    //rechercher = new QPushButton("Rechercher");
     annuler = new QPushButton("Annuler");
+    editerC = new QPushButton("Editer");
+    supprimerC = new QPushButton("Supprimer");
+    ajouterC=new QPushButton("Ajouter");
 
     coucheH1 = new QHBoxLayout;
     coucheH1->addWidget(nomCursusLabel);
-    coucheH1->addWidget(nomCursus);
     coucheH2 = new QHBoxLayout;
-    coucheH2->addWidget(categorieLabel);
-    coucheH2->addWidget(categorie);
+    coucheH2->addWidget(nomCursus);
+
     coucheH3 = new QHBoxLayout;
-    coucheH3->addWidget(rechercher);
+    coucheH3->addWidget(supprimerC);
+    coucheH3->addWidget(editerC);
+    coucheH3->addWidget(ajouterC);
+    //coucheH3->addWidget(rechercher);
     coucheH3->addWidget(annuler);
     couche= new QVBoxLayout;
     couche->addItem(coucheH1);
@@ -34,10 +33,25 @@ CursusFinder::CursusFinder(Cursus& c, QWidget* parent) : cursus(c){
     couche->addItem(coucheH3);
     setLayout(couche);
 
-    QObject::connect( rechercher, SIGNAL(clicked()), this , SLOT(rechercherCursus()));
+    QObject::connect(supprimerC, SIGNAL(clicked()),this, SLOT(supprimer()));
+    QObject::connect(editerC, SIGNAL(clicked()),this, SLOT(editer()));
+    QObject::connect(ajouterC, SIGNAL(clicked()), SLOT(ajouter()));
+    //QObject::connect(rechercher, SIGNAL(clicked()), this , SLOT(rechercherCursus()));
     QObject::connect(annuler, SIGNAL(clicked()), this, SLOT(close()));
 }
 
+void CursusFinder::supprimer(){
+    cM->supprimerCursus( cM->getCursus(nomCursus->currentText()));
+    QMessageBox::information(this, "Supression", "Cursus supprimée");
+}
+void CursusFinder::editer(){}
+
+void CursusFinder::ajouter(){
+    CursusEditeur fenetre2(cM);
+    fenetre2.show();
+}
+
+/*
 void CursusFinder::rechercherCursus(){ // Il faudrait une fonction qui récupère les infos dans un fichier cursus.xml LOL
    if (nomCursus->text() == "Tronc commun") {
         TC& tc = TC::donneInstance();
@@ -58,6 +72,4 @@ void CursusFinder::rechercherCursus(){ // Il faudrait une fonction qui récupèr
 
     CursusEditeur* fenetre2 = new CursusEditeur(newCur);
     fenetre2->show();
-}
-
-*/
+}*/

@@ -69,20 +69,6 @@ QString NoteToString(const Note& n){
     }
 }
 
-Note StringToNote(const QString& n){
-        if (n== "A")  return A;
-        if (n=="B")  return B;
-        if (n=="C") return C;
-        if (n=="D")  return D;
-        if (n=="E")  return E;
-        if (n=="F")  return F;
-        if (n=="FX") return FX;
-        if (n=="RES")  return RES;
-        if (n=="ABS")  return ABS;
-        if (n=="EC")  return EC;
-}
-
-
 UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){}
 
 void UVManager::load(const QString& f){
@@ -189,11 +175,10 @@ void UVManager::save(const QString& f){
      stream.writeEndDocument();
 
      newfile.close();
-
 }
 
 UVManager::~UVManager(){
-    //if (file!="") save(file);
+    if (file!="") save(file);
         for(unsigned int i=0; i<nbUV; i++) delete uvs[i];
         delete[] uvs;
 }
@@ -233,7 +218,6 @@ UV& UVManager::getUV(const QString& code){
         return *uv;
 }
 
-
 const UV& UVManager::getUV(const QString& code)const{
         return const_cast<UVManager*>(this)->getUV(code);
                 // on peut aussi dupliquer le code de la méthode non-const
@@ -249,7 +233,6 @@ UVManager& UVManager::getInstance(){
 void UVManager::libererInstance(){
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }
-
 
 void UVManager::supprimerUV(UV& u){
     unsigned int i;
