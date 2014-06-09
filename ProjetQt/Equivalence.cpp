@@ -9,7 +9,7 @@ Equivalence::Equivalence(Equivalence* e){
     equiSP = e->getEquiSP();
 }
 
-EquivalenceEditeur::EquivalenceEditeur(Equivalence* eq, QWidget* parent) : equivalence(eq){
+EquivalenceEditeur::EquivalenceEditeur(Dossier* d, Equivalence* eq, QWidget* parent) : equivalence(eq){
     nomEtLabel = new QLabel("Etablissement", this);
     paysLabel = new QLabel("Pays", this);
     csLabel = new QLabel("CS", this);
@@ -69,6 +69,7 @@ void EquivalenceEditeur::modifEqui(){
     else{
         equivalence = new Equivalence(nomEt->text(), pays->text(), cs->text().toUInt(), tm->text().toUInt(), tsh->text().toUInt(), sp->text().toUInt());
         QMessageBox::information(this, "Equivalence Sauvegardée", "Equivalence ajoutée");
+        unDossier->addEquivalence(equivalence);
     }
     close();
 }

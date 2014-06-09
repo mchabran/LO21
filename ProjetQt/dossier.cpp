@@ -5,6 +5,53 @@
 
 Dossier* Dossier::instanceUnique=0;
 
+Dossier::Dossier(CursusManager& c, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int ni, unsigned int ne): cursus(c), activiteExtraScolaire(aes), niveauB2(B2), nbIns(ni), nbEq(ne), nbMaxEq(0), nbMaxIns(0) {
+    for (unsigned int i=0; i<ni;i++){
+        this->addInscription(tabI[i]);
+    }
+    for (unsigned j=0; j<ne;j++){
+        this->addEquivalence(tabE[j]);
+    }
+}
+
+void Dossier::addInscription(Inscription* i){
+    if(nbIns==nbMaxIns){
+        Inscription** newTab=new Inscription*[nbMaxIns+10];
+        for(unsigned int i=0; i<nbIns;i++) newTab[i]=inscriptions[i];
+        nbMaxIns+=10;
+        Inscription** old=inscriptions;
+        inscriptions=newTab;
+        delete[] old;
+    }
+    inscriptions[nbIns++]=i;
+}
+void Dossier::addEquivalence(Equivalence* e){
+    if(nbEq==nbMaxEq){
+        Equivalence** newTab=new Equivalence*[nbMaxEq+10];
+        for(unsigned int i=0; i<nbEq;i++) newTab[i]=equivalences[i];
+        nbMaxEq+=10;
+        Equivalence** old=equivalences;
+        equivalences=newTab;
+        delete[] old;
+    }
+    equivalences[nbEq++]=e;
+}
+
+
+/*
+void Cursus::addUV(QString u){
+    if (nbUV==nbMaxUV){
+            QString* newtab=new QString[nbMaxUV+10];
+            for(unsigned int i=0; i<nbUV; i++) newtab[i]=tabUV[i];
+            nbMaxUV+=10;
+            QString* old=tabUV;
+            tabUV=newtab;
+            delete[] old;
+    }
+    tabUV[nbUV++]=u;
+}
+*/
+
 void Dossier::libereInstance(){
     if (instanceUnique!=0) delete instanceUnique;
     instanceUnique = 0;
@@ -37,10 +84,14 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     modifInscr = new QPushButton("Modifier", this);
     nomInscrAModif = new QLineEdit("Inscription à modifier", this);
     modifEqui = new QPushButton("Modifier", this);
+    ajoutEqui=new QPushButton("Ajouter", this);
+
+    ajoutInscr = new QPushButton("Ajouter", this);
     nomEquiAModif = new QLineEdit("Nom Etablissement", this);
     ajouterCursus = new QPushButton("Modifier", this);
     sauver = new QPushButton("Sauver", this);
     annuler = new QPushButton("Annuler", this);
+
 
     couche= new QVBoxLayout;
 
@@ -96,6 +147,7 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     coucheH6->addWidget(equivalences);
     coucheH6->addWidget(nomEquiAModif);
     coucheH6->addWidget(modifEqui);
+    coucheH6->addWidget(ajoutEqui);
 
 
     coucheH1 = new QHBoxLayout;
@@ -140,6 +192,8 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     coucheH2->addWidget(tabUV);
     coucheH2->addWidget(nomInscrAModif);
     coucheH2->addWidget(modifInscr);
+
+    coucheH2->addWidget(ajoutInscr);
 
 
 
@@ -186,6 +240,9 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     QObject::connect(ajouterCursus,SIGNAL(clicked()), this, SLOT(modifCursus()));
     QObject::connect(modifInscr,SIGNAL(clicked()), this, SLOT(modifierInscription()));
     QObject::connect(modifEqui,SIGNAL(clicked()), this, SLOT(modifierEquivalence()));
+    QObject::connect(ajoutInscr, SIGNAL(clicked()), this, SLOT(ajoutInscription()));
+    QObject::connect(ajoutEqui, SIGNAL(clicked()), this, SLOT(ajoutEquivalence()));
+
 }
 
 
@@ -203,18 +260,38 @@ void DossierEditeur::modifCursus(){
     newFen->show();
 }
 
-void DossierEditeur::modifierInscription(){
-    unsigned int i=0;
-    while(doss.getInscriptions()[i]->getUV().getCode()!=nomInscrAModif->text()) i++;
-    InscriptionEditeur* fen2 = new InscriptionEditeur(doss.getInscriptions()[i]);
-    fen2->show();
+void DossierEditeur::modifierInscription(bool j){
+    if (j==0){
+        unsigned int i=0;
+        while(doss.getInscriptions()[i]->getUV().getCode()!=nomInscrAModif->text()) i++;
+        InscriptionEditeur* fen2 = new InscriptionEditeur(&this->doss, doss.getInscriptions()[i]);
+        fen2->show();
+    }
+    else {
+        InscriptionEditeur* fen2 = new InscriptionEditeur(&this->doss);
+        fen2->show();
+    }
+
 }
 
-void DossierEditeur::modifierEquivalence(){
-    unsigned int i=0;
-    while(doss.getEquivalences()[i]->getNomEtablissement()!=nomEquiAModif->text()) i++;
-    EquivalenceEditeur* fen2 = new EquivalenceEditeur(doss.getEquivalences()[i]);
-    fen2->show();
+void DossierEditeur::ajoutInscription(){
+    modifierInscription(1);
+}
+
+void DossierEditeur::modifierEquivalence(bool j){
+    if (j==0){
+        unsigned int i=0;
+        while(doss.getEquivalences()[i]->getNomEtablissement()!=nomEquiAModif->text()) i++;
+        EquivalenceEditeur* fen2 = new EquivalenceEditeur(&this->doss, doss.getEquivalences()[i]);
+        fen2->show();}
+    else {
+        EquivalenceEditeur* fen2 = new EquivalenceEditeur(&this->doss);
+        fen2->show();
+    }
+}
+
+void DossierEditeur::ajoutEquivalence(){
+    modifierEquivalence(1);
 }
 
 

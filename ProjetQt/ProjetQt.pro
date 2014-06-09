@@ -26,7 +26,8 @@ HEADERS += \
     CursusManager.h \
     CursusEditeur.h \
     Inscription.h \
-    MenuEditeur.h
+    MenuEditeur.h \
+    main.h
 
 
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Inscription>
+	<UV>
+		<nom>NF16</nom>
+		<semestre>
+			<saison>automne</saison>
+			<annee>2013<annee>
+		</semestre>
+		<note>C</note>
+	</UV>
+	<UV>
+		<nom>MI01</nom>
+		<semestre>
+			<saison>automne</saison>
+			<annee>2013<annee>
+		</semestre>
+		<note>C</note>
+	</UV>
+</Inscription>

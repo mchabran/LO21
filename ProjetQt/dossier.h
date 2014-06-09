@@ -14,6 +14,10 @@
 
 using namespace std;
 
+class Inscription;
+class Equivalence;
+
+
 class Dossier{ //singleton
     CursusManager& cursus;
     Inscription** inscriptions;
@@ -21,12 +25,14 @@ class Dossier{ //singleton
     bool activiteExtraScolaire;
     bool niveauB2;
     unsigned int nbIns;
+    unsigned int nbMaxIns;
     unsigned int nbEq;
+    unsigned int nbMaxEq;
     static Dossier* instanceUnique;
 
-    Dossier(CursusManager& c, Inscription** i, Equivalence** e, bool aes, bool B2, unsigned int ni=0, unsigned int ne=0) : cursus(c), inscriptions(i), equivalences(e), activiteExtraScolaire(aes), niveauB2(B2), nbIns(ni), nbEq(ne) {}
-    Dossier() :cursus(CursusManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0) {}
-    Dossier(CursusManager& c): cursus(c), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0) {}
+    Dossier(CursusManager& c, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int ni, unsigned int ne);
+    Dossier():cursus(CursusManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxEq(0), nbMaxIns(0) {}
+    Dossier(CursusManager& c): cursus(c), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxIns(0), nbMaxEq(0) {}
     Dossier(const Dossier* instance);
     virtual ~Dossier();
     virtual void operator=(const Dossier&){}
@@ -34,13 +40,14 @@ public :
 
     CursusManager& getCursusManager() const {return cursus;}
     Inscription** getInscriptions() const {return inscriptions;}
+    void loadInscription(const QString& f);
     Equivalence** getEquivalences() const {return equivalences;}
     unsigned int getNbIns() const{return nbIns;}
     unsigned int getNbEq() const{return nbEq;}
     bool getActiviteES(){return activiteExtraScolaire;}
     bool getnivB2(){return niveauB2;}
-    void addInscription(Inscription* i){inscriptions[nbIns++]=i;}
-    void addEquivalence(Equivalence* e){equivalences[nbEq++]=e;}
+    void addInscription(Inscription* i);
+    void addEquivalence(Equivalence* e);
     void setAES(bool val){activiteExtraScolaire = val;}
     void setNivB2(bool val){niveauB2 = val;}
     static Dossier& donneInstance(CursusManager& c);
@@ -71,8 +78,10 @@ class DossierEditeur : public QWidget{
     QCheckBox* activiteES;
     QCheckBox* B2;
     QPushButton* modifInscr;
+    QPushButton* ajoutInscr;
     QLineEdit* nomInscrAModif;
     QPushButton* modifEqui;
+    QPushButton* ajoutEqui;
     QLineEdit* nomEquiAModif;
     QPushButton* ajouterCursus;
     QPushButton* sauver;
@@ -90,10 +99,13 @@ public :
 public slots :
     void sauverDossier();
     //void fenetreAjoutCursus();
+    void ajoutInscription();
+    void ajoutEquivalence();
     void modifCursus();
-    void modifierInscription();
-    void modifierEquivalence();
+    void modifierInscription(bool j=0);
+    void modifierEquivalence(bool j=0);
 };
+
 
 #endif // DOSSIER_H
 
