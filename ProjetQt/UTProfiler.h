@@ -33,6 +33,7 @@ QTextStream& operator>>(QTextStream& f, Categorie& cat);
 
 enum Note { A, B, C, D, E, F, FX, RES, ABS, EC};
 QString NoteToString(const Note& n);
+Note StringToNote(const QString &n);
 
 enum Saison { Automne, Printemps };
 inline QTextStream& operator<<(QTextStream& f, const Saison& s) { if (s==Automne) f<<"A"; else f<<"P"; return f;}
@@ -48,7 +49,7 @@ public:
 };
 
 inline QTextStream& operator<<(QTextStream& f, const Semestre& s) { return f<<s.getSaison()<<s.getAnnee()%100; }
-inline QString semestreToString(const Semestre& s) { QString saison=saisonToString(s.getSaison()); unsigned int annee = s.getAnnee()%100; saison.append(QString(annee));return saison; }
+inline QString semestreToString(const Semestre& s) { QString saison=saisonToString(s.getSaison()); saison.append(QString::number(s.getAnnee()));return saison; }
 
 class UV {
     QString code;

@@ -34,7 +34,7 @@ public:
     void ajouterCursus(Cursus *cur);
     const Cursus& getCursus(const QString& nom) const;// fait et vérifié
     Cursus** getMesCursus() const {return mesCursus;}
-    unsigned int getNbCursus(){return nbCursus;}
+    unsigned int getNbCursus() const {return nbCursus;}
     Cursus& getCursus(const QString& nom);// fait et vérifié
 
     class Iterator {

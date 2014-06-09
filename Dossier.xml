@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dossier>
+	<unDossier>
+		<Cursus>
+			<nomCursus>TC</nomCursus>
+			<nomCursus>GI</nomCursus>
+		</Cursus>
+		<Inscriptions>
+			<uv>MT90</uv>
+			<uv>PS91</uv>
+			<uv>TN01</uv>
+		</Inscriptions>
+		<Equivalences>
+			<nomEtEqui>Harvard</nomEtEqui>
+		</Equivalences>
+		<aes>true</aes>
+		<b2>false<b2>
+	</unDossier>
+</Dossier>

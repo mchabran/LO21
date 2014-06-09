@@ -31,4 +31,29 @@ public :
 };
 
 
+class EquivalenceEditeur : public QWidget{
+    Q_OBJECT
+    Equivalence* equivalence;
+    QLabel* nomEtLabel;
+    QLineEdit* nomEt;
+    QLabel* paysLabel;
+    QLineEdit* pays;
+    QLabel* csLabel;
+    QLineEdit* cs;
+    QLabel* tmLabel;
+    QLineEdit* tm;
+    QLabel* tshLabel;
+    QLineEdit* tsh;
+    QLabel* spLabel;
+    QLineEdit* sp;
+    QVBoxLayout* couche;
+    QHBoxLayout* coucheh;
+    QPushButton* sauver;
+public :
+    EquivalenceEditeur(Equivalence *eq, QWidget* parent=0);
+public slots :
+    void modifEqui();
+};
+
+
 #endif // EQUIVALENCE_H
