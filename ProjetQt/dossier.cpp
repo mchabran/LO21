@@ -21,7 +21,6 @@ Dossier::~Dossier() {
     delete[] equivalences;
 }
 
-
 DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWidget(parent), doss(Dossier::donneInstance(CursusManager::getInstance())){
     this->setWindowTitle(QString("Consultation du dossier"));
     cursusLabel = new QLabel("Cursus", this);
@@ -39,7 +38,7 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     nomInscrAModif = new QLineEdit("Inscription à modifier", this);
     modifEqui = new QPushButton("Modifier", this);
     nomEquiAModif = new QLineEdit("Nom Etablissement", this);
-    ajouterCursus = new QPushButton("Ajouter", this);
+    ajouterCursus = new QPushButton("Modifier", this);
     sauver = new QPushButton("Sauver", this);
     annuler = new QPushButton("Annuler", this);
 
@@ -184,7 +183,7 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
     QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverDossier()));
     QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
-    QObject::connect(ajouterCursus,SIGNAL(clicked()), this, SLOT(ajoutCursus()));
+    QObject::connect(ajouterCursus,SIGNAL(clicked()), this, SLOT(modifCursus()));
     QObject::connect(modifInscr,SIGNAL(clicked()), this, SLOT(modifierInscription()));
     QObject::connect(modifEqui,SIGNAL(clicked()), this, SLOT(modifierEquivalence()));
 }
@@ -198,8 +197,7 @@ void DossierEditeur::sauverDossier(){
 }
 
 
-void DossierEditeur::ajoutCursus(){
-    //Ajout d'UV dans le cursus ne marche pas
+void DossierEditeur::modifCursus(){
     Cursus* newCur = new Cursus(nomNouvCur->text(), C_Branche, 0, 0, 0, 0);
     CursusEditeur* newFen = new CursusEditeur(&doss.getCursusManager(), newCur);
     newFen->show();

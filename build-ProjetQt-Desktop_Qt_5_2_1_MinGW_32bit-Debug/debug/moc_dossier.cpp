@@ -36,7 +36,7 @@ QT_MOC_LITERAL(3, 30, 11),
 QT_MOC_LITERAL(4, 42, 19),
 QT_MOC_LITERAL(5, 62, 19)
     },
-    "DossierEditeur\0sauverDossier\0\0ajoutCursus\0"
+    "DossierEditeur\0sauverDossier\0\0modifCursus\0"
     "modifierInscription\0modifierEquivalence\0"
 };
 #undef QT_MOC_LITERAL
@@ -75,7 +75,7 @@ void DossierEditeur::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         DossierEditeur *_t = static_cast<DossierEditeur *>(_o);
         switch (_id) {
         case 0: _t->sauverDossier(); break;
-        case 1: _t->ajoutCursus(); break;
+        case 1: _t->modifCursus(); break;
         case 2: _t->modifierInscription(); break;
         case 3: _t->modifierEquivalence(); break;
         default: ;

@@ -25,8 +25,8 @@ class Dossier{ //singleton
     static Dossier* instanceUnique;
 
     Dossier(CursusManager& c, Inscription** i, Equivalence** e, bool aes, bool B2, unsigned int ni=0, unsigned int ne=0) : cursus(c), inscriptions(i), equivalences(e), activiteExtraScolaire(aes), niveauB2(B2), nbIns(ni), nbEq(ne) {}
-    Dossier() :cursus(CursusManager::getInstance()), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0) {}
-    Dossier(CursusManager& c): cursus(c), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false) {}
+    Dossier() :cursus(CursusManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0) {}
+    Dossier(CursusManager& c): cursus(c), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0) {}
     Dossier(const Dossier* instance);
     virtual ~Dossier();
     virtual void operator=(const Dossier&){}
@@ -39,8 +39,8 @@ public :
     unsigned int getNbEq() const{return nbEq;}
     bool getActiviteES(){return activiteExtraScolaire;}
     bool getnivB2(){return niveauB2;}
-    void setInscriptions(Inscription** i){inscriptions=i; nbIns++;}
-    void setEquivalences(Equivalence** e){equivalences=e; nbEq++;}
+    void addInscription(Inscription* i){inscriptions[nbIns++]=i;}
+    void addEquivalence(Equivalence* e){equivalences[nbEq++]=e;}
     void setAES(bool val){activiteExtraScolaire = val;}
     void setNivB2(bool val){niveauB2 = val;}
     static Dossier& donneInstance(CursusManager& c);
@@ -90,7 +90,7 @@ public :
 public slots :
     void sauverDossier();
     //void fenetreAjoutCursus();
-    void ajoutCursus();
+    void modifCursus();
     void modifierInscription();
     void modifierEquivalence();
 };

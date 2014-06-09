@@ -294,6 +294,12 @@
         <credits>6</credits>
         <categorie>TM</categorie>
     </uv>
+    <uv automne="false" printemps="true">
+        <code>LO21</code>
+        <titre>Programmation Et Conception Orientees Objet </titre>
+        <credits>6</credits>
+        <categorie>CS</categorie>
+    </uv>
     <uv automne="false" printemps="false">
         <code>LO22</code>
         <titre>Genie Logiciel</titre>
@@ -1539,18 +1545,6 @@
     <uv automne="false" printemps="false">
         <code>UXD01</code>
         <titre>Design D'Experience</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
-        <code>LO21</code>
-        <titre>Programmation Orientée Objet</titre>
-        <credits>6</credits>
-        <categorie>TM</categorie>
-    </uv>
-    <uv automne="false" printemps="false">
-        <code>LOpoueet</code>
-        <titre>Programmation Orientée Objet</titre>
         <credits>6</credits>
         <categorie>TM</categorie>
     </uv>

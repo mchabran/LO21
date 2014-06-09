@@ -1,5 +1,7 @@
 #include "MenuEditeur.h"
 #include "dossier.h"
+#include "CursusEditeur.h"
+#include "CursusFinder.h"
 
 
 MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
@@ -8,7 +10,9 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
     ajoutEqui = new QPushButton("Ajouter Equivalence", this);
     ajoutInscr = new QPushButton("Ajouter Inscription", this);
     consultUV = new QPushButton("Consulter/Modifier une UV", this);
+    ajoutCursus = new QPushButton("Ajouter Cursus", this);
     consultCursus = new QPushButton("Consulter/Modifier un cursus", this);
+
 
     coucheH1 = new QHBoxLayout;
     coucheH1->addWidget(ajoutDoss);
@@ -19,25 +23,37 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
     coucheH3 = new QHBoxLayout;
     coucheH3->addWidget(consultUV);
     coucheH3->addWidget(consultCursus);
+    coucheH4 = new QHBoxLayout;
+    coucheH4->addWidget(ajoutCursus);
 
     couche = new QVBoxLayout;
     couche->addItem(coucheH1);
     couche->addItem(coucheH2);
     couche->addItem(coucheH3);
+    couche->addItem(coucheH4);
     setLayout(couche);
 
     QObject::connect(ajoutDoss, SIGNAL(clicked()), this, SLOT(ajouterDossier()));
-    QObject::connect(consultDoss, SIGNAL(clicked()), this, SLOT(consulterDossier()));
+    QObject::connect(consultDoss, SIGNAL(clicked()), this, SLOT(ajouterDossier()));
+    QObject::connect(ajoutCursus, SIGNAL(clicked()), this, SLOT(ajouterCursus()));
+    QObject::connect(consultCursus, SIGNAL(clicked()), this, SLOT(consulterCursus()));
 
 }
 
 void MenuEditeur::ajouterDossier(){
-    CursusManager& cm = CursusManager::getInstance();
     DossierEditeur* fen = new DossierEditeur(um);
     fen->show();
 }
 
-void MenuEditeur::consulterDossier(){
+void MenuEditeur::ajouterCursus(){
+    CursusManager& cm = CursusManager::getInstance();
+    CursusEditeur* fen = new CursusEditeur(&cm);
+    fen->show();
+}
 
+void MenuEditeur::consulterCursus(){
+    CursusManager& cm = CursusManager::getInstance();
+    CursusFinder* fen = new CursusFinder(&cm);
+    fen->show();
 }
 

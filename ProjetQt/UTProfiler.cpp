@@ -69,6 +69,19 @@ QString NoteToString(const Note& n){
     }
 }
 
+Note StringToNote(const QString &n){
+    if (n== "A") return A;
+    if (n== "B") return B;
+    if (n== "C") return C;
+    if (n== "D") return D;
+    if (n== "E") return E;
+    if (n== "F") return F;
+    if (n== "FX") return FX;
+    if (n== "RES") return RES;
+    if (n== "ABS") return ABS;
+    if (n== "EC") return EC;
+}
+
 UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){}
 
 void UVManager::load(const QString& f){
