@@ -1,6 +1,7 @@
 #ifndef INSCRIPTION_H
 #define INSCRIPTION_H
 #include "UTProfiler.h"
+#include "dossier.h"
 #include <QWidget>
 #include <QPushButton>
 #include <QLineEdit>
@@ -26,8 +27,11 @@ public:
         bool uvResussie(){if (resultat==A || resultat==B || resultat==C || resultat==D || resultat==E) return true; return false;}
 };
 
+class Dossier;
+
 class InscriptionEditeur : public QWidget{
     Q_OBJECT
+    Dossier* unDossier;
     Inscription* inscription;
     QLabel* UVLabel;
     QLineEdit* uv;
@@ -39,7 +43,7 @@ class InscriptionEditeur : public QWidget{
     QHBoxLayout* coucheh;
     QPushButton* sauver;
 public :
-    InscriptionEditeur(Inscription *ins=0, QWidget* parent=0);
+    InscriptionEditeur(Dossier* d, Inscription *ins=0, QWidget* parent=0);
 public slots :
     void modifRes();
 };

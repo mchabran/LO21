@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include "cursus.h"
 #include "UTProfiler.h"
+#include "dossier.h"
 
 class Equivalence{
     QString nomEtablissement;
@@ -31,9 +32,10 @@ public :
 
 };
 
-
+class Dossier;
 class EquivalenceEditeur : public QWidget{
     Q_OBJECT
+    Dossier* unDossier;
     Equivalence* equivalence;
     QLabel* nomEtLabel;
     QLineEdit* nomEt;
@@ -52,7 +54,7 @@ class EquivalenceEditeur : public QWidget{
     QPushButton* sauver;
     QPushButton* ajouter;
 public :
-    EquivalenceEditeur(Equivalence *eq=0, QWidget* parent=0);
+    EquivalenceEditeur(Dossier* d,Equivalence *eq=0, QWidget* parent=0);
 public slots :
     void modifEqui();
 };

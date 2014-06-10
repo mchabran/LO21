@@ -7,7 +7,7 @@ QLineEdit* semestre;
 QLabel* noteLabel;
 QComboBox* note;
 
-InscriptionEditeur::InscriptionEditeur(Inscription* ins, QWidget* parent) : inscription(ins){
+InscriptionEditeur::InscriptionEditeur(Dossier* d, Inscription* ins, QWidget* parent) : unDossier(d), inscription(ins), QWidget(parent){
     UVLabel = new QLabel("UV", this);
     uv = new QLineEdit;
     semestreLabel = new QLabel("Semestre", this);
@@ -67,6 +67,7 @@ void InscriptionEditeur::modifRes(){ //La modification ne se voit pas dans le ta
         Semestre sem = StringToSemestre(semestre->text());
         Note res = StringToNote(resultat->currentText());
         inscription = new Inscription(nuv, sem, res);
+        unDossier->addInscription(inscription);
     }
     close();
 }
