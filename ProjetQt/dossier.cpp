@@ -5,12 +5,15 @@
 
 Dossier* Dossier::instanceUnique=0;
 
-Dossier::Dossier(CursusManager& c, UVManager& u, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int ni, unsigned int ne): cursus(c), UVM(u),activiteExtraScolaire(aes), niveauB2(B2), nbIns(ni), nbEq(ne), nbMaxEq(0), nbMaxIns(0), fileI(""), fileE(""), fileD("") {
+Dossier::Dossier(CursusManager& c, UVManager& u, Cursus** tabCur, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int nc, unsigned int ni, unsigned int ne): CM(c), UVM(u),activiteExtraScolaire(aes), niveauB2(B2), nbCur(0), nbIns(0), nbEq(0), nbMaxCur(0), nbMaxEq(0), nbMaxIns(0), fileI(""), fileE(""), fileD("") {
     for (unsigned int i=0; i<ni;i++){
         this->addInscription(tabI[i]);
     }
     for (unsigned j=0; j<ne;j++){
         this->addEquivalence(tabE[j]);
+    }
+    for (unsigned j=0; j<nc;j++){
+        this->addCursus(tabCur[j]);
     }
 }
 
@@ -35,6 +38,26 @@ void Dossier::addEquivalence(Equivalence* e){
         delete[] old;
     }
     equivalences[nbEq++]=e;
+}
+
+void Dossier::addCursus(Cursus* c){
+    if(nbCur==nbMaxCur){
+        Cursus** newTab=new Cursus*[nbMaxCur+10];
+        for(unsigned int i=0; i<nbCur;i++) newTab[i]=cursus[i];
+        nbMaxCur+=10;
+        Cursus** old=cursus;
+        cursus=newTab;
+        delete[] old;
+    }
+    cursus[nbCur++]=c;
+}
+
+void Dossier::supprCur(Cursus* c){
+    unsigned int i =0;
+    while(cursus[i] != c) i++;
+    for(unsigned int j=i; j<nbCur; j++)
+        cursus[j]=cursus[j+1];
+    nbCur--;
 }
 
 
@@ -63,7 +86,7 @@ Dossier& Dossier::donneInstance(CursusManager &c, UVManager& u){
     return *instanceUnique;
 }
 
-DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWidget(parent), doss(Dossier::donneInstance(CursusManager::getInstance(), UVManager::getInstance())){
+DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWidget(parent), CM(CursusManager::getInstance()), doss(Dossier::donneInstance(CursusManager::getInstance(), UVManager::getInstance())){
     this->setWindowTitle(QString("Consultation du dossier"));
     cursusLabel = new QLabel("Cursus", this);
     equivalencesLabel = new QLabel("Equivalences", this);
@@ -83,18 +106,18 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
     ajoutInscr = new QPushButton("Ajouter", this);
     nomEquiAModif = new QLineEdit("Nom Etablissement", this);
-    ajouterCursus = new QPushButton("Modifier", this);
+    ajouterCursus = new QPushButton("Ajouter", this);
+    supprimerCursus = new QPushButton("Supprimer", this);
     sauver = new QPushButton("Sauver", this);
     annuler = new QPushButton("Annuler", this);
 
 
     couche= new QVBoxLayout;
 
-    Cursus** cur = doss.getCursusManager().getMesCursus();
     cursus = new QComboBox(this);
     unsigned int i=0;
-    while(i<doss.getCursusManager().getNbCursus()){
-        cursus->addItem(cur[i]->getNom());
+    while(i<doss.getNbCur()){
+        cursus->addItem(doss.getCursus()[i]->getNom());
         i++;
     }
 
@@ -150,6 +173,7 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     coucheH1->addWidget(cursus);
     coucheH1->addWidget(nomNouvCur);
     coucheH1->addWidget(ajouterCursus);
+    coucheH1->addWidget(supprimerCursus);
 
 
     Inscription** ins=doss.getInscriptions();
@@ -232,7 +256,8 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
     QObject::connect(sauver,SIGNAL(clicked()), this, SLOT(sauverDossier()));
     QObject::connect(annuler,SIGNAL(clicked()), this, SLOT(close()));
-    QObject::connect(ajouterCursus,SIGNAL(clicked()), this, SLOT(modifCursus()));
+    QObject::connect(ajouterCursus,SIGNAL(clicked()), this, SLOT(ajoutCursus()));
+    QObject::connect(supprimerCursus,SIGNAL(clicked()), this, SLOT(supprimerCur()));
     QObject::connect(modifInscr,SIGNAL(clicked()), this, SLOT(modifierInscription()));
     QObject::connect(modifEqui,SIGNAL(clicked()), this, SLOT(modifierEquivalence()));
     QObject::connect(ajoutInscr, SIGNAL(clicked()), this, SLOT(ajoutInscription()));
@@ -249,10 +274,35 @@ void DossierEditeur::sauverDossier(){
 }
 
 
-void DossierEditeur::modifCursus(){
-    Cursus* newCur = new Cursus(nomNouvCur->text(), C_Branche, 0, 0, 0, 0);
-    CursusEditeur* newFen = new CursusEditeur(&doss.getCursusManager(), newCur);
-    newFen->show();
+void DossierEditeur::ajoutCursus(){
+    try{
+    QString s = nomNouvCur->text();
+    doss.addCursus(&CM.getCursus(s));
+    QMessageBox::information(this, "Cursus Ajouté", "Cursus correctement ajouté");
+    nomNouvCur->clear();
+    cursus->addItem(s);
+    }
+    catch(UTProfilerException e){
+        QMessageBox::information(this, "Erreur", "Cursus inexistant");
+    }
+}
+
+void DossierEditeur::supprimerCur(){
+    try{
+    QString s = nomNouvCur->text();
+    doss.supprCur(&CM.getCursus(s));
+    int i=0;
+    cursus->setCurrentIndex(i);
+    while(s!=cursus->currentText()){
+        cursus->setCurrentIndex(i++);
+    }
+    cursus->removeItem(cursus->currentIndex());
+    nomNouvCur->clear();
+    QMessageBox::information(this, "Cursus Supprimé", "Cursus correctement supprimé");
+    }
+    catch(UTProfilerException e){
+        QMessageBox::information(this, "Erreur", "Cursus inexistant");
+    }
 }
 
 void DossierEditeur::modifierInscription(bool j){
@@ -338,22 +388,23 @@ void Dossier::loadInscription(const QString& f){
 }
 
 void Dossier::saveInscription(const QString& f){
-    //fileI=f;
+    QMessageBox::information(0, "Coucou", "Je suis là");
+    fileI=f;
     QFile newfile(fileI);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
      stream.setAutoFormatting(true);
      stream.writeStartDocument();
      stream.writeStartElement("Inscription");
-     stream.writeTextElement("coucou", "coucou");
-     /*for(unsigned int i=0; i<nbIns; i++){
-         stream.writeTextElement("coucou", "coucou");
-         /*stream.writeStartElement("UV");
+     //stream.writeTextElement("coucou", "coucou");
+     for(unsigned int i=0; i<nbIns; i++){
+         //stream.writeTextElement("coucou", "coucou");
+         stream.writeStartElement("UV");
          stream.writeTextElement("nom",inscriptions[i]->getUV().getCode());
          stream.writeTextElement("semestre",semestreToString(inscriptions[i]->getSemestre()));
          stream.writeTextElement("note",NoteToString(inscriptions[i]->getResultat()));
          stream.writeEndElement();
-     }*/
+     }
      stream.writeEndElement();
      stream.writeEndDocument();
      newfile.close();

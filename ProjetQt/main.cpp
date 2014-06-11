@@ -5,8 +5,6 @@
 #include "UTProfiler.h"
 #include "UVEditeur.h"
 #include "cursus.h"
-/*#include "TC.h"
-#include "HuTech.h"*/
 #include "dossier.h"
 #include "CursusManager.h"
 #include "CursusEditeur.h"
@@ -25,7 +23,7 @@ int main(int argc, char* argv[]) {
 
    //***********Fin*CursusManager********//
 
-
+   QMessageBox::information(0, "Chargement Fichier", "Chargez le fichier UV_UTC.xml");
    UVManager& m=UVManager::getInstance();
    QString chemin = QFileDialog::getOpenFileName();
    m.load(chemin);
@@ -41,8 +39,8 @@ int main(int argc, char* argv[]) {
   // UVFinder fenetre(&m);
    //********Ajout d'UV ne marche pas*******
 
-   Cursus* c1 = new Cursus("Tronc commun", C_TC, 42, 36, 12, 6);
-   Cursus* c2 = new Cursus("GI", C_Branche, 42, 36, 12, 6);
+   /*Cursus* c1 = new Cursus("Tronc commun", C_TC, 42, 36, 12, 6);
+   Cursus* c2 = new Cursus("GI", C_Branche, 42, 36, 12, 6);*/
 
    //(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP)
    //CursusFinder fenetre(c);
@@ -67,10 +65,8 @@ int main(int argc, char* argv[]) {
 
    /****** TEST DOSSIER *****/
    Semestre* a13 = new Semestre(Automne, 2013);
-   Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
-   Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
-
-
+   //Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
+   //Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
 
 
    QString L1[3]={"MT22", "PS04", "CM11"};
@@ -83,16 +79,17 @@ int main(int argc, char* argv[]) {
    Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
    Dossier& doss = Dossier::donneInstance(cm, m);
    doss.addEquivalence(e1);
-   doss.addInscription(i1);
-   doss.addInscription(i2);
+   //doss.addInscription(i1);
+   //doss.addInscription(i2);
    doss.setNivB2(true);
 
    QString chemin2 = QFileDialog::getOpenFileName();
    doss.loadInscription(chemin2);
-   DossierEditeur fenetre(m);
+   //DossierEditeur fenetre(m);
 
 
-  // MenuEditeur fenetre(m);
+    //doss.libereInstance();
+   MenuEditeur fenetre(m);
    fenetre.show();
    return app.exec();
 }

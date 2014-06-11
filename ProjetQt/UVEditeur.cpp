@@ -128,7 +128,14 @@ UVFinder::UVFinder(UVManager* m, QWidget* parent) : QWidget(parent), manager(m){
 }
 
 void UVFinder::rechercherUV(){
-    UV& uv=manager->getUV(code->text());
+    try{
+    UV& uv=manager->getUV(code->text()); // CA PLANTE LA
     UVEditeur* fenetre2 = new UVEditeur(manager, uv);
     fenetre2->show();
+    }
+    catch(UTProfilerException e){
+        QMessageBox::information(this, "Erreur", "UV inexistante, boloss");
+        close();
+    }
+
 }

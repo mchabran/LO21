@@ -44,7 +44,7 @@ class Semestre {
         unsigned int annee;
 public:
         Semestre(){}
-        Semestre& operator=(const Semestre& s){saison=s.saison;annee=s.annee;}
+        Semestre& operator=(const Semestre& s){saison=s.saison;annee=s.annee; return *this;}
         Semestre(Saison s, unsigned int a):saison(s),annee(a){ if (annee<1972||annee>2099) throw UTProfilerException("annee non valide"); }
         Saison getSaison() const { return saison; }
         unsigned int getAnnee() const { return annee; }
