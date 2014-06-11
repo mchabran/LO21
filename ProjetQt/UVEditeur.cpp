@@ -129,9 +129,6 @@ UVFinder::UVFinder(UVManager* m, QWidget* parent) : QWidget(parent), manager(m){
 
 void UVFinder::rechercherUV(){
     UV& uv=manager->getUV(code->text());
-
     UVEditeur* fenetre2 = new UVEditeur(manager, uv);
     fenetre2->show();
-
-
 }

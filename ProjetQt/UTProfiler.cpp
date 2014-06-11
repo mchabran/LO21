@@ -226,14 +226,15 @@ UV* UVManager::trouverUV(const QString& c)const{
 }
 
 UV& UVManager::getUV(const QString& code){
-        UV* uv=trouverUV(code);
+    UV* uv=trouverUV(code);
     if (!uv) throw UTProfilerException("erreur, UVManager, UV inexistante",__FILE__,__LINE__);
-        return *uv;
+    return *uv;
 }
 
 const UV& UVManager::getUV(const QString& code)const{
-        return const_cast<UVManager*>(this)->getUV(code);
-                // on peut aussi dupliquer le code de la méthode non-const
+    UV* uv=trouverUV(code);
+    if (!uv) throw UTProfilerException("erreur, UVManager, UV inexistante",__FILE__,__LINE__);
+    return *uv;
 }
 
 UVManager::Handler UVManager::handler=Handler();

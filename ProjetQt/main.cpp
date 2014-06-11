@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
    //fenetre.ajouterTC("6", "24", "3"); // ??
 
    /****** TEST DOSSIER *****/
-  /* Semestre* a13 = new Semestre(Automne, 2013);
+   Semestre* a13 = new Semestre(Automne, 2013);
    Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
    Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
 
@@ -86,8 +86,8 @@ int main(int argc, char* argv[]) {
    doss.addInscription(i1);
    doss.addInscription(i2);
    doss.setNivB2(true);
-   DossierEditeur fenetre(m);
-*/
+   //DossierEditeur fenetre(m);
+
    MenuEditeur fenetre(m);
    fenetre.show();
    return app.exec();
