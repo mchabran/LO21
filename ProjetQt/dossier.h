@@ -19,7 +19,11 @@ class Equivalence;
 
 
 class Dossier{ //singleton
+    QString fileI; //fichier d'inscription
+    QString fileE; //fichier d'Equivalence
+    QString fileD; //fichier de Dossier
     CursusManager& cursus;
+    UVManager& UVM;
     Inscription** inscriptions;
     Equivalence** equivalences;
     bool activiteExtraScolaire;
@@ -30,9 +34,9 @@ class Dossier{ //singleton
     unsigned int nbMaxEq;
     static Dossier* instanceUnique;
 
-    Dossier(CursusManager& c, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int ni, unsigned int ne);
-    Dossier():cursus(CursusManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxEq(0), nbMaxIns(0) {}
-    Dossier(CursusManager& c): cursus(c), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxIns(0), nbMaxEq(0) {}
+    Dossier(CursusManager& c,UVManager& u, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int ni, unsigned int ne);
+    Dossier():cursus(CursusManager::getInstance()), UVM(UVManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxEq(0), nbMaxIns(0), fileI(""), fileE(""), fileD("") {}
+    Dossier(CursusManager& c, UVManager& u): cursus(c), UVM(u), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxIns(0), nbMaxEq(0),fileI(""), fileE(""), fileD("") {}
     Dossier(const Dossier* instance);
     virtual ~Dossier();
     virtual void operator=(const Dossier&){}
@@ -41,6 +45,11 @@ public :
     CursusManager& getCursusManager() const {return cursus;}
     Inscription** getInscriptions() const {return inscriptions;}
     void loadInscription(const QString& f);
+    void saveInscription(const QString &f);
+    void loadEquivalence(const QString& f);
+    void saveEquivalence(const QString& f);
+    void loadDossier(const QString &f);
+    void saveDossier(const QString &f);
     Equivalence** getEquivalences() const {return equivalences;}
     unsigned int getNbIns() const{return nbIns;}
     unsigned int getNbEq() const{return nbEq;}
@@ -50,7 +59,7 @@ public :
     void addEquivalence(Equivalence* e);
     void setAES(bool val){activiteExtraScolaire = val;}
     void setNivB2(bool val){niveauB2 = val;}
-    static Dossier& donneInstance(CursusManager& c);
+    static Dossier& donneInstance(CursusManager& c, UVManager& u);
     static void libereInstance();
 
     void load(const QString& f);

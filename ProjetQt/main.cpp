@@ -81,14 +81,18 @@ int main(int argc, char* argv[]) {
    cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);
 
    Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
-   Dossier& doss = Dossier::donneInstance(cm);
+   Dossier& doss = Dossier::donneInstance(cm, m);
    doss.addEquivalence(e1);
    doss.addInscription(i1);
    doss.addInscription(i2);
    doss.setNivB2(true);
-   //DossierEditeur fenetre(m);
 
-   MenuEditeur fenetre(m);
+   QString chemin2 = QFileDialog::getOpenFileName();
+   doss.loadInscription(chemin2);
+   DossierEditeur fenetre(m);
+
+
+  // MenuEditeur fenetre(m);
    fenetre.show();
    return app.exec();
 }

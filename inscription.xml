@@ -2,18 +2,12 @@
 <Inscription>
 	<UV>
 		<nom>NF16</nom>
-		<semestre>
-			<saison>automne</saison>
-			<annee>2013<annee>
-		</semestre>
+		<semestre>A2013</semestre>
 		<note>C</note>
 	</UV>
 	<UV>
-		<nom>MI01</nom>
-		<semestre>
-			<saison>automne</saison>
-			<annee>2013<annee>
-		</semestre>
+		<nom>TF07</nom>
+		<semestre>A2013</semestre>
 		<note>C</note>
 	</UV>
 </Inscription>

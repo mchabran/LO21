@@ -5,7 +5,7 @@
 
 Dossier* Dossier::instanceUnique=0;
 
-Dossier::Dossier(CursusManager& c, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int ni, unsigned int ne): cursus(c), activiteExtraScolaire(aes), niveauB2(B2), nbIns(ni), nbEq(ne), nbMaxEq(0), nbMaxIns(0) {
+Dossier::Dossier(CursusManager& c, UVManager& u, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int ni, unsigned int ne): cursus(c), UVM(u),activiteExtraScolaire(aes), niveauB2(B2), nbIns(ni), nbEq(ne), nbMaxEq(0), nbMaxIns(0), fileI(""), fileE(""), fileD("") {
     for (unsigned int i=0; i<ni;i++){
         this->addInscription(tabI[i]);
     }
@@ -57,18 +57,13 @@ void Dossier::libereInstance(){
     instanceUnique = 0;
 }
 
-Dossier& Dossier::donneInstance(CursusManager &c){
-    if (instanceUnique==0) instanceUnique= new Dossier;
+Dossier& Dossier::donneInstance(CursusManager &c, UVManager& u){
+    if (instanceUnique==0) instanceUnique= new Dossier(c, u);
 
     return *instanceUnique;
 }
 
-Dossier::~Dossier() {
-    delete[] inscriptions;
-    delete[] equivalences;
-}
-
-DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWidget(parent), doss(Dossier::donneInstance(CursusManager::getInstance())){
+DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWidget(parent), doss(Dossier::donneInstance(CursusManager::getInstance(), UVManager::getInstance())){
     this->setWindowTitle(QString("Consultation du dossier"));
     cursusLabel = new QLabel("Cursus", this);
     equivalencesLabel = new QLabel("Equivalences", this);
@@ -294,4 +289,85 @@ void DossierEditeur::ajoutEquivalence(){
     modifierEquivalence(1);
 }
 
+void Dossier::loadInscription(const QString& f){
+    //if (fileI!=f) this->~Dossier();
+    fileI=f;
 
+    QFile fin(fileI);
+    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        throw UTProfilerException("Erreur ouverture fichier UV");
+    }
+    QXmlStreamReader xml(&fin);
+    while(!xml.atEnd() && !xml.hasError()) {
+        QXmlStreamReader::TokenType token = xml.readNext();
+        if(token == QXmlStreamReader::StartDocument) continue;
+        if(token == QXmlStreamReader::StartElement) {
+            if(xml.name() == "Inscription") continue;
+            if(xml.name() == "UV") {
+                Inscription *i;
+                Semestre s;
+                QString code;
+                Note note;
+                xml.readNext();
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "UV")) {
+                    if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                        if(xml.name() == "nom") {
+                            xml.readNext(); code=xml.text().toString();
+                        }
+                        if(xml.name() == "semestre") {
+                            xml.readNext(); s=StringToSemestre(xml.text().toString());
+                        }
+                        if(xml.name() == "note") {
+                            xml.readNext(); note=StringToNote(xml.text().toString());
+                        }
+                    }
+                    // ...and next...
+                    xml.readNext();
+                }
+                const UV& u=UVM.getUV(code);
+                i=new Inscription(u, s, note);
+                addInscription(i);
+
+            }
+        }
+    }
+    if(xml.hasError()) {
+        throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+    }
+    xml.clear();
+}
+
+void Dossier::saveInscription(const QString& f){
+    //fileI=f;
+    QFile newfile(fileI);
+    if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
+     QXmlStreamWriter stream(&newfile);
+     stream.setAutoFormatting(true);
+     stream.writeStartDocument();
+     stream.writeStartElement("Inscription");
+     stream.writeTextElement("coucou", "coucou");
+     /*for(unsigned int i=0; i<nbIns; i++){
+         stream.writeTextElement("coucou", "coucou");
+         /*stream.writeStartElement("UV");
+         stream.writeTextElement("nom",inscriptions[i]->getUV().getCode());
+         stream.writeTextElement("semestre",semestreToString(inscriptions[i]->getSemestre()));
+         stream.writeTextElement("note",NoteToString(inscriptions[i]->getResultat()));
+         stream.writeEndElement();
+     }*/
+     stream.writeEndElement();
+     stream.writeEndDocument();
+     newfile.close();
+     if(stream.hasError()) {
+         throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+     }
+}
+Dossier::~Dossier() {
+    try {
+   if (fileI!="") saveInscription(fileI);}
+    catch (UTProfilerException e){
+        QLabel l(e.getInfo());
+        l.show();
+    }
+    delete[] inscriptions;
+    delete[] equivalences;
+}

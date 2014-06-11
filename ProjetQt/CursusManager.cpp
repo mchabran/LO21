@@ -105,8 +105,6 @@ void CursusManager::load(const QString& f){
                         }*/
                         if(xml.name() == "nom") {
                             xml.readNext(); nom=xml.text().toString();
-                            QLabel *fen1=new QLabel(nom);
-                            fen1->show();
                         }
                         if(xml.name()=="categorie"){
                             xml.readNext(); cat=StringToCategorieCursus(xml.text().toString());
