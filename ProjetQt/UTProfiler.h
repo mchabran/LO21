@@ -43,6 +43,8 @@ class Semestre {
         Saison saison;
         unsigned int annee;
 public:
+        Semestre(){}
+        Semestre& operator=(const Semestre& s){saison=s.saison;annee=s.annee;}
         Semestre(Saison s, unsigned int a):saison(s),annee(a){ if (annee<1972||annee>2099) throw UTProfilerException("annee non valide"); }
         Saison getSaison() const { return saison; }
         unsigned int getAnnee() const { return annee; }
@@ -54,8 +56,6 @@ inline Semestre StringToSemestre(const QString s){ Saison sais; if (s[0]==A) sai
                                                    QString ann = s[1]; ann.append(s[2]); ann.append(s[3]); ann.append(s[4]);
                                                    Semestre sem(sais, ann.toUInt());
                                                     return sem;}
-
-
 
 class UV {
     QString code;
