@@ -240,14 +240,12 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
 }
 
-
 void DossierEditeur::sauverDossier(){
     doss.setAES(activiteES->isChecked());
     doss.setNivB2(B2->isChecked());
     QMessageBox::information(this, "Sauvegarde Dossier", "Dossier sauvegardé");
     close();
 }
-
 
 void DossierEditeur::modifCursus(){
     Cursus* newCur = new Cursus(nomNouvCur->text(), C_Branche, 0, 0, 0, 0);
@@ -290,7 +288,7 @@ void DossierEditeur::ajoutEquivalence(){
 }
 
 void Dossier::loadInscription(const QString& f){
-    //if (fileI!=f) this->~Dossier();
+   //if (fileI!=f) this->~Dossier();
     fileI=f;
 
     QFile fin(fileI);
@@ -337,16 +335,152 @@ void Dossier::loadInscription(const QString& f){
     xml.clear();
 }
 
+void Dossier::loadEquivalence(const QString& f){
+   //if (fileI!=f) this->~Dossier();
+    fileE=f;
+
+    QFile fin(fileE);
+    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        throw UTProfilerException("Erreur ouverture fichier UV");
+    }
+    QXmlStreamReader xml(&fin);
+    while(!xml.atEnd() && !xml.hasError()) {
+        QXmlStreamReader::TokenType token = xml.readNext();
+        if(token == QXmlStreamReader::StartDocument) continue;
+        if(token == QXmlStreamReader::StartElement) {
+            if(xml.name() == "Equivalence") continue;
+            if(xml.name() == "equi") {
+                QString nom;
+                QString pays;
+                unsigned int CS;
+                unsigned int TM;
+                unsigned int TSH;
+                unsigned int SP;
+                xml.readNext();
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "equi")) {
+                    if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                        if(xml.name() == "nomEtablissement") {
+                            xml.readNext(); nom=xml.text().toString();
+                        }
+                        if(xml.name() == "pays") {
+                            xml.readNext(); pays=xml.text().toString();
+                        }
+                        if(xml.name() == "CS") {
+                            xml.readNext(); CS=xml.text().toString().toUInt();
+                        }
+                        if(xml.name() == "TM") {
+                            xml.readNext(); TM=xml.text().toString().toUInt();
+                        }
+                        if(xml.name() == "TSH") {
+                            xml.readNext(); TSH=xml.text().toString().toUInt();
+                        }
+                        if(xml.name() == "SP") {
+                            xml.readNext(); SP=xml.text().toString().toUInt();
+                        }
+                    }
+                    xml.readNext();
+                }
+
+                Equivalence *e=new Equivalence(nom, pays, CS, TM, TSH, SP);
+                addEquivalence(e);
+
+            }
+        }
+    }
+    if(xml.hasError()) {
+        throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+    }
+    xml.clear();
+}
+
+void Dossier::loadDossier(const QString& f){
+   //if (fileI!=f) this->~Dossier();
+    fileD=f;
+
+    QFile fin(fileD);
+    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        throw UTProfilerException("Erreur ouverture fichier UV");
+    }
+    QXmlStreamReader xml(&fin);
+    while(!xml.atEnd() && !xml.hasError()) {
+        QXmlStreamReader::TokenType token = xml.readNext();
+        if(token == QXmlStreamReader::StartDocument) continue;
+        if(token == QXmlStreamReader::StartElement) {
+            if(xml.name() == "Dossier") continue;
+            if(xml.name() == "unDossier") {
+                QString nomCursus;
+                Cursus **c=new Cursus[5];
+                unsigned int nC=0;
+                unsigned int nMC=5;
+                QString aes;
+                QString b2;
+                xml.readNext();
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "unDossier")) {
+                    if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                        if(xml.name()=="Cursus"){
+                            while (!xml.tokenType()==QXmlStreamReader::EndElement && xml.name() == "Cursus") {
+                                if(xml.tokenType() == QXmlStreamReader::StartElement) {
+                                    if(xml.name()=="nomCursus"){
+                                        xml.readNext(); nomCursus=xml.text().toString();
+                                        c[nC++]=CM.getCursus(nomCursus);
+                                    }
+                                    if (nC==nMC){
+                                        Cursus **newTab= new Cursus[nMC+5];
+                                        for(unsigned int i=0; i<nC;i++){
+                                            newTab[i]=c[i];
+                                            nMC+=5;
+                                            Cursus  *old=c;
+                                            c=newTab;
+                                            delete[] old;
+                                        }
+                                    }
+                                }
+                                xml.readNext();
+                            }
+                        }
+                        if(xml.name() == "aes") {
+                            QString val=xml.text().toString();
+                            aes=(val == "true" ? true : false);
+                        }
+                        if(xml.name() == "b2") {
+                            QString val=xml.text().toString();
+                            b2=(val == "true" ? true : false);
+                        }
+                    }
+                    xml.readNext();
+                }
+                Dossier d=Dossier::donneInstance(CM, UVM);
+                d.setAES(aes);
+                d.setNivB2(aes);
+                for (unsigned int i=0; i<nC;i++)
+                    d.addCursus(c[i]);
+
+                nC=0;
+                nMC=5;
+                Cursus** old=c;
+                c=new Cursus*[5];
+                delete[] old;
+
+            }
+        }
+    }
+    if(xml.hasError()) {
+        throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+    }
+    xml.clear();
+}
+
 void Dossier::saveInscription(const QString& f){
     //fileI=f;
-    QFile newfile(fileI);
-    if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
-     QXmlStreamWriter stream(&newfile);
+    QMessageBox::information(0, "connard de programme de merde", "tu vas marcher connard");
+    QFile nnewfile(fileI);
+    if (!nnewfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
+     QXmlStreamWriter stream(&nnewfile);
      stream.setAutoFormatting(true);
      stream.writeStartDocument();
-     stream.writeStartElement("Inscription");
+     /*stream.writeStartElement("Inscription");
      stream.writeTextElement("coucou", "coucou");
-     /*for(unsigned int i=0; i<nbIns; i++){
+     for(unsigned int i=0; i<nbIns; i++){
          stream.writeTextElement("coucou", "coucou");
          /*stream.writeStartElement("UV");
          stream.writeTextElement("nom",inscriptions[i]->getUV().getCode());
@@ -354,20 +488,18 @@ void Dossier::saveInscription(const QString& f){
          stream.writeTextElement("note",NoteToString(inscriptions[i]->getResultat()));
          stream.writeEndElement();
      }*/
-     stream.writeEndElement();
+     //stream.writeEndElement();
      stream.writeEndDocument();
-     newfile.close();
+     nnewfile.close();
      if(stream.hasError()) {
          throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
      }
 }
+
 Dossier::~Dossier() {
-    try {
-   if (fileI!="") saveInscription(fileI);}
-    catch (UTProfilerException e){
-        QLabel l(e.getInfo());
-        l.show();
-    }
-    delete[] inscriptions;
-    delete[] equivalences;
+    QMessageBox::information(0, "connard de programme de merde", "tu vas ùarcher connard");
+   if (fileI!="") saveInscription(fileI);
+   //QMessageBox::information("fuck","merde");
+   delete[] inscriptions;
+   delete[] equivalences;
 }

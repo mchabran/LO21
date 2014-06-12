@@ -19,9 +19,7 @@ class Equivalence;
 
 
 class Dossier{ //singleton
-    QString fileI; //fichier d'inscription
-    QString fileE; //fichier d'Equivalence
-    QString fileD; //fichier de Dossier
+
     CursusManager& cursus;
     UVManager& UVM;
     Inscription** inscriptions;
@@ -41,7 +39,9 @@ class Dossier{ //singleton
     virtual ~Dossier();
     virtual void operator=(const Dossier&){}
 public :
-
+    QString fileI; //fichier d'inscription
+    QString fileE; //fichier d'Equivalence
+    QString fileD; //fichier de Dossier
     CursusManager& getCursusManager() const {return cursus;}
     Inscription** getInscriptions() const {return inscriptions;}
     void loadInscription(const QString& f);

@@ -88,11 +88,11 @@ int main(int argc, char* argv[]) {
    doss.setNivB2(true);
 
    QString chemin2 = QFileDialog::getOpenFileName();
-   doss.loadInscription(chemin2);
+   doss.loadEquivalence(chemin2);
    DossierEditeur fenetre(m);
 
 
-  // MenuEditeur fenetre(m);
+   //MenuEditeur fenetre(m);
    fenetre.show();
    return app.exec();
 }
