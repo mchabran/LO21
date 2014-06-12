@@ -65,35 +65,38 @@ int main(int argc, char* argv[]) {
 
    /****** TEST DOSSIER *****/
    Semestre* a13 = new Semestre(Automne, 2013);
-   //Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
+   Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
    //Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
 
 
-   QString L1[3]={"MT22", "PS04", "CM11"};
-   QString L2[3]={"LO21", "NF17", "SR02"};
+   //QString L1[3]={"MT22", "PS04", "CM11"};
+   //QString L2[3]={"LO21", "NF17", "SR02"};
 
    CursusManager& cm = CursusManager::getInstance();
-   cm.ajouterCursus("Tronc commun", L1, 3, C_TC, 42, 36, 12, 6);
-   cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);
+   QString chemin3 = QFileDialog::getOpenFileName();
+   cm.load(chemin3);
+   //cm.ajouterCursus("Tronc commun", L1, 3, C_TC, 42, 36, 12, 6);
+   //cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);
 
    Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
    Dossier& doss = Dossier::donneInstance(cm, m);
    doss.addEquivalence(e1);
-   //doss.addInscription(i1);
+   doss.addInscription(i1);
    //doss.addInscription(i2);
-   doss.setNivB2(true);
+   //doss.setNivB2(true);
 
    QString chemin2 = QFileDialog::getOpenFileName();
-   DossierEditeur fenetre(m);
+   doss.loadDossier(chemin2);
+   //DossierEditeur fenetre(m);
 
 
-   //MenuEditeur fenetre(m);
+   MenuEditeur fenetre(m);
    //doss.loadInscription(chemin2);
    //DossierEditeur fenetre(m);
 
 
     //doss.libereInstance();
-   MenuEditeur fenetre(m);
+   //MenuEditeur fenetre(m);
    fenetre.show();
    return app.exec();
 }

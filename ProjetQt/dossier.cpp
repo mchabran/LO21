@@ -458,12 +458,13 @@ void Dossier::loadDossier(const QString& f){
         if(token == QXmlStreamReader::StartElement) {
             if(xml.name() == "Dossier") continue;
             if(xml.name() == "unDossier") {
+                Dossier d=Dossier::donneInstance(CM, UVM);
                 QString nomCursus;
-                Cursus **c=new Cursus[5];
-                unsigned int nC=0;
-                unsigned int nMC=5;
-                QString aes;
-                QString b2;
+                //Cursus **c=new Cursus[5];
+                //unsigned int nC=0;
+                //unsigned int nMC=5;
+                bool aes=false;
+                bool b2=false;
                 xml.readNext();
                 while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "unDossier")) {
                     if(xml.tokenType() == QXmlStreamReader::StartElement) {
@@ -472,17 +473,7 @@ void Dossier::loadDossier(const QString& f){
                                 if(xml.tokenType() == QXmlStreamReader::StartElement) {
                                     if(xml.name()=="nomCursus"){
                                         xml.readNext(); nomCursus=xml.text().toString();
-                                        c[nC++]=CM.getCursus(nomCursus);
-                                    }
-                                    if (nC==nMC){
-                                        Cursus **newTab= new Cursus[nMC+5];
-                                        for(unsigned int i=0; i<nC;i++){
-                                            newTab[i]=c[i];
-                                            nMC+=5;
-                                            Cursus  *old=c;
-                                            c=newTab;
-                                            delete[] old;
-                                        }
+                                        d.addCursus(&(CM.getCursus(nomCursus)));
                                     }
                                 }
                                 xml.readNext();
@@ -499,18 +490,9 @@ void Dossier::loadDossier(const QString& f){
                     }
                     xml.readNext();
                 }
-                Dossier d=Dossier::donneInstance(CM, UVM);
+
                 d.setAES(aes);
-                d.setNivB2(aes);
-                for (unsigned int i=0; i<nC;i++)
-                    d.addCursus(c[i]);
-
-                nC=0;
-                nMC=5;
-                Cursus** old=c;
-                c=new Cursus*[5];
-                delete[] old;
-
+                d.setNivB2(b2);
             }
         }
     }
@@ -521,7 +503,7 @@ void Dossier::loadDossier(const QString& f){
 }
 
 void Dossier::saveInscription(const QString& f){
-    QMessageBox::information(0, "Coucou", "Je suis là");
+    /*QMessageBox::information(0, "Coucou", "Je suis là");
     fileI=f;
     QFile newfile(fileI);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
@@ -544,7 +526,7 @@ void Dossier::saveInscription(const QString& f){
      nnewfile.close();
      if(stream.hasError()) {
          throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
-     }
+     }*/
 }
 
 Dossier::~Dossier() {
