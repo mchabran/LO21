@@ -39,8 +39,8 @@ int main(int argc, char* argv[]) {
   // UVFinder fenetre(&m);
    //********Ajout d'UV ne marche pas*******
 
-   /*Cursus* c1 = new Cursus("Tronc commun", C_TC, 42, 36, 12, 6);
-   Cursus* c2 = new Cursus("GI", C_Branche, 42, 36, 12, 6);*/
+   Cursus* c1 = new Cursus("Tronc commun", C_TC, 42, 36, 12, 6);
+   Cursus* c2 = new Cursus("GI", C_Branche, 42, 36, 12, 6);
 
    //(QString n, CategorieCursus cat, QString nbCS, QString nbTM, QString nbTSH, QString nbSP)
    //CursusFinder fenetre(c);
@@ -66,27 +66,31 @@ int main(int argc, char* argv[]) {
    /****** TEST DOSSIER *****/
    Semestre* a13 = new Semestre(Automne, 2013);
    Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
-   //Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
+   Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
 
 
    //QString L1[3]={"MT22", "PS04", "CM11"};
    //QString L2[3]={"LO21", "NF17", "SR02"};
 
-   CursusManager& cm = CursusManager::getInstance();
+    CursusManager& cm = CursusManager::getInstance();
+   QMessageBox::information(0, "Chargement Fichier", "Chargez le fichier cursus.xml");
    QString chemin3 = QFileDialog::getOpenFileName();
    cm.load(chemin3);
-   //cm.ajouterCursus("Tronc commun", L1, 3, C_TC, 42, 36, 12, 6);
-   //cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);
+   /*cm.ajouterCursus("Tronc commun", L1, 3, C_TC, 42, 36, 12, 6);
+   cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);*/
 
-   Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
+   //Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
    Dossier& doss = Dossier::donneInstance(cm, m);
-   doss.addEquivalence(e1);
+   //doss.addEquivalence(e1);
    doss.addInscription(i1);
-   //doss.addInscription(i2);
-   //doss.setNivB2(true);
+   doss.addInscription(i2);
+   doss.setNivB2(true);
+   //doss.addCursus(c1);
+   //doss.addCursus(c2);
 
+   QMessageBox::information(0, "Chargement fichier", "Chargez le fichier equivalences.xml");
    QString chemin2 = QFileDialog::getOpenFileName();
-   doss.loadDossier(chemin2);
+   doss.loadEquivalence(chemin2);
    //DossierEditeur fenetre(m);
 
 

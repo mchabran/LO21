@@ -18,18 +18,18 @@ EquivalenceEditeur::EquivalenceEditeur(Dossier* d, Equivalence* eq, QWidget* par
     spLabel = new QLabel("SP", this);
     nomEt = new QLineEdit;
     pays = new QLineEdit;
-    cs = new QLineEdit;
-    tm = new QLineEdit;
-    tsh = new QLineEdit;
-    sp = new QLineEdit;
+    cs = new QSpinBox;
+    tm = new QSpinBox;
+    tsh = new QSpinBox;
+    sp = new QSpinBox;
 
     if(equivalence!=0){
         nomEt->setText(equivalence->getNomEtablissement());
         pays->setText(equivalence->getPays());
-        cs->setText(QString::number(equivalence->getEquiCS()));
-        tm->setText(QString::number(equivalence->getEquiTM()));
-        tsh->setText(QString::number(equivalence->getEquiTSH()));
-        sp->setText(QString::number(equivalence->getEquiSP()));
+        cs->setValue(equivalence->getEquiCS());
+        tm->setValue(equivalence->getEquiTM());
+        tsh->setValue(equivalence->getEquiTSH());
+        sp->setValue(equivalence->getEquiSP());
     }
 
     sauver = new QPushButton("Sauver", this);

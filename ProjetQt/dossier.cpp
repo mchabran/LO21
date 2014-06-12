@@ -1,4 +1,5 @@
 #include "dossier.h"
+#include "DossierEditeur.h"
 #include "Equivalence.h"
 #include "CursusEditeur.h"
 #include <QDesktopWidget>
@@ -42,12 +43,12 @@ void Dossier::addEquivalence(Equivalence* e){
 
 void Dossier::addCursus(Cursus* c){
     if(nbCur==nbMaxCur){
-        Cursus** newTab=new Cursus*[nbMaxCur+10];
+        Cursus** newTab=new Cursus*[nbMaxCur+10]; // Ca plante là
         for(unsigned int i=0; i<nbCur;i++) newTab[i]=cursus[i];
         nbMaxCur+=10;
         Cursus** old=cursus;
         cursus=newTab;
-        delete[] old;
+        delete[] old; //PROBLEME
     }
     cursus[nbCur++]=c;
 }
@@ -116,6 +117,7 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
     cursus = new QComboBox(this);
     unsigned int i=0;
+    QMessageBox::information(0, "NB Cursus vu par dossier editeur", QString::number(doss.getNbCur()));
     while(i<doss.getNbCur()){
         cursus->addItem(doss.getCursus()[i]->getNom());
         i++;
@@ -532,7 +534,6 @@ void Dossier::saveInscription(const QString& f){
 Dossier::~Dossier() {
     QMessageBox::information(0, "connard de programme de merde", "tu vas ùarcher connard");
    if (fileI!="") saveInscription(fileI);
-   //QMessageBox::information("fuck","merde");
    delete[] inscriptions;
    delete[] equivalences;
 }

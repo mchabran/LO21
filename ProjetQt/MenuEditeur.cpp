@@ -4,9 +4,10 @@
 #include "CursusFinder.h"
 #include "UVEditeur.h"
 #include "Inscription.h"
+#include "DossierEditeur.h"
 
 
-MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
+MenuEditeur::MenuEditeur(UVManager& u, QWidget* parent) : um(u){
     ajoutDoss = new QPushButton("Ajouter Dossier", this);
     consultDoss = new QPushButton("Consulter/Modifier Dossier", this);
     consultUV = new QPushButton("Consulter/Modifier une UV", this);
@@ -22,6 +23,7 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
     coucheH3->addWidget(consultCursus);
     coucheH4 = new QHBoxLayout;
 
+
     couche = new QVBoxLayout;
     couche->addItem(coucheH1);
     couche->addItem(coucheH2);
@@ -33,6 +35,7 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
     QObject::connect(consultDoss, SIGNAL(clicked()), this, SLOT(ajouterDossier()));
     QObject::connect(consultCursus, SIGNAL(clicked()), this, SLOT(consulterCursus()));
     QObject::connect(consultUV, SIGNAL(clicked()), this, SLOT(consulterUV()));
+
 }
 
 void MenuEditeur::ajouterDossier(){
