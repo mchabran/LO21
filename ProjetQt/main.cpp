@@ -79,7 +79,7 @@ int main(int argc, char* argv[]) {
    //cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);
 
    Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
-   Dossier& doss = Dossier::donneInstance(cm, m);
+   Dossier& doss = Dossier::donneInstance(/*cm, m*/);
    doss.addEquivalence(e1);
    doss.addInscription(i1);
    //doss.addInscription(i2);

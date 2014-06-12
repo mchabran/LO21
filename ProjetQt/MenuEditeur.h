@@ -20,6 +20,7 @@ class MenuEditeur : public QWidget{
     QPushButton* ajoutEqui;
     QPushButton* ajoutInscr;
     QPushButton* consultUV;
+    QPushButton* fermeture;
    // QPushButton* ajoutCursus;
     QPushButton* consultCursus;
     QVBoxLayout* couche;
@@ -27,6 +28,7 @@ class MenuEditeur : public QWidget{
     QHBoxLayout* coucheH2;
     QHBoxLayout* coucheH3;
     QHBoxLayout* coucheH4;
+    QHBoxLayout* coucheH5;
 
 public :
     MenuEditeur(UVManager& m, QWidget* parent=0);
@@ -37,6 +39,7 @@ public slots :
     //void ajouterInscription();
     void consulterUV();
     void consulterCursus();
+    void fin();
 };
 
 #endif // MENUEDITEUR_H

@@ -11,6 +11,7 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
     consultDoss = new QPushButton("Consulter/Modifier Dossier", this);
     consultUV = new QPushButton("Consulter/Modifier une UV", this);
     consultCursus = new QPushButton("Edition de cursus", this);
+    fermeture= new QPushButton("Terminer", this);
 
 
     coucheH1 = new QHBoxLayout;
@@ -21,18 +22,22 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
     coucheH3->addWidget(consultUV);
     coucheH3->addWidget(consultCursus);
     coucheH4 = new QHBoxLayout;
+    coucheH5=new QHBoxLayout;
+    coucheH5->addWidget(fermeture);
 
     couche = new QVBoxLayout;
     couche->addItem(coucheH1);
     couche->addItem(coucheH2);
     couche->addItem(coucheH3);
     couche->addItem(coucheH4);
+    couche->addItem(coucheH5);
     setLayout(couche);
 
     QObject::connect(ajoutDoss, SIGNAL(clicked()), this, SLOT(ajouterDossier()));
     QObject::connect(consultDoss, SIGNAL(clicked()), this, SLOT(ajouterDossier()));
     QObject::connect(consultCursus, SIGNAL(clicked()), this, SLOT(consulterCursus()));
     QObject::connect(consultUV, SIGNAL(clicked()), this, SLOT(consulterUV()));
+    QObject::connect(fermeture, SIGNAL(clicked()), this, SLOT(fin()));
 }
 
 void MenuEditeur::ajouterDossier(){
@@ -58,3 +63,6 @@ void MenuEditeur::consulterUV(){
     fen->show();
 }
 
+void MenuEditeur::fin(){
+    //Dossier& d=
+}

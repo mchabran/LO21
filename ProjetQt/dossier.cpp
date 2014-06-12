@@ -81,13 +81,15 @@ void Dossier::libereInstance(){
     instanceUnique = 0;
 }
 
-Dossier& Dossier::donneInstance(CursusManager &c, UVManager& u){
+Dossier& Dossier::donneInstance(/*CursusManager &c, UVManager& u*/){
+    UVManager& u=UVManager::getInstance();
+    CursusManager& c=CursusManager::getInstance();
     if (instanceUnique==0) instanceUnique= new Dossier(c, u);
 
     return *instanceUnique;
 }
 
-DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWidget(parent), CM(CursusManager::getInstance()), doss(Dossier::donneInstance(CursusManager::getInstance(), UVManager::getInstance())){
+DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWidget(parent), CM(CursusManager::getInstance()), doss(Dossier::donneInstance(/*CursusManager::getInstance(), UVManager::getInstance()*/)){
     this->setWindowTitle(QString("Consultation du dossier"));
     cursusLabel = new QLabel("Cursus", this);
     equivalencesLabel = new QLabel("Equivalences", this);
@@ -266,6 +268,7 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
 }
 
+
 void DossierEditeur::sauverDossier(){
     doss.setAES(activiteES->isChecked());
     doss.setNivB2(B2->isChecked());
@@ -276,6 +279,7 @@ void DossierEditeur::sauverDossier(){
 void DossierEditeur::ajoutCursus(){
     try{
     QString s = nomNouvCur->text();
+    //CursusManager& CM=CursusManager::getInstance();
     doss.addCursus(&CM.getCursus(s));
     QMessageBox::information(this, "Cursus Ajouté", "Cursus correctement ajouté");
     nomNouvCur->clear();
@@ -288,6 +292,7 @@ void DossierEditeur::ajoutCursus(){
 
 void DossierEditeur::supprimerCur(){
     try{
+    //CursusManager& CM=CursusManager::getInstance();
     QString s = nomNouvCur->text();
     doss.supprCur(&CM.getCursus(s));
     int i=0;
@@ -373,6 +378,7 @@ void Dossier::loadInscription(const QString& f){
                     // ...and next...
                     xml.readNext();
                 }
+                //UVManager& UVM=UVManager::getInstance();
                 const UV& u=UVM.getUV(code);
                 i=new Inscription(u, s, note);
                 addInscription(i);
@@ -459,7 +465,8 @@ void Dossier::loadDossier(const QString& f){
         if(token == QXmlStreamReader::StartElement) {
             if(xml.name() == "Dossier") continue;
             if(xml.name() == "unDossier") {
-                Dossier& d=Dossier::donneInstance(CM, UVM);
+                //CursusManager& CM=CursusManager::getInstance();
+                Dossier& d=Dossier::donneInstance(/*CM, UVM*/);
                 QString nomCursus;
                 bool aes;
                 bool b2;
@@ -493,7 +500,7 @@ void Dossier::loadDossier(const QString& f){
                 }
                 d.setAES(aes);
                 d.setNivB2(b2);
-                            }
+            }
         }
     }
     if(xml.hasError()) {
