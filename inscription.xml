@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Inscription>
-	<UV>
-		<nom>NF16</nom>
-		<semestre>A2013</semestre>
-		<note>C</note>
-	</UV>
-	<UV>
-		<nom>TF07</nom>
-		<semestre>A2013</semestre>
-		<note>C</note>
-	</UV>
+    <coucou>coucou</coucou>
 </Inscription>
