@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Dossier>
-	<unDossier>
+	<unDossier aes="true" b2="false">
 		<Cursus>
 			<nomCursus>TC</nomCursus>
 			<nomCursus>GI</nomCursus>
 		</Cursus>
-		<aes>true</aes>
-		<b2>false<b2>
 	</unDossier>
 </Dossier>

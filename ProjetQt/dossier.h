@@ -37,8 +37,8 @@ class Dossier{ //singleton
     unsigned int nbMaxEq;
     static Dossier* instanceUnique;
     Dossier(CursusManager& c, UVManager& u, Cursus** tabCur, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int nc, unsigned int ni, unsigned int ne);
-    Dossier():CM(CursusManager::getInstance()), UVM(UVManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxEq(0), nbMaxIns(0), fileI(""), fileE(""), fileD("") {}
-    Dossier(CursusManager& c, UVManager& u): CM(c), UVM(u), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxIns(0), nbMaxEq(0),fileI(""), fileE(""), fileD("") {}
+    Dossier():CM(CursusManager::getInstance()), UVM(UVManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxEq(0), nbMaxIns(0), nbMaxCur(0), fileI(""), fileE(""), fileD("") {}
+    Dossier(CursusManager& c, UVManager& u): CM(c), UVM(u), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxIns(0), nbMaxEq(0), nbMaxCur(0),fileI(""), fileE(""), fileD("") {}
     Dossier(const Dossier* instance);
     virtual ~Dossier();
     virtual void operator=(const Dossier&){}
@@ -68,7 +68,7 @@ public :
     static Dossier& donneInstance(CursusManager& c, UVManager& u);
     static void libereInstance();
 
-    void load(const QString& f);
+    //void load(const QString& f);
     //void save(const QString& f);
 };
 

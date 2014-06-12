@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
    doss.addEquivalence(e1);
    doss.addInscription(i1);
    //doss.addInscription(i2);
-   //doss.setNivB2(true);
+   doss.setNivB2(true);
 
    QString chemin2 = QFileDialog::getOpenFileName();
    doss.loadDossier(chemin2);
@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
    //DossierEditeur fenetre(m);
 
 
-    //doss.libereInstance();
+   //doss.libereInstance();
    //MenuEditeur fenetre(m);
    fenetre.show();
    return app.exec();

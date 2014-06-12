@@ -28,6 +28,7 @@ void Dossier::addInscription(Inscription* i){
     }
     inscriptions[nbIns++]=i;
 }
+
 void Dossier::addEquivalence(Equivalence* e){
     if(nbEq==nbMaxEq){
         Equivalence** newTab=new Equivalence*[nbMaxEq+10];
@@ -458,18 +459,26 @@ void Dossier::loadDossier(const QString& f){
         if(token == QXmlStreamReader::StartElement) {
             if(xml.name() == "Dossier") continue;
             if(xml.name() == "unDossier") {
-                Dossier d=Dossier::donneInstance(CM, UVM);
+                Dossier& d=Dossier::donneInstance(CM, UVM);
                 QString nomCursus;
-                //Cursus **c=new Cursus[5];
-                //unsigned int nC=0;
-                //unsigned int nMC=5;
-                bool aes=false;
-                bool b2=false;
+                bool aes;
+                bool b2;
+                QXmlStreamAttributes attributes = xml.attributes();
+                if(attributes.hasAttribute("aes")) {
+                    QString val =attributes.value("aes").toString();
+                    aes=(val == "true" ? true : false);
+                }
+                if(attributes.hasAttribute("b2")) {
+                    QString val =attributes.value("b2").toString();
+                    b2=(val == "true" ? true : false);
+                }
+
                 xml.readNext();
-                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "unDossier")) {
+                while(!(xml.tokenType() == QXmlStreamReader::EndElement && xml.name()=="unDossier")) {
                     if(xml.tokenType() == QXmlStreamReader::StartElement) {
                         if(xml.name()=="Cursus"){
-                            while (!xml.tokenType()==QXmlStreamReader::EndElement && xml.name() == "Cursus") {
+                            xml.readNext();
+                            while (!(xml.tokenType()==QXmlStreamReader::EndElement && xml.name()=="Cursus")) {
                                 if(xml.tokenType() == QXmlStreamReader::StartElement) {
                                     if(xml.name()=="nomCursus"){
                                         xml.readNext(); nomCursus=xml.text().toString();
@@ -479,21 +488,12 @@ void Dossier::loadDossier(const QString& f){
                                 xml.readNext();
                             }
                         }
-                        if(xml.name() == "aes") {
-                            QString val=xml.text().toString();
-                            aes=(val == "true" ? true : false);
-                        }
-                        if(xml.name() == "b2") {
-                            QString val=xml.text().toString();
-                            b2=(val == "true" ? true : false);
-                        }
                     }
                     xml.readNext();
                 }
-
                 d.setAES(aes);
                 d.setNivB2(b2);
-            }
+                            }
         }
     }
     if(xml.hasError()) {
@@ -530,7 +530,7 @@ void Dossier::saveInscription(const QString& f){
 }
 
 Dossier::~Dossier() {
-    QMessageBox::information(0, "connard de programme de merde", "tu vas ùarcher connard");
+   QMessageBox::information(0, "connard de programme de merde", "tu vas marcher connard");
    if (fileI!="") saveInscription(fileI);
    //QMessageBox::information("fuck","merde");
    delete[] inscriptions;
