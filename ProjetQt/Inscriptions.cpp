@@ -53,7 +53,7 @@ InscriptionEditeur::InscriptionEditeur(Dossier* d, Inscription* ins, QWidget* pa
 
 }
 
-void InscriptionEditeur::modifRes(){ //La modification ne se voit pas dans le tableau quand la fenêtre de modif se ferme
+void InscriptionEditeur::modifRes(){
     if(inscription!=0){
     QString res = resultat->currentText();
     Note newnote = StringToNote(res);

@@ -23,4 +23,16 @@
             <uv>NF16</uv>
         </UVs>
     </unCursus>
+    <unCursus>
+        <nom>GB</nom>
+        <categorie>C_Branche</categorie>
+        <CS>45</CS>
+        <TM>43</TM>
+        <TSH>56</TSH>
+        <SP>43</SP>
+        <UVs>
+            <uv>BL22</uv>
+            <uv>MB11</uv>
+        </UVs>
+    </unCursus>
 </Cursus>

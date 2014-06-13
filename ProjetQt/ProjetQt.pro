@@ -20,14 +20,13 @@ HEADERS += \
     UVEditeur.h \
     cursus.h \
     dossier.h \
-    Branche.h \
     Equivalence.h \
     CursusFinder.h \
     CursusManager.h \
     CursusEditeur.h \
     Inscription.h \
     MenuEditeur.h \
-    main.h
+    DossierEditeur.h
 
 
 

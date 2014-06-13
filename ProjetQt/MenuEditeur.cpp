@@ -4,9 +4,10 @@
 #include "CursusFinder.h"
 #include "UVEditeur.h"
 #include "Inscription.h"
+#include "DossierEditeur.h"
 
 
-MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
+MenuEditeur::MenuEditeur(UVManager& u, QWidget* parent) : um(u){
     ajoutDoss = new QPushButton("Ajouter Dossier", this);
     consultDoss = new QPushButton("Consulter/Modifier Dossier", this);
     consultUV = new QPushButton("Consulter/Modifier une UV", this);
@@ -24,6 +25,7 @@ MenuEditeur::MenuEditeur(UVManager& m, QWidget* parent) : um(m){
     coucheH4 = new QHBoxLayout;
     coucheH5=new QHBoxLayout;
     coucheH5->addWidget(fermeture);
+
 
     couche = new QVBoxLayout;
     couche->addItem(coucheH1);
@@ -45,18 +47,11 @@ void MenuEditeur::ajouterDossier(){
     fen->show();
 }
 
-
 void MenuEditeur::consulterCursus(){
     CursusManager& cm2=CursusManager::getInstance();
-    /*if (cm2.file==0){
-        QMessageBox::information(this, "Chargement fichier", "Charger le fichier cursus.xml");
-        QString chemin3 = QFileDialog::getOpenFileName();
-        cm2.load(chemin3);
-    }*/
     CursusFinder* fenetre=new CursusFinder(&cm2);
     fenetre->show();
 }
-
 
 void MenuEditeur::consulterUV(){
     UVFinder* fen = new UVFinder(&um);

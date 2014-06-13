@@ -6,14 +6,8 @@ CursusFinder::CursusFinder(CursusManager* M, QWidget* parent) : cM(M), QWidget(p
 
     nomCursusLabel = new QLabel("Cursus :", this);
     nomCursus =new QComboBox(this);
-   /* for (unsigned int i=0;i<M->getNbCursus();i++){
-        nomCursus->addItem(M->getMesCursus()[i]->getNom());
-    }*/
-
-    //affichage
     cu=cM->getMesCursus()[0];
 
-    //nomLabel = new QLabel("Nom cursus", this);
     CSLabel = new QLabel("Crédits CS", this);
     TMLabel = new QLabel("Crédits TM", this);
     TSHLabel = new QLabel("Crédits TSH", this);
@@ -32,25 +26,9 @@ CursusFinder::CursusFinder(CursusManager* M, QWidget* parent) : cM(M), QWidget(p
     credTM->setReadOnly(true);
     credTSH->setReadOnly(true);
     credSP->setReadOnly(true);
-    //categorie->setDisabled(true);
 
-        this->actualisation();
+    this->actualisation();
 
-   /* credCS->setValue(cu->getCredCS());
-    credTM->setValue(cu->getCredTM());
-    credTSH->setValue(cu->getCredTSH());
-    credSP->setValue(cu->getCredSP());
-    QString cat=CategorieCursusToString(cu->getCategorie());
-    categorie->addItem(cat);
-    categorie->setCurrentText(cat);
-    for(unsigned int i=0; i<cu->getNbUV();i++){
-        const QString* s=cu->getTabUV();
-        UVs->addItem(s[i]);
-    }*/
-
-    //
-
-    //rechercher = new QPushButton("Rechercher");
     actualiserC= new QPushButton("Actualiser");
     annuler = new QPushButton("Annuler");
     editerC = new QPushButton("Editer");
@@ -67,10 +45,8 @@ CursusFinder::CursusFinder(CursusManager* M, QWidget* parent) : cM(M), QWidget(p
     coucheH3->addWidget(supprimerC);
     coucheH3->addWidget(editerC);
     coucheH3->addWidget(ajouterC);
-    //coucheH3->addWidget(rechercher);
     coucheH3->addWidget(annuler);
 
-    //affichage
     coucheH4=new QHBoxLayout;
     coucheH4->addWidget(CSLabel);
     coucheH4->addWidget(credCS);
@@ -96,7 +72,6 @@ CursusFinder::CursusFinder(CursusManager* M, QWidget* parent) : cM(M), QWidget(p
 
     couche= new QVBoxLayout;
     couche->addItem(coucheH1);
-   // couche->addItem(coucheH2);
     couche->addItem(coucheH8);
     couche->addItem(coucheH4);
     couche->addItem(coucheH5);
@@ -109,7 +84,6 @@ CursusFinder::CursusFinder(CursusManager* M, QWidget* parent) : cM(M), QWidget(p
     QObject::connect(supprimerC, SIGNAL(clicked()),this, SLOT(supprimer()));
     QObject::connect(editerC, SIGNAL(clicked()),this, SLOT(editer()));
     QObject::connect(ajouterC, SIGNAL(clicked()), SLOT(ajouter()));
-    //QObject::connect(rechercher, SIGNAL(clicked()), this , SLOT(rechercherCursus()));
     QObject::connect(annuler, SIGNAL(clicked()), this, SLOT(close()));
     QObject::connect(nomCursus, SIGNAL(currentIndexChanged(QString)),this, SLOT(afficher(QString)));
     QObject::connect(actualiserC, SIGNAL(clicked()), this, SLOT(afficher()));
@@ -156,25 +130,3 @@ void CursusFinder::actualisation(){
     afficher(nomCursus->itemText(0));
 }
 
-/*
-void CursusFinder::rechercherCursus(){ // Il faudrait une fonction qui récupère les infos dans un fichier cursus.xml LOL
-   if (nomCursus->text() == "Tronc commun") {
-        TC& tc = TC::donneInstance();
-        TCEditeur* fenetre2 = new TCEditeur(tc);
-        fenetre2->show();
-    }
-    else if (nomCursus->text()=="HuTech") {
-        HuTech& h = HuTech::donneInstance();
-        HTEditeur* ht = new HTEditeur(h);
-        ht->show();
-    }
-    //On ouvre un éditeur de cursus qui contient les infos du cursus qu'on cherche qui seront stockées dans un fichier
-    QString chemin = QFileDialog::getOpenFileName();
-    const QString recherche = nomCursus->text();
-    QMessageBox::information(this, "Coucou", "Cursus en cours de recherche"); //ok
-    Cursus& newCur = cursus.find(chemin, recherche);
-    QMessageBox::information(this, "Coucou", "Cursus trouvé");//pas ok
-
-    CursusEditeur* fenetre2 = new CursusEditeur(newCur);
-    fenetre2->show();
-}*/

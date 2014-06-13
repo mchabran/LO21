@@ -5,7 +5,6 @@
 #include <QTextCodec>
 #include <QtXml>
 #include <QMessageBox>
-QString UVManager::file="";
 
 QTextStream& operator<<(QTextStream& f, const UV& uv){
         return f<<uv.getCode()<<", "<<uv.getCategorie()<<", "<<uv.getNbCredits()<<" credits, "<<uv.getTitre();
@@ -83,7 +82,7 @@ Note StringToNote(const QString &n){
     if (n== "EC") return EC;
 }
 
-UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0)/*,file("")*/,modification(false){}
+UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){}
 
 void UVManager::load(const QString& f){
     if (file!=f) this->~UVManager();

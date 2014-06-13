@@ -2,8 +2,6 @@
 #include"cursus.h"
 
 //CAST
-QString CursusManager::file="";
-
 QString CategorieCursusToString(CategorieCursus c){
     switch(c){
     case C_TC: return "C_TC";
@@ -42,7 +40,7 @@ QString CursusToString(Cursus cu){
     return cu.getNom();
 }
 
-CursusManager::CursusManager():mesCursus(new Cursus*[10]),nbCursus(0),nbMaxCursus(10)/*,file("")*/{}
+CursusManager::CursusManager():mesCursus(new Cursus*[10]),nbCursus(0),nbMaxCursus(10),file(""){}
 
 Cursus* CursusManager::trouverCursus(const QString &c) const{
     for(unsigned int i=0; i<nbCursus;i++){
@@ -53,17 +51,12 @@ Cursus* CursusManager::trouverCursus(const QString &c) const{
 }
 
 CursusManager::~CursusManager(){
-    //if (file!="") save(file);
     for(unsigned int i=0; i<nbCursus; i++) delete mesCursus[i];
     delete[] mesCursus;
 }
 
 void CursusManager::load(const QString& f){
-    /*if (file!=f) {
-        this->~CursusManager();
-    }*/
     file=f;
-
     QFile fin(file);
     // If we can't open it, let's show an error message.
     if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -186,8 +179,8 @@ void CursusManager::ajouterCursus(const QString n, const QString* t, unsigned in
 }
 
 Cursus& CursusManager::getCursus(const QString& nom){
-        Cursus* cu=trouverCursus(nom);
-    if (!cu) throw UTProfilerException("erreur, CursusManager, Cursus inexistante",__FILE__,__LINE__);
+        Cursus* cu=trouverCursus(nom); //si le nom n'est pas trouvé la fonction trouverCursus retourne 0
+    if (!cu) throw UTProfilerException("erreur, CursusManager, Cursus inexistant",__FILE__,__LINE__);
         return *cu;
 }
 
@@ -203,12 +196,10 @@ CursusManager& CursusManager::getInstance(){
 }
 
 void CursusManager::libererInstance(){
-    //if (file!="") handler.instance->save(handler.instance->file);
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }
 
-void CursusManager::save(/*const QString& f*/){
-    //file=f;
+void CursusManager::save(){
     QFile newfile(file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);

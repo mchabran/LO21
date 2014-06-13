@@ -74,7 +74,6 @@ CursusEditeur::CursusEditeur(CursusManager* m, const Cursus* c, QWidget* parent)
     coucheH7=new QHBoxLayout;
     coucheH7->addWidget(UVsLabel);
     coucheH7->addWidget(UVs);
-    //coucheH7->addWidget(supprimerUV);
 
     coucheH8=new QHBoxLayout;
     coucheH8->addWidget(UVLabel);
@@ -132,8 +131,6 @@ void CursusEditeur::sauverCursus(){
     QMessageBox::information(this, "Sauvegarde", "Cursus sauvegardé");
     close();
 }
-
-//void ajouterCursus(const QString n, const QString* t, unsigned int nbU, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP); //fait et vérifié
 
 void CursusEditeur::ajouterCursus(){
     QString cursusN=nomCursus->text();

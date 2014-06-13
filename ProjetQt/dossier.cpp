@@ -1,4 +1,5 @@
 #include "dossier.h"
+#include "DossierEditeur.h"
 #include "Equivalence.h"
 #include "CursusEditeur.h"
 #include <QDesktopWidget>
@@ -43,12 +44,12 @@ void Dossier::addEquivalence(Equivalence* e){
 
 void Dossier::addCursus(Cursus* c){
     if(nbCur==nbMaxCur){
-        Cursus** newTab=new Cursus*[nbMaxCur+10];
+        Cursus** newTab=new Cursus*[nbMaxCur+10]; // Ca plante là
         for(unsigned int i=0; i<nbCur;i++) newTab[i]=cursus[i];
         nbMaxCur+=10;
         Cursus** old=cursus;
         cursus=newTab;
-        delete[] old;
+        delete[] old; //PROBLEME
     }
     cursus[nbCur++]=c;
 }
@@ -81,9 +82,9 @@ void Dossier::libereInstance(){
     instanceUnique = 0;
 }
 
-Dossier& Dossier::donneInstance(/*CursusManager &c, UVManager& u*/){
-    UVManager& u=UVManager::getInstance();
-    CursusManager& c=CursusManager::getInstance();
+Dossier& Dossier::donneInstance(CursusManager &c, UVManager& u){
+    //UVManager& u=UVManager::getInstance();
+    //CursusManager& c=CursusManager::getInstance();
     if (instanceUnique==0) instanceUnique= new Dossier(c, u);
 
     return *instanceUnique;
@@ -95,7 +96,6 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     equivalencesLabel = new QLabel("Equivalences", this);
     UVLabel = new QLabel("Inscriptions", this);
     recapLabel = new QLabel("Total crédits", this);
-    //resultatLabel = new QLabel("Résultat", this);
 
     nomNouvCur = new QLineEdit("Cursus à modifier", this);
     activiteES = new QCheckBox("Activité extra-scolaire", this);
@@ -119,6 +119,7 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
     cursus = new QComboBox(this);
     unsigned int i=0;
+    QMessageBox::information(0, "NB Cursus vu par dossier editeur", QString::number(doss.getNbCur()));
     while(i<doss.getNbCur()){
         cursus->addItem(doss.getCursus()[i]->getNom());
         i++;
@@ -217,9 +218,6 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
 
     coucheH2->addWidget(ajoutInscr);
 
-
-
-
     recapCred = new QTableWidget(this);
     recapCred->setColumnCount(5);
     recapCred->setRowCount(2);
@@ -240,9 +238,6 @@ DossierEditeur::DossierEditeur(UVManager& m, QWidget* parent) : manager(m), QWid
     coucheH3 = new QHBoxLayout;
     coucheH3->addWidget(recapLabel);
     coucheH3->addWidget(recapCred);
-
-
-
     coucheH4 = new QHBoxLayout;
     coucheH4->addWidget(activiteES);
     coucheH4->addWidget(B2);
@@ -279,7 +274,6 @@ void DossierEditeur::sauverDossier(){
 void DossierEditeur::ajoutCursus(){
     try{
     QString s = nomNouvCur->text();
-    //CursusManager& CM=CursusManager::getInstance();
     doss.addCursus(&CM.getCursus(s));
     QMessageBox::information(this, "Cursus Ajouté", "Cursus correctement ajouté");
     nomNouvCur->clear();
@@ -292,7 +286,6 @@ void DossierEditeur::ajoutCursus(){
 
 void DossierEditeur::supprimerCur(){
     try{
-    //CursusManager& CM=CursusManager::getInstance();
     QString s = nomNouvCur->text();
     doss.supprCur(&CM.getCursus(s));
     int i=0;
@@ -344,7 +337,6 @@ void DossierEditeur::ajoutEquivalence(){
 }
 
 void Dossier::loadInscription(const QString& f){
-   //if (fileI!=f) this->~Dossier();
     fileI=f;
 
     QFile fin(fileI);
@@ -378,7 +370,6 @@ void Dossier::loadInscription(const QString& f){
                     // ...and next...
                     xml.readNext();
                 }
-                //UVManager& UVM=UVManager::getInstance();
                 const UV& u=UVM.getUV(code);
                 i=new Inscription(u, s, note);
                 addInscription(i);
@@ -393,7 +384,6 @@ void Dossier::loadInscription(const QString& f){
 }
 
 void Dossier::loadEquivalence(const QString& f){
-   //if (fileI!=f) this->~Dossier();
     fileE=f;
 
     QFile fin(fileE);
@@ -451,7 +441,6 @@ void Dossier::loadEquivalence(const QString& f){
 }
 
 void Dossier::loadDossier(const QString& f){
-   //if (fileI!=f) this->~Dossier();
     fileD=f;
 
     QFile fin(fileD);
@@ -465,8 +454,7 @@ void Dossier::loadDossier(const QString& f){
         if(token == QXmlStreamReader::StartElement) {
             if(xml.name() == "Dossier") continue;
             if(xml.name() == "unDossier") {
-                //CursusManager& CM=CursusManager::getInstance();
-                Dossier& d=Dossier::donneInstance(/*CM, UVM*/);
+                Dossier& d=Dossier::donneInstance();
                 QString nomCursus;
                 bool aes;
                 bool b2;
@@ -509,18 +497,14 @@ void Dossier::loadDossier(const QString& f){
     xml.clear();
 }
 
-void Dossier::saveInscription(/*const QString& f*/){
-    //QMessageBox::information(0, "Coucou", "Je suis là");
-    //fileI=f;
+void Dossier::saveInscription(){
     QFile newfile(fileI);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
      stream.setAutoFormatting(true);
      stream.writeStartDocument();
      stream.writeStartElement("Inscription");
-     //stream.writeTextElement("coucou", "coucou");
      for(unsigned int i=0; i<nbIns; i++){
-         //stream.writeTextElement("coucou", "coucou");
          stream.writeStartElement("UV");
          stream.writeTextElement("nom",inscriptions[i]->getUV().getCode());
          stream.writeTextElement("semestre",semestreToString(inscriptions[i]->getSemestre()));
@@ -536,18 +520,14 @@ void Dossier::saveInscription(/*const QString& f*/){
      }
 }
 
-void Dossier::saveEquivalence(/*const QString& f*/){
-    //QMessageBox::information(0, "Coucou", "Je suis là");
-    //fileI=f;
+void Dossier::saveEquivalence(){
     QFile newfile(fileE);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
      stream.setAutoFormatting(true);
      stream.writeStartDocument();
      stream.writeStartElement("Equivalence");
-     //stream.writeTextElement("coucou", "coucou");
      for(unsigned int i=0; i<nbEq; i++){
-         //stream.writeTextElement("coucou", "coucou");
          stream.writeStartElement("equi");
          stream.writeTextElement("nomEtablissement",equivalences[i]->getNomEtablissement());
          stream.writeTextElement("pays",equivalences[i]->getPays());
@@ -571,25 +551,17 @@ void Dossier::saveEquivalence(/*const QString& f*/){
 }
 
 Dossier::~Dossier() {
-   QMessageBox::information(0, "connard de programme de merde", "tu vas marcher connard");
-   //if (fileI!="") saveInscription(fileI);
-   //QMessageBox::information("fuck","merde");
    delete[] inscriptions;
    delete[] equivalences;
 }
 
-void Dossier::saveDossier(/*const QString& f*/){
-    //QMessageBox::information(0, "Coucou", "Je suis là");
-    //fileI=f;
+void Dossier::saveDossier(){
     QFile newfile(fileD);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
      stream.setAutoFormatting(true);
      stream.writeStartDocument();
      stream.writeStartElement("Dossier");
-     //stream.writeTextElement("coucou", "coucou");
-     //for(unsigned int i=0; i<nbEq; i++){
-         //stream.writeTextElement("coucou", "coucou");
      stream.writeStartElement("unDossier");
      stream.writeAttribute("aes", (getActiviteES())?"true":"false");
      stream.writeAttribute("b2", (getnivB2())?"true":"false");
