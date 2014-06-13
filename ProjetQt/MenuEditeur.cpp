@@ -64,5 +64,13 @@ void MenuEditeur::consulterUV(){
 }
 
 void MenuEditeur::fin(){
-    //Dossier& d=
+    Dossier& d=Dossier::donneInstance();
+    UVManager& u=UVManager::getInstance();
+    CursusManager& c=CursusManager::getInstance();
+    d.saveInscription();
+    d.saveEquivalence();
+    d.saveDossier();
+    u.save();
+    c.save();
+    this->close();
 }

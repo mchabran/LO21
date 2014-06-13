@@ -24,10 +24,10 @@ class CursusManager{
     static Handler handler;
 
 public:
-    QString file;
+    static QString file;
     Cursus* trouverCursus(const QString& c) const; //fait mais pas vérifier
     void load(const QString& f); //fait mais pas vérifier
-    void save(const QString& f); // fait
+    void save(/*const QString& f*/); // fait
     static CursusManager& getInstance(); // fait
     static void libererInstance(); // fait
     void ajouterCursus(const QString n, const QString* t, unsigned int nbU, CategorieCursus c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP); //fait et vérifié

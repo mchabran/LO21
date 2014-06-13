@@ -509,9 +509,9 @@ void Dossier::loadDossier(const QString& f){
     xml.clear();
 }
 
-void Dossier::saveInscription(const QString& f){
-    /*QMessageBox::information(0, "Coucou", "Je suis là");
-    fileI=f;
+void Dossier::saveInscription(/*const QString& f*/){
+    //QMessageBox::information(0, "Coucou", "Je suis là");
+    //fileI=f;
     QFile newfile(fileI);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
@@ -527,19 +527,84 @@ void Dossier::saveInscription(const QString& f){
          stream.writeTextElement("note",NoteToString(inscriptions[i]->getResultat()));
          stream.writeEndElement();
      }
-     //stream.writeEndElement();
+     stream.writeEndElement();
 
      stream.writeEndDocument();
-     nnewfile.close();
+     newfile.close();
      if(stream.hasError()) {
          throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
-     }*/
+     }
+}
+
+void Dossier::saveEquivalence(/*const QString& f*/){
+    //QMessageBox::information(0, "Coucou", "Je suis là");
+    //fileI=f;
+    QFile newfile(fileE);
+    if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
+     QXmlStreamWriter stream(&newfile);
+     stream.setAutoFormatting(true);
+     stream.writeStartDocument();
+     stream.writeStartElement("Equivalence");
+     //stream.writeTextElement("coucou", "coucou");
+     for(unsigned int i=0; i<nbEq; i++){
+         //stream.writeTextElement("coucou", "coucou");
+         stream.writeStartElement("equi");
+         stream.writeTextElement("nomEtablissement",equivalences[i]->getNomEtablissement());
+         stream.writeTextElement("pays",equivalences[i]->getPays());
+         QString cr; cr.setNum(equivalences[i]->getEquiCS());
+         stream.writeTextElement("CS",cr);
+         cr.setNum(equivalences[i]->getEquiTM());
+         stream.writeTextElement("TM",cr);
+         cr.setNum(equivalences[i]->getEquiTSH());
+         stream.writeTextElement("TSH",cr);
+         cr.setNum(equivalences[i]->getEquiSP());
+         stream.writeTextElement("SP",cr);
+         stream.writeEndElement();
+     }
+     stream.writeEndElement();
+
+     stream.writeEndDocument();
+     newfile.close();
+     if(stream.hasError()) {
+         throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+     }
 }
 
 Dossier::~Dossier() {
    QMessageBox::information(0, "connard de programme de merde", "tu vas marcher connard");
-   if (fileI!="") saveInscription(fileI);
+   //if (fileI!="") saveInscription(fileI);
    //QMessageBox::information("fuck","merde");
    delete[] inscriptions;
    delete[] equivalences;
+}
+
+void Dossier::saveDossier(/*const QString& f*/){
+    //QMessageBox::information(0, "Coucou", "Je suis là");
+    //fileI=f;
+    QFile newfile(fileD);
+    if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
+     QXmlStreamWriter stream(&newfile);
+     stream.setAutoFormatting(true);
+     stream.writeStartDocument();
+     stream.writeStartElement("Dossier");
+     //stream.writeTextElement("coucou", "coucou");
+     //for(unsigned int i=0; i<nbEq; i++){
+         //stream.writeTextElement("coucou", "coucou");
+     stream.writeStartElement("unDossier");
+     stream.writeAttribute("aes", (getActiviteES())?"true":"false");
+     stream.writeAttribute("b2", (getnivB2())?"true":"false");
+     stream.writeStartElement("Cursus");
+     for (unsigned int i=0; i<nbCur;i++){
+         stream.writeTextElement("nomCursus", getCursus()[i]->getNom());
+     }
+
+     stream.writeEndElement();
+     stream.writeEndElement();
+     stream.writeEndElement();
+
+     stream.writeEndDocument();
+     newfile.close();
+     if(stream.hasError()) {
+         throw UTProfilerException("Erreur lecteur fichier UV, parser xml");
+     }
 }

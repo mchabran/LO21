@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Inscription>
-    <coucou>coucou</coucou>
+    <UV>
+        <nom>NF16</nom>
+        <semestre>P2013</semestre>
+        <note>C</note>
+    </UV>
+    <UV>
+        <nom>TF07</nom>
+        <semestre>P2013</semestre>
+        <note>C</note>
+    </UV>
+    <UV>
+        <nom>SR02</nom>
+        <semestre>P2013</semestre>
+        <note>A</note>
+    </UV>
 </Inscription>

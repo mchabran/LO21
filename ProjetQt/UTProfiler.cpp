@@ -5,6 +5,7 @@
 #include <QTextCodec>
 #include <QtXml>
 #include <QMessageBox>
+QString UVManager::file="";
 
 QTextStream& operator<<(QTextStream& f, const UV& uv){
         return f<<uv.getCode()<<", "<<uv.getCategorie()<<", "<<uv.getNbCredits()<<" credits, "<<uv.getTitre();
@@ -82,7 +83,7 @@ Note StringToNote(const QString &n){
     if (n== "EC") return EC;
 }
 
-UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){}
+UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0)/*,file("")*/,modification(false){}
 
 void UVManager::load(const QString& f){
     if (file!=f) this->~UVManager();
@@ -165,8 +166,8 @@ void UVManager::load(const QString& f){
     xml.clear();
 }
 
-void UVManager::save(const QString& f){
-    file=f;
+void UVManager::save(/*const QString& f*/){
+    //file=f;
     QFile newfile( file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
@@ -191,7 +192,7 @@ void UVManager::save(const QString& f){
 }
 
 UVManager::~UVManager(){
-    if (file!="") save(file);
+    //if (file!="") save(file);
         for(unsigned int i=0; i<nbUV; i++) delete uvs[i];
         delete[] uvs;
 }
@@ -245,6 +246,7 @@ UVManager& UVManager::getInstance(){
 }
 
 void UVManager::libererInstance(){
+    //if (handler.instance->file!="") handler.instance->save(handler.instance->file);
     if (handler.instance) { delete handler.instance; handler.instance=0; }
 }
 

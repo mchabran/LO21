@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Equivalence>
-	<equi>
-		<nomEtablissement>Poudlard</nomEtablissement>
-		<pays>Angleterre</pays>
-		<CS>12</CS>
-		<TM>2</TM>
-		<TSH>3</TSH>
-		<SP>1</SP>
-	</equi>
-	<equi>
-		<nomEtablissement>MIT</nomEtablissement>
-		<pays>USA</pays>
-		<CS>12</CS>
-		<TM>2</TM>
-		<TSH>3</TSH>
-		<SP>1</SP>
-	</equi>
+    <equi>
+        <nomEtablissement>Poudlard</nomEtablissement>
+        <pays>Angleterre</pays>
+        <CS>12</CS>
+        <TM>2</TM>
+        <TSH>3</TSH>
+        <SP>1</SP>
+    </equi>
+    <equi>
+        <nomEtablissement>MIT</nomEtablissement>
+        <pays>USA</pays>
+        <CS>12</CS>
+        <TM>2</TM>
+        <TSH>3</TSH>
+        <SP>1</SP>
+    </equi>
 </Equivalence>

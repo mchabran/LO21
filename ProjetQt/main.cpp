@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
 
    /****** TEST DOSSIER *****/
    Semestre* a13 = new Semestre(Automne, 2013);
-   Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
+   //Inscription* i1 = new Inscription(m.getUV("LO21"), *a13, A);
    //Inscription* i2 = new Inscription(m.getUV("MT22"), *a13, E);
 
 
@@ -78,10 +78,10 @@ int main(int argc, char* argv[]) {
    //cm.ajouterCursus("Tronc commun", L1, 3, C_TC, 42, 36, 12, 6);
    //cm.ajouterCursus("GI", L2, 3, C_Branche, 42, 36, 12, 6);
 
-   Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
+   //Equivalence* e1 = new Equivalence("Harvard", "Angleterre", 12, 6, 8);
    Dossier& doss = Dossier::donneInstance(/*cm, m*/);
-   doss.addEquivalence(e1);
-   doss.addInscription(i1);
+   //doss.addEquivalence(e1);
+   //doss.addInscription(i1);
    //doss.addInscription(i2);
    doss.setNivB2(true);
 
@@ -89,6 +89,11 @@ int main(int argc, char* argv[]) {
    doss.loadDossier(chemin2);
    //DossierEditeur fenetre(m);
 
+   QString chemin4 = QFileDialog::getOpenFileName();
+   doss.loadInscription(chemin4);
+
+   QString chemin5 = QFileDialog::getOpenFileName();
+   doss.loadEquivalence(chemin5);
 
    MenuEditeur fenetre(m);
    //doss.loadInscription(chemin2);

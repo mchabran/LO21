@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Dossier>
-	<unDossier aes="true" b2="false">
-		<Cursus>
-			<nomCursus>TC</nomCursus>
-			<nomCursus>GI</nomCursus>
-		</Cursus>
-	</unDossier>
+    <unDossier aes="true" b2="false">
+        <Cursus>
+            <nomCursus>GI</nomCursus>
+        </Cursus>
+    </unDossier>
 </Dossier>

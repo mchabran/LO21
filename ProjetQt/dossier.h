@@ -38,7 +38,7 @@ class Dossier{ //singleton
     static Dossier* instanceUnique;
     Dossier(CursusManager& c, UVManager& u, Cursus** tabCur, Inscription** tabI, Equivalence** tabE, bool aes, bool B2, unsigned int nc, unsigned int ni, unsigned int ne);
     Dossier():CM(CursusManager::getInstance()), UVM(UVManager::getInstance()), inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbCur(0), nbMaxEq(0), nbMaxIns(0), nbMaxCur(0), fileI(""), fileE(""), fileD("") {}
-    Dossier(CursusManager& c, UVManager& u): CM(c), UVM(u),inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbIns(0), nbEq(0), nbMaxIns(0), nbMaxEq(0), nbMaxCur(0),fileI(""), fileE(""), fileD("") {}
+    Dossier(CursusManager& c, UVManager& u): CM(c), UVM(u),inscriptions(new Inscription*), equivalences(new Equivalence*), activiteExtraScolaire(false), niveauB2(false), nbCur(0), nbIns(0), nbEq(0), nbMaxIns(0), nbMaxEq(0), nbMaxCur(0),fileI(""), fileE(""), fileD("") {}
     Dossier(const Dossier* instance);
     virtual ~Dossier();
     virtual void operator=(const Dossier&){}
@@ -48,11 +48,11 @@ public :
     Cursus** getCursus() const {return cursus;}
     Inscription** getInscriptions() const {return inscriptions;}
     void loadInscription(const QString& f);
-    void saveInscription(const QString &f);
+    void saveInscription(/*const QString &f*/);
     void loadEquivalence(const QString& f);
-    void saveEquivalence(const QString& f);
+    void saveEquivalence(/*const QString& f*/);
     void loadDossier(const QString &f);
-    void saveDossier(const QString &f);
+    void saveDossier(/*const QString &f*/);
     Equivalence** getEquivalences() const {return equivalences;}
     unsigned int getNbCur() const{return nbCur;}
     unsigned int getNbIns() const{return nbIns;}

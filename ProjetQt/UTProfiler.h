@@ -97,7 +97,7 @@ private:
     UVManager& operator=(const UVManager& um);
     UVManager();
     ~UVManager();
-    QString file;
+    static QString file;
     friend struct Handler;
     struct Handler{
         UVManager* instance;
@@ -109,7 +109,7 @@ private:
 public:
 
     void load(const QString& f);
-    void save(const QString& f);
+    void save(/*const QString& f=0*/);
     static UVManager& getInstance();
     static void libererInstance();
     void ajouterUV(const QString& c, const QString& t, unsigned int nbc, Categorie cat, bool a, bool p);
