@@ -82,6 +82,28 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#36686afee2856efae97ccbb7e76fcc8a">Cursus</a> (QString n, <a class="el" href="cursus_8h.html#be9790179e0a28256945dfc6c7135378">CategorieCursus</a> cat, unsigned int nbCS, unsigned int nbTM, unsigned int nbTSH, unsigned int nbSP, const <a class="el" href="class_cursus.html">Cursus</a> *p=0)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur.  <a href="#36686afee2856efae97ccbb7e76fcc8a"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2b9ce9552bdcce1aae623e806bc3ca9c"></a><!-- doxytag: member="Cursus::tabUV" ref="2b9ce9552bdcce1aae623e806bc3ca9c" args="" -->
+QString *&nbsp;</td><td class="memItemRight" valign="bottom"><b>tabUV</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#2dd7a44feeeeb67852d0663551173139">nbUV</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#f1ca7005364ab02502fdb34d0dc5e614">nbMaxUV</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const <a class="el" href="class_cursus.html">Cursus</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#62de88ad6dc3ff19424def8979372e3e">parent</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#43f4c1cb7dcf04aa22a331a946474dc6">nom</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="cursus_8h.html#be9790179e0a28256945dfc6c7135378">CategorieCursus</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#0cf2d727a7305df69c46b706e0a4580d">categorie</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#5252837a72ef1b4c1b788e7be67a8edc">credCS</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#bd1452f39ad536f8691f35e3efab3a49">credTM</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#6e0325c7b735e79535ce8212015dac68">credTSH</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#034ef21f23448a445457b218c2690880">credSP</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus.html#d7b70270d863b07633b819227cbed42d">CursusManager</a></td></tr>
 
@@ -564,10 +586,146 @@ Mise à jour de la catégorie parents.
 nb de crédits SP nécessaires à la validation du cursus 
 </div>
 </div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="0cf2d727a7305df69c46b706e0a4580d"></a><!-- doxytag: member="Cursus::categorie" ref="0cf2d727a7305df69c46b706e0a4580d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cursus_8h.html#be9790179e0a28256945dfc6c7135378">CategorieCursus</a> <a class="el" href="class_cursus.html#0cf2d727a7305df69c46b706e0a4580d">Cursus::categorie</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nom du cursus 
+</div>
+</div><p>
+<a class="anchor" name="5252837a72ef1b4c1b788e7be67a8edc"></a><!-- doxytag: member="Cursus::credCS" ref="5252837a72ef1b4c1b788e7be67a8edc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus.html#5252837a72ef1b4c1b788e7be67a8edc">Cursus::credCS</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Catégorie du cursus 
+</div>
+</div><p>
+<a class="anchor" name="034ef21f23448a445457b218c2690880"></a><!-- doxytag: member="Cursus::credSP" ref="034ef21f23448a445457b218c2690880" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus.html#034ef21f23448a445457b218c2690880">Cursus::credSP</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nb de crédits TSH nécessaires à la validation du cursus 
+</div>
+</div><p>
+<a class="anchor" name="bd1452f39ad536f8691f35e3efab3a49"></a><!-- doxytag: member="Cursus::credTM" ref="bd1452f39ad536f8691f35e3efab3a49" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus.html#bd1452f39ad536f8691f35e3efab3a49">Cursus::credTM</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nb de crédits CS nécessaires à la validation du cursus 
+</div>
+</div><p>
+<a class="anchor" name="6e0325c7b735e79535ce8212015dac68"></a><!-- doxytag: member="Cursus::credTSH" ref="6e0325c7b735e79535ce8212015dac68" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus.html#6e0325c7b735e79535ce8212015dac68">Cursus::credTSH</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nb de crédits TM nécessaires à la validation du cursus 
+</div>
+</div><p>
+<a class="anchor" name="f1ca7005364ab02502fdb34d0dc5e614"></a><!-- doxytag: member="Cursus::nbMaxUV" ref="f1ca7005364ab02502fdb34d0dc5e614" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus.html#f1ca7005364ab02502fdb34d0dc5e614">Cursus::nbMaxUV</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nombre d'uvs dans le cursus 
+</div>
+</div><p>
+<a class="anchor" name="2dd7a44feeeeb67852d0663551173139"></a><!-- doxytag: member="Cursus::nbUV" ref="2dd7a44feeeeb67852d0663551173139" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus.html#2dd7a44feeeeb67852d0663551173139">Cursus::nbUV</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+tableau contenant le nom des uvs du cursus 
+</div>
+</div><p>
+<a class="anchor" name="43f4c1cb7dcf04aa22a331a946474dc6"></a><!-- doxytag: member="Cursus::nom" ref="43f4c1cb7dcf04aa22a331a946474dc6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString <a class="el" href="class_cursus.html#43f4c1cb7dcf04aa22a331a946474dc6">Cursus::nom</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+cursus parent dans le cas des filières pour connaître la branche à laquelle elels se rattachent, 0 sinon 
+</div>
+</div><p>
+<a class="anchor" name="62de88ad6dc3ff19424def8979372e3e"></a><!-- doxytag: member="Cursus::parent" ref="62de88ad6dc3ff19424def8979372e3e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_cursus.html">Cursus</a>* <a class="el" href="class_cursus.html#62de88ad6dc3ff19424def8979372e3e">Cursus::parent</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nb maximum d'UVs dans le cursus 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/<a class="el" href="cursus_8h-source.html">cursus.h</a><li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/cursus.cpp</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

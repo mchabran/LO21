@@ -22,10 +22,20 @@
 </div>
 <div class="contents">
 <h1>Dossier Member List</h1>This is the complete list of members for <a class="el" href="class_dossier.html">Dossier</a>, including all inherited members.<p><table>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#3b531701a892232da08fa0b3af00fecc">activiteExtraScolaire</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#cbcc682ac7b4ccee625c6048894d5ea5">addCursus</a>(Cursus *c)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#40bd88e24a0f8d521428fcd7a99368b5">addEquivalence</a>(Equivalence *e)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#7b25ce737bdd81cb9f3a84f32d54fdfb">addInscription</a>(Inscription *i)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_dossier.html#f7d196fde701c438624c2ae1b526779a">donneInstance</a>(CursusManager &amp;c, UVManager &amp;u)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#82a7c78ea82f82e71a9cc0dd8f1de7bd">CM</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#87059ee201c269e578c00e4caca24640">cursus</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#6b4add577208adda7b023f356a0e70f0">donneInstance</a>(CursusManager &amp;c=CursusManager::getInstance(), UVManager &amp;u=UVManager::getInstance())</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [static]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#233fc3ebfe467ab9ca3b0aa38c80b75b">Dossier</a>(CursusManager &amp;c, UVManager &amp;u, Cursus **tabCur, Inscription **tabI, Equivalence **tabE, bool aes, bool B2, unsigned int nc, unsigned int ni, unsigned int ne)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#0280e8b3e8fbb78d6972e6f9f70616ea">Dossier</a>(CursusManager &amp;c=CursusManager::getInstance(), UVManager &amp;u=UVManager::getInstance())</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline, private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#45f2a58508b85643a9b7b0eda75c9002">Dossier</a>(const Dossier *instance)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#fd8b67086f7220ad5450b57b2bb84ec0">equivalences</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#7fa0af8a385fd6d7abaedef434151c64">fileD</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#8344deada52d694ae05f491904852a7c">fileE</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>fileI</b> (defined in <a class="el" href="class_dossier.html">Dossier</a>)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#d17400f77c6873fbdd53f02169be1cf9">getActiviteES</a>()</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#1ea3abc7ce3cd696a3b9808541859435">getCursus</a>() const </td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#53b8a6492913113aab08179e2f18fd89">getCursusManager</a>() const </td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
@@ -35,19 +45,30 @@
   <tr class="memlist"><td><a class="el" href="class_dossier.html#2975a14a4940cbb4c236e3c210e2018a">getNbEq</a>() const </td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#9c2f63b2887547b47f750ee799afd2ef">getNbIns</a>() const </td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#ee59fe2af20ba883222ddf847f81ed06">getnivB2</a>()</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#97033fa1de284515ba338033025ee54b">inscriptions</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#1f1454be8f7471e050b4daf8c0e1d63f">instanceUnique</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private, static]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#3b01b1dc7aed0a601c5fd5e6badb3a6e">libereInstance</a>()</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [static]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_dossier.html#43af61dfe4ff80d85dc5abe745380fbc">load</a>(const QString &amp;f)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#efb67394b825fe04cbd08a5c003dca70">loadDossier</a>(const QString &amp;f)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#249c9fe70cbfc4dc43e7ce90b0673275">loadEquivalence</a>(const QString &amp;f)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#58b794493d7237834247043ffeed0e34">loadInscription</a>(const QString &amp;f)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_dossier.html#c6eb14f21dd6a98587d6b4eae7bff2a9">saveDossier</a>(const QString &amp;f)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_dossier.html#a5facc8fd629aa25dc680de433f52ac6">saveEquivalence</a>(const QString &amp;f)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_dossier.html#347c4e11157a00da41978b84ced4383a">saveInscription</a>(const QString &amp;f)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#db27267b79c5ee105449704a4171bd83">nbCur</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#0deea715ac7997ae2b72c6eaf1b8cf67">nbEq</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#dffb58ce295b05d95df39e4a0dcd4f73">nbIns</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#bf8a131a3dacacf7a454e2772c7c44f9">nbMaxCur</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#e061fc581bf73366b6ca0b91cf2f44c6">nbMaxEq</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#fa09ee8733ecb169266f8b0247fcd7df">nbMaxIns</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#968b6f9407b2da40d2350999ce9488fc">niveauB2</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#fc0f8b432c26beb52b72e449f9bb006e">operator=</a>(const Dossier &amp;)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline, private, virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#cfb7fbb22a458f8779ce6ef5fecf782b">saveDossier</a>()</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#4c60bc1b5f982703497a706632187728">saveEquivalence</a>()</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#737e4391a582cb4782e62ae61bb08757">saveInscription</a>()</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#878576a18367ac458fd93c89c5a3d5ab">setAES</a>(bool val)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#0bd04fcc2810608f90de2a478cb58180">setNivB2</a>(bool val)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_dossier.html#fab7a652bd9c966dba882f28168453ee">supprCur</a>(Cursus *c)</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#89d9d02b34b823aeba41cc38a62b1f3e">UVM</a></td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_dossier.html#4bf1904d4f2dfe7ddbcf38171fc661c0">~Dossier</a>()</td><td><a class="el" href="class_dossier.html">Dossier</a></td><td><code> [private, virtual]</code></td></tr>
 </table></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

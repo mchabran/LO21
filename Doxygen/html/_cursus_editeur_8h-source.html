@@ -27,32 +27,32 @@
 <a name="l00009"></a>00009 
 <a name="l00015"></a><a class="code" href="class_cursus_editeur.html">00015</a> <span class="keyword">class </span><a class="code" href="class_cursus_editeur.html" title="contient les éléments nécessaires à l&amp;#39;édition de cursus, hérite de QWidget...">CursusEditeur</a> :  <span class="keyword">public</span> QWidget {
 <a name="l00019"></a>00019     Q_OBJECT
-<a name="l00020"></a>00020     <a class="code" href="class_cursus_manager.html" title="singleton qui gère les différents cursus existant">CursusManager</a>* cM;
-<a name="l00021"></a>00021     <span class="keyword">const</span> <a class="code" href="class_cursus.html" title="Contient les informations liées aux cursus.">Cursus</a>* cu;
-<a name="l00022"></a>00022     QLineEdit* nomCursus;
-<a name="l00023"></a>00023     QLabel* nomLabel; 
-<a name="l00024"></a>00024     QSpinBox* credCS;
-<a name="l00025"></a>00025     QLabel* CSLabel;
+<a name="l00020"></a><a class="code" href="class_cursus_editeur.html#7d72fa0b6e2e932343d4f3c96260dba2">00020</a>     <a class="code" href="class_cursus_manager.html" title="singleton qui gère les différents cursus existant">CursusManager</a>* <a class="code" href="class_cursus_editeur.html#7d72fa0b6e2e932343d4f3c96260dba2" title="nécéssaire à la création d&amp;#39;une fenêtre">cM</a>;
+<a name="l00021"></a><a class="code" href="class_cursus_editeur.html#84896ddafb49abfe17c0c3362511abd2">00021</a>     <span class="keyword">const</span> <a class="code" href="class_cursus.html" title="Contient les informations liées aux cursus.">Cursus</a>* <a class="code" href="class_cursus_editeur.html#84896ddafb49abfe17c0c3362511abd2">cu</a>;
+<a name="l00022"></a><a class="code" href="class_cursus_editeur.html#03b052b92e75d5d93b2732ffb169e333">00022</a>     QLineEdit* <a class="code" href="class_cursus_editeur.html#03b052b92e75d5d93b2732ffb169e333">nomCursus</a>;
+<a name="l00023"></a><a class="code" href="class_cursus_editeur.html#0de370a980e238592af40d4afa0550ca">00023</a>     QLabel* <a class="code" href="class_cursus_editeur.html#0de370a980e238592af40d4afa0550ca">nomLabel</a>; 
+<a name="l00024"></a><a class="code" href="class_cursus_editeur.html#002207610bd64eab08067cc36e72a2c6">00024</a>     QSpinBox* <a class="code" href="class_cursus_editeur.html#002207610bd64eab08067cc36e72a2c6">credCS</a>;
+<a name="l00025"></a><a class="code" href="class_cursus_editeur.html#0ec15c6e2f252488ff8781ac518c98b9">00025</a>     QLabel* <a class="code" href="class_cursus_editeur.html#0ec15c6e2f252488ff8781ac518c98b9">CSLabel</a>;
 <a name="l00026"></a>00026     QSpinBox* credTM; 
-<a name="l00027"></a>00027     QLabel* TMLabel;
+<a name="l00027"></a><a class="code" href="class_cursus_editeur.html#2f26222abd7534a5e7f945c83e21a36c">00027</a>     QLabel* <a class="code" href="class_cursus_editeur.html#2f26222abd7534a5e7f945c83e21a36c">TMLabel</a>;
 <a name="l00028"></a>00028     QSpinBox* credTSH;
-<a name="l00029"></a>00029     QLabel* TSHLabel;
+<a name="l00029"></a><a class="code" href="class_cursus_editeur.html#b9d92bece44a3f484de11be04bd58003">00029</a>     QLabel* <a class="code" href="class_cursus_editeur.html#b9d92bece44a3f484de11be04bd58003">TSHLabel</a>;
 <a name="l00030"></a>00030     QSpinBox* credSP; 
-<a name="l00031"></a>00031     QLabel* SPLabel;
+<a name="l00031"></a><a class="code" href="class_cursus_editeur.html#09611c5429cbbdd1c5da90cfb92ddb47">00031</a>     QLabel* <a class="code" href="class_cursus_editeur.html#09611c5429cbbdd1c5da90cfb92ddb47">SPLabel</a>;
 <a name="l00032"></a>00032     QComboBox* categorie;
-<a name="l00033"></a>00033     QLabel* categorieLabel;
+<a name="l00033"></a><a class="code" href="class_cursus_editeur.html#9802f64fad82eb73e83d779d8e491e5e">00033</a>     QLabel* <a class="code" href="class_cursus_editeur.html#9802f64fad82eb73e83d779d8e491e5e">categorieLabel</a>;
 <a name="l00034"></a>00034 
 <a name="l00035"></a>00035     QComboBox* UVs;
-<a name="l00036"></a>00036     QLabel* UVsLabel;
+<a name="l00036"></a><a class="code" href="class_cursus_editeur.html#a8f7b748b74a89f8e0029c42b098aeb1">00036</a>     QLabel* <a class="code" href="class_cursus_editeur.html#a8f7b748b74a89f8e0029c42b098aeb1">UVsLabel</a>;
 <a name="l00037"></a>00037     QPushButton* supprimerUV; 
-<a name="l00039"></a>00039     QLineEdit* newUV; 
-<a name="l00040"></a>00040     QLabel* UVLabel;
+<a name="l00039"></a><a class="code" href="class_cursus_editeur.html#efe2a5a884a5c61f657a7505d3c08440">00039</a>     QLineEdit* <a class="code" href="class_cursus_editeur.html#efe2a5a884a5c61f657a7505d3c08440">newUV</a>; 
+<a name="l00040"></a><a class="code" href="class_cursus_editeur.html#7322648a544fb394422dd02c92912b5e">00040</a>     QLabel* <a class="code" href="class_cursus_editeur.html#7322648a544fb394422dd02c92912b5e">UVLabel</a>;
 <a name="l00041"></a>00041     QPushButton* ok; 
-<a name="l00043"></a>00043     QPushButton* sauver; 
-<a name="l00044"></a>00044     QPushButton* annuler;
-<a name="l00045"></a>00045     QPushButton* ajouter;
+<a name="l00043"></a><a class="code" href="class_cursus_editeur.html#c0098fcf2c2a50feecff8c278b5c742b">00043</a>     QPushButton* <a class="code" href="class_cursus_editeur.html#c0098fcf2c2a50feecff8c278b5c742b">sauver</a>; 
+<a name="l00044"></a><a class="code" href="class_cursus_editeur.html#beddc87da0f930b45b1ae8ed7b2a8ed1">00044</a>     QPushButton* <a class="code" href="class_cursus_editeur.html#beddc87da0f930b45b1ae8ed7b2a8ed1">annuler</a>;
+<a name="l00045"></a><a class="code" href="class_cursus_editeur.html#14ac63fef0ce8cb6635cbbb06075a01e">00045</a>     QPushButton* <a class="code" href="class_cursus_editeur.html#14ac63fef0ce8cb6635cbbb06075a01e">ajouter</a>;
 <a name="l00046"></a>00046     <span class="comment">//QPushButton* supprimerCursus; //a implémenter avec toutes les méthodes nécessaires dans CursusManager</span>
-<a name="l00047"></a>00047     QVBoxLayout* couche;
+<a name="l00047"></a><a class="code" href="class_cursus_editeur.html#f598f0fe03a01470060e468fd4ed9a50">00047</a>     QVBoxLayout* <a class="code" href="class_cursus_editeur.html#f598f0fe03a01470060e468fd4ed9a50">couche</a>;
 <a name="l00048"></a>00048     QHBoxLayout* coucheH1;
 <a name="l00049"></a>00049     QHBoxLayout* coucheH2;
 <a name="l00050"></a>00050     QHBoxLayout* coucheH3;
@@ -74,7 +74,7 @@
 <a name="l00081"></a>00081 
 <a name="l00082"></a>00082 <span class="preprocessor">#endif // CURSUSEDITEUR_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

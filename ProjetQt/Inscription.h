@@ -19,6 +19,7 @@
 
 /**
  * \class Inscription
+ * \brief Permet de créer une inscription pour une UV à un semestre et d'y attribuer un résultat
  */
 class Inscription {
         const UV* uv;/** UV concernée par l'inscription*/
@@ -32,6 +33,10 @@ public:
          * \param res : résultat pour cette inscription
          */
         Inscription(const UV& u, const Semestre& s, Note res=EC):uv(&u),semestre(s), resultat(res){}
+        /**
+         * @brief Récupérer l'UV concernée par l'inscription
+         * @return une référence constante sur l'inscription concernée
+         */
         const UV& getUV() const { return *uv; }
         /**
          * \brief Récupéraion du semestre

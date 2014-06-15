@@ -28,63 +28,63 @@
 <a name="l00010"></a>00010 <span class="preprocessor">#include "<a class="code" href="_u_t_profiler_8h.html" title="Fichier contenant les classes nécessaires à la définition d&amp;#39;une UV.">UTProfiler.h</a>"</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include "<a class="code" href="dossier_8h.html" title="contient la classe permettant de créer un dossier">dossier.h</a>"</span>
 <a name="l00012"></a>00012 
-<a name="l00016"></a>00016 <span class="keyword">class </span>Equivalence{
-<a name="l00017"></a>00017     QString nomEtablissement;
-<a name="l00018"></a>00018     QString pays;
-<a name="l00019"></a>00019     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> equiCS;
-<a name="l00020"></a>00020     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> equiTM;
-<a name="l00021"></a>00021     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> equiTSH;
-<a name="l00022"></a>00022     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> equiSP;
-<a name="l00023"></a>00023 <span class="keyword">public</span> :
-<a name="l00028"></a>00028     Equivalence(Equivalence* e);
-<a name="l00038"></a>00038     Equivalence(QString nom, QString p, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Cs, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Tm, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Tsh, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Sp=0):nomEtablissement(nom), pays(p), equiCS(Cs), equiTM(Tm), equiTSH(Tsh), equiSP(Sp){}
-<a name="l00043"></a>00043     QString getNomEtablissement()<span class="keyword">const</span>{<span class="keywordflow">return</span> nomEtablissement;}
-<a name="l00048"></a>00048     QString getPays()<span class="keyword">const</span>{<span class="keywordflow">return</span> pays;}
-<a name="l00053"></a>00053     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getEquiCS()<span class="keyword">const</span>{<span class="keywordflow">return</span> equiCS;}
-<a name="l00058"></a>00058     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getEquiTM()<span class="keyword">const</span>{<span class="keywordflow">return</span> equiTM;}
-<a name="l00063"></a>00063     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getEquiTSH()<span class="keyword">const</span>{<span class="keywordflow">return</span> equiTSH;}
-<a name="l00068"></a>00068     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getEquiSP()<span class="keyword">const</span>{<span class="keywordflow">return</span> equiSP;}
-<a name="l00073"></a>00073     <span class="keywordtype">void</span> setNomEtablissement(QString n){nomEtablissement=n;}
-<a name="l00078"></a>00078     <span class="keywordtype">void</span> setPays(QString p){pays=p;}
-<a name="l00083"></a>00083     <span class="keywordtype">void</span> setEquiCS(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> C){equiCS=C;}
-<a name="l00088"></a>00088     <span class="keywordtype">void</span> setEquiTM(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T){equiTM=T;}
-<a name="l00093"></a>00093     <span class="keywordtype">void</span> setEquiTSH(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Tsh){equiTSH=Tsh;}
-<a name="l00098"></a>00098     <span class="keywordtype">void</span> setEquiSP(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> S){equiSP=S;}
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100 };
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 <span class="keyword">class </span><a class="code" href="class_dossier.html" title="Singleton permettant de créer le dossier à gérer dans l&amp;#39;application.">Dossier</a>;
-<a name="l00103"></a>00103 
-<a name="l00108"></a><a class="code" href="class_equivalence_editeur.html">00108</a> <span class="keyword">class </span><a class="code" href="class_equivalence_editeur.html" title="Editeur d&amp;#39;équivalence, dérive de la classe QWidget.">EquivalenceEditeur</a> : <span class="keyword">public</span> QWidget{
-<a name="l00109"></a>00109     Q_OBJECT
-<a name="l00110"></a>00110     <a class="code" href="class_dossier.html" title="Singleton permettant de créer le dossier à gérer dans l&amp;#39;application.">Dossier</a>* unDossier;
-<a name="l00111"></a>00111     Equivalence* equivalence;
-<a name="l00112"></a>00112     QLabel* nomEtLabel;
-<a name="l00113"></a>00113     QLineEdit* nomEt;
-<a name="l00114"></a>00114     QLabel* paysLabel;
-<a name="l00115"></a>00115     QLineEdit* pays;
-<a name="l00116"></a>00116     QLabel* csLabel;
-<a name="l00117"></a>00117     QSpinBox* cs;
-<a name="l00118"></a>00118     QLabel* tmLabel;
-<a name="l00119"></a>00119     QSpinBox* tm;
-<a name="l00120"></a>00120     QLabel* tshLabel;
-<a name="l00121"></a>00121     QSpinBox* tsh;
-<a name="l00122"></a>00122     QLabel* spLabel;
-<a name="l00123"></a>00123     QSpinBox* sp;
-<a name="l00124"></a>00124     QVBoxLayout* couche;
-<a name="l00125"></a>00125     QHBoxLayout* coucheh;
-<a name="l00126"></a>00126     QPushButton* sauver;
-<a name="l00127"></a>00127     QPushButton* ajouter;
-<a name="l00128"></a>00128 <span class="keyword">public</span> :
-<a name="l00135"></a>00135     <a class="code" href="class_equivalence_editeur.html#0f08e3f3592a60230468539f2d8c0016" title="constructeur avec paramètres">EquivalenceEditeur</a>(<a class="code" href="class_dossier.html" title="Singleton permettant de créer le dossier à gérer dans l&amp;#39;application.">Dossier</a>* d,Equivalence *eq=0, QWidget* parent=0);
-<a name="l00136"></a>00136 <span class="keyword">public</span> slots :
-<a name="l00140"></a>00140     <span class="keywordtype">void</span> <a class="code" href="class_equivalence_editeur.html#40850dec49ca43d0fcbbe66d8e493b35" title="Met à jour l&amp;#39;équivalence avec les paramètres rentrés dans l&amp;#39;éditeur...">modifEqui</a>();
-<a name="l00141"></a>00141 };
-<a name="l00142"></a>00142 
+<a name="l00017"></a><a class="code" href="class_equivalence.html">00017</a> <span class="keyword">class </span><a class="code" href="class_equivalence.html" title="Permet à l&amp;#39;étudiant d&amp;#39;ajouter des crédits qu&amp;#39;il aurait obtenu en équivalence...">Equivalence</a>{
+<a name="l00018"></a>00018     QString nomEtablissement;
+<a name="l00019"></a><a class="code" href="class_equivalence.html#841e2e834081cd273953ba15f487476a">00019</a>     QString <a class="code" href="class_equivalence.html#841e2e834081cd273953ba15f487476a">pays</a>;
+<a name="l00020"></a><a class="code" href="class_equivalence.html#1fe213cef64dbc57fe7dc942d262a076">00020</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#1fe213cef64dbc57fe7dc942d262a076">equiCS</a>;
+<a name="l00021"></a><a class="code" href="class_equivalence.html#fc6f0be62cab2d0a7103c5c63ed40d2e">00021</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#fc6f0be62cab2d0a7103c5c63ed40d2e">equiTM</a>;
+<a name="l00022"></a><a class="code" href="class_equivalence.html#80076e99c1b72dc63050b573ba8f5245">00022</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#80076e99c1b72dc63050b573ba8f5245">equiTSH</a>;
+<a name="l00023"></a><a class="code" href="class_equivalence.html#49729eb6e7f57a3835ef5a9f3a2b5b97">00023</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#49729eb6e7f57a3835ef5a9f3a2b5b97">equiSP</a>;
+<a name="l00024"></a>00024 <span class="keyword">public</span> :
+<a name="l00029"></a>00029     <a class="code" href="class_equivalence.html#afacc1865af7b64f26ab0e195f08c43f" title="Constructeur par recopie.">Equivalence</a>(<a class="code" href="class_equivalence.html" title="Permet à l&amp;#39;étudiant d&amp;#39;ajouter des crédits qu&amp;#39;il aurait obtenu en équivalence...">Equivalence</a>* e);
+<a name="l00039"></a><a class="code" href="class_equivalence.html#615d4ff7e02d2a473993cb5406b67dda">00039</a>     <a class="code" href="class_equivalence.html#615d4ff7e02d2a473993cb5406b67dda" title="Constructeur avec arguments.">Equivalence</a>(QString nom, QString p, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Cs, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Tm, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Tsh, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Sp=0):nomEtablissement(nom), <a class="code" href="class_equivalence.html#841e2e834081cd273953ba15f487476a">pays</a>(p), <a class="code" href="class_equivalence.html#1fe213cef64dbc57fe7dc942d262a076">equiCS</a>(Cs), <a class="code" href="class_equivalence.html#fc6f0be62cab2d0a7103c5c63ed40d2e">equiTM</a>(Tm), <a class="code" href="class_equivalence.html#80076e99c1b72dc63050b573ba8f5245">equiTSH</a>(Tsh), <a class="code" href="class_equivalence.html#49729eb6e7f57a3835ef5a9f3a2b5b97">equiSP</a>(Sp){}
+<a name="l00044"></a><a class="code" href="class_equivalence.html#5eed5d1bcf1e0e5070aaaa6bc3532a3c">00044</a>     QString <a class="code" href="class_equivalence.html#5eed5d1bcf1e0e5070aaaa6bc3532a3c" title="Récupérer le nom de l&amp;#39;établissement.">getNomEtablissement</a>()<span class="keyword">const</span>{<span class="keywordflow">return</span> nomEtablissement;}
+<a name="l00049"></a><a class="code" href="class_equivalence.html#036f925639a8f87050acf216212029b6">00049</a>     QString <a class="code" href="class_equivalence.html#036f925639a8f87050acf216212029b6" title="Récupérer le nom du pays.">getPays</a>()<span class="keyword">const</span>{<span class="keywordflow">return</span> <a class="code" href="class_equivalence.html#841e2e834081cd273953ba15f487476a">pays</a>;}
+<a name="l00054"></a><a class="code" href="class_equivalence.html#a82a38f353988681bf0546b56af675cb">00054</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#a82a38f353988681bf0546b56af675cb" title="Récupérer le nombre de crédits CS obtenus.">getEquiCS</a>()<span class="keyword">const</span>{<span class="keywordflow">return</span> <a class="code" href="class_equivalence.html#1fe213cef64dbc57fe7dc942d262a076">equiCS</a>;}
+<a name="l00059"></a><a class="code" href="class_equivalence.html#38bf574af0c16912dd53ab5f04cb67f2">00059</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#38bf574af0c16912dd53ab5f04cb67f2" title="Récupérer le nombre de crédits TM obtenus.">getEquiTM</a>()<span class="keyword">const</span>{<span class="keywordflow">return</span> <a class="code" href="class_equivalence.html#fc6f0be62cab2d0a7103c5c63ed40d2e">equiTM</a>;}
+<a name="l00064"></a><a class="code" href="class_equivalence.html#5913b21316c32b0b2eaf06ba0cff9dc7">00064</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#5913b21316c32b0b2eaf06ba0cff9dc7" title="Récupérer le nombre de crédits TSH obtenus.">getEquiTSH</a>()<span class="keyword">const</span>{<span class="keywordflow">return</span> <a class="code" href="class_equivalence.html#80076e99c1b72dc63050b573ba8f5245">equiTSH</a>;}
+<a name="l00069"></a><a class="code" href="class_equivalence.html#27e3d835b29750cdcdcdef9f1ce36228">00069</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_equivalence.html#27e3d835b29750cdcdcdef9f1ce36228" title="Récupérer le nombre de crédits SP obtenus.">getEquiSP</a>()<span class="keyword">const</span>{<span class="keywordflow">return</span> <a class="code" href="class_equivalence.html#49729eb6e7f57a3835ef5a9f3a2b5b97">equiSP</a>;}
+<a name="l00074"></a><a class="code" href="class_equivalence.html#aff99af2db8175032577693f98f438f4">00074</a>     <span class="keywordtype">void</span> <a class="code" href="class_equivalence.html#aff99af2db8175032577693f98f438f4" title="mise à jour du nom de l&amp;#39;établissement">setNomEtablissement</a>(QString n){nomEtablissement=n;}
+<a name="l00079"></a><a class="code" href="class_equivalence.html#cad6ba3759471387fa11a65f341c16dd">00079</a>     <span class="keywordtype">void</span> <a class="code" href="class_equivalence.html#cad6ba3759471387fa11a65f341c16dd" title="mise à jour du nom du pays">setPays</a>(QString p){<a class="code" href="class_equivalence.html#841e2e834081cd273953ba15f487476a">pays</a>=p;}
+<a name="l00084"></a><a class="code" href="class_equivalence.html#51022b0649db95e10855b822464ef12b">00084</a>     <span class="keywordtype">void</span> <a class="code" href="class_equivalence.html#51022b0649db95e10855b822464ef12b" title="mise à jour du nombre de crédits CS obtenus">setEquiCS</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> C){<a class="code" href="class_equivalence.html#1fe213cef64dbc57fe7dc942d262a076">equiCS</a>=C;}
+<a name="l00089"></a><a class="code" href="class_equivalence.html#695db86c7048b8af902530e27c25f777">00089</a>     <span class="keywordtype">void</span> <a class="code" href="class_equivalence.html#695db86c7048b8af902530e27c25f777" title="mise à jour du nombre de crédits TM obtenus">setEquiTM</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T){<a class="code" href="class_equivalence.html#fc6f0be62cab2d0a7103c5c63ed40d2e">equiTM</a>=T;}
+<a name="l00094"></a><a class="code" href="class_equivalence.html#940a5a4385895be768303fc9812ab1e7">00094</a>     <span class="keywordtype">void</span> <a class="code" href="class_equivalence.html#940a5a4385895be768303fc9812ab1e7" title="mise à jour du nombre de crédits TSH obtenus">setEquiTSH</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Tsh){<a class="code" href="class_equivalence.html#80076e99c1b72dc63050b573ba8f5245">equiTSH</a>=Tsh;}
+<a name="l00099"></a><a class="code" href="class_equivalence.html#7b32488579e5d1910802623046ee2be1">00099</a>     <span class="keywordtype">void</span> <a class="code" href="class_equivalence.html#7b32488579e5d1910802623046ee2be1" title="mise à jour du nombre de crédits SP obtenus">setEquiSP</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> S){<a class="code" href="class_equivalence.html#49729eb6e7f57a3835ef5a9f3a2b5b97">equiSP</a>=S;}
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 };
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 <span class="keyword">class </span><a class="code" href="class_dossier.html" title="Singleton permettant de créer le dossier à gérer dans l&amp;#39;application.">Dossier</a>;
+<a name="l00104"></a>00104 
+<a name="l00109"></a><a class="code" href="class_equivalence_editeur.html">00109</a> <span class="keyword">class </span><a class="code" href="class_equivalence_editeur.html" title="Editeur d&amp;#39;équivalence, dérive de la classe QWidget.">EquivalenceEditeur</a> : <span class="keyword">public</span> QWidget{
+<a name="l00110"></a>00110     Q_OBJECT
+<a name="l00111"></a>00111     <a class="code" href="class_dossier.html" title="Singleton permettant de créer le dossier à gérer dans l&amp;#39;application.">Dossier</a>* unDossier;
+<a name="l00112"></a><a class="code" href="class_equivalence_editeur.html#ef1ce011ec1803766e5fe5af67fa3c04">00112</a>     <a class="code" href="class_equivalence.html" title="Permet à l&amp;#39;étudiant d&amp;#39;ajouter des crédits qu&amp;#39;il aurait obtenu en équivalence...">Equivalence</a>* <a class="code" href="class_equivalence_editeur.html#ef1ce011ec1803766e5fe5af67fa3c04">equivalence</a>;
+<a name="l00113"></a><a class="code" href="class_equivalence_editeur.html#7e0af5694aeeee52ab2da652efe87363">00113</a>     QLabel* <a class="code" href="class_equivalence_editeur.html#7e0af5694aeeee52ab2da652efe87363">nomEtLabel</a>;
+<a name="l00114"></a>00114     QLineEdit* nomEt;
+<a name="l00115"></a><a class="code" href="class_equivalence_editeur.html#3bb7b87deb30647fd1898947a82a5bf0">00115</a>     QLabel* <a class="code" href="class_equivalence_editeur.html#3bb7b87deb30647fd1898947a82a5bf0">paysLabel</a>;
+<a name="l00116"></a>00116     QLineEdit* pays;
+<a name="l00117"></a><a class="code" href="class_equivalence_editeur.html#90620bb4e31fa0456b84a3707f0013a9">00117</a>     QLabel* <a class="code" href="class_equivalence_editeur.html#90620bb4e31fa0456b84a3707f0013a9">csLabel</a>;
+<a name="l00118"></a>00118     QSpinBox* cs;
+<a name="l00119"></a><a class="code" href="class_equivalence_editeur.html#862c99a14c1a17147c061b71b2142a43">00119</a>     QLabel* <a class="code" href="class_equivalence_editeur.html#862c99a14c1a17147c061b71b2142a43">tmLabel</a>;
+<a name="l00120"></a>00120     QSpinBox* tm;
+<a name="l00121"></a><a class="code" href="class_equivalence_editeur.html#2523bfb4ebe6e295ed8630c94f26e7ec">00121</a>     QLabel* <a class="code" href="class_equivalence_editeur.html#2523bfb4ebe6e295ed8630c94f26e7ec">tshLabel</a>;
+<a name="l00122"></a>00122     QSpinBox* tsh;
+<a name="l00123"></a><a class="code" href="class_equivalence_editeur.html#819b15210d5f63d6acb9f0fff4576fbe">00123</a>     QLabel* <a class="code" href="class_equivalence_editeur.html#819b15210d5f63d6acb9f0fff4576fbe">spLabel</a>;
+<a name="l00124"></a>00124     QSpinBox* sp;
+<a name="l00125"></a><a class="code" href="class_equivalence_editeur.html#423c83bef9ac6a57faab4cb7e0f82d82">00125</a>     QVBoxLayout* <a class="code" href="class_equivalence_editeur.html#423c83bef9ac6a57faab4cb7e0f82d82">couche</a>;
+<a name="l00126"></a>00126     QHBoxLayout* coucheh;
+<a name="l00127"></a>00127     QPushButton* sauver;
+<a name="l00128"></a><a class="code" href="class_equivalence_editeur.html#15e35c860f2ebb2bbea17f0263891dbb">00128</a>     QPushButton* <a class="code" href="class_equivalence_editeur.html#15e35c860f2ebb2bbea17f0263891dbb">ajouter</a>;
+<a name="l00129"></a>00129 <span class="keyword">public</span> :
+<a name="l00136"></a>00136     <a class="code" href="class_equivalence_editeur.html#0f08e3f3592a60230468539f2d8c0016" title="constructeur avec paramètres">EquivalenceEditeur</a>(<a class="code" href="class_dossier.html" title="Singleton permettant de créer le dossier à gérer dans l&amp;#39;application.">Dossier</a>* d,<a class="code" href="class_equivalence.html" title="Permet à l&amp;#39;étudiant d&amp;#39;ajouter des crédits qu&amp;#39;il aurait obtenu en équivalence...">Equivalence</a> *eq=0, QWidget* parent=0);
+<a name="l00137"></a>00137 <span class="keyword">public</span> slots :
+<a name="l00141"></a>00141     <span class="keywordtype">void</span> <a class="code" href="class_equivalence_editeur.html#40850dec49ca43d0fcbbe66d8e493b35" title="Met à jour l&amp;#39;équivalence avec les paramètres rentrés dans l&amp;#39;éditeur...">modifEqui</a>();
+<a name="l00142"></a>00142 };
 <a name="l00143"></a>00143 
-<a name="l00144"></a>00144 <span class="preprocessor">#endif // EQUIVALENCE_H</span>
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="preprocessor">#endif // EQUIVALENCE_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

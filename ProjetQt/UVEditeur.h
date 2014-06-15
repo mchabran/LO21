@@ -17,7 +17,7 @@
 #include "UTProfiler.h"
 
 /**
- * @class UVEditeur
+ * \class UVEditeur
  * \desc Permet d'éditer une UV, hérite de la classe QWidget
  */
 class UVEditeur : public QWidget {
@@ -51,22 +51,22 @@ private slots :
 
 public :
    /**
-    * @brief constructeur avec paramètres
-    * @param m : adresse de l'instance unique d'UVManager
-    * @param u : référence vers l'UV à éditer
-    * @param parent : QWidget parent
+    * \brief constructeur avec paramètres
+    * \param m : adresse de l'instance unique d'UVManager
+    * \param u : référence vers l'UV à éditer
+    * \param parent : QWidget parent
     */
    UVEditeur(UVManager* m, UV& u, QWidget* parent=0);
 public slots :
    /**
-    * @brief Enregistrer les modifications faites à l'UV
+    * \brief Enregistrer les modifications faites à l'UV
     */
    void sauverUV();
    /**
     * \brief Ajouter l'UV si elle n'existe pas déjà*/
    void addUv();
    /**
-    * @brief Supprimer l'UV si elle existe
+    * \brief Supprimer l'UV si elle existe
     */
    void supprimerUV();
 
@@ -74,7 +74,7 @@ public slots :
 
 
 /**
- * @class UVFinder
+ * \class UVFinder
  * \brief Classe permettant de rechercher une UV, hérite de QWidget
  */
 class UVFinder : public QWidget{
@@ -90,18 +90,18 @@ class UVFinder : public QWidget{
     QHBoxLayout* coucheH2;
 public :
     /**
-    * @brief Constructeur
-    * @param m : adresse de l'instance unique d'UVManager
-    * @param parent : QWidget parent
+    * \brief Constructeur
+    * \param m : adresse de l'instance unique d'UVManager
+    * \param parent : QWidget parent
     */
    UVFinder(UVManager* m, QWidget* parent=0);
 public slots :
    /**
-    * @brief Rechercher l'UV dont le code est entré dans la zone de texte
+    * \brief Rechercher l'UV dont le code est entré dans la zone de texte
     */
    void rechercherUV();
    /**
-    * @brief Ajouter l'UV dont le code est entré dans la zone de texte si elle n'existe pas
+    * \brief Ajouter l'UV dont le code est entré dans la zone de texte si elle n'existe pas
     */
    void ajouterUV();
 };

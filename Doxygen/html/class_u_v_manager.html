@@ -40,9 +40,10 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#60556f66f72f41786ffb70f066f1a846">load</a> (const QString &amp;f)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger le fichier contenant les UVs.  <a href="#60556f66f72f41786ffb70f066f1a846"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#1e52ce1b69c6239d19016ec3cb74bd1c">save</a> (const QString &amp;f)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b2ad5385088a62f86828053aa68ac0c1"></a><!-- doxytag: member="UVManager::save" ref="b2ad5385088a62f86828053aa68ac0c1" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#b2ad5385088a62f86828053aa68ac0c1">save</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauver le fichier contenant les UVs.  <a href="#1e52ce1b69c6239d19016ec3cb74bd1c"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauver le fichier contenant les UVs. <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#e356bbc490312c58a02d2b00afee8fc3">ajouterUV</a> (const QString &amp;c, const QString &amp;t, unsigned int nbc, Categorie cat, bool a, bool p)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajouter une <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a>.  <a href="#e356bbc490312c58a02d2b00afee8fc3"></a><br></td></tr>
@@ -66,12 +67,106 @@
 static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#bc80aed5b064c9ba0894f41305490052">libererInstance</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Libérer l'instance unique. <br></td></tr>
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#bb882e747093abbc89707893d32a6f4a">addItem</a> (<a class="el" href="class_u_v.html">UV</a> *uv)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajout d'une <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a>.  <a href="#bb882e747093abbc89707893d32a6f4a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_u_v.html">UV</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#a528356346c494c31bceed7efab47408">trouverUV</a> (const QString &amp;c) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rechercher une <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a>.  <a href="#a528356346c494c31bceed7efab47408"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#86fd03130dd0eecc7a51a111fc63d05f">UVManager</a> (const <a class="el" href="class_u_v_manager.html">UVManager</a> &amp;um)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur par recopie, mis en privé pour ne pas être utilisé.  <a href="#86fd03130dd0eecc7a51a111fc63d05f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_u_v_manager.html">UVManager</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#30c6874d8c7d148714e8124df815f83b">operator=</a> (const <a class="el" href="class_u_v_manager.html">UVManager</a> &amp;um)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Surcharge de l'opérateur =.  <a href="#30c6874d8c7d148714e8124df815f83b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="80abf8717353eb1a42846a837791c65a"></a><!-- doxytag: member="UVManager::UVManager" ref="80abf8717353eb1a42846a837791c65a" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#80abf8717353eb1a42846a837791c65a">UVManager</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur sans argument. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="64fc72de4f20cc86d7222afd35fb7cbc"></a><!-- doxytag: member="UVManager::~UVManager" ref="64fc72de4f20cc86d7222afd35fb7cbc" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#64fc72de4f20cc86d7222afd35fb7cbc">~UVManager</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Destructeur. <br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="5d20f6a0069e2e349e01c8d06928104e"></a><!-- doxytag: member="UVManager::uvs" ref="5d20f6a0069e2e349e01c8d06928104e" args="" -->
+<a class="el" href="class_u_v.html">UV</a> **&nbsp;</td><td class="memItemRight" valign="bottom"><b>uvs</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#70847e54bb3c77704dd82b5c47c72465">nbUV</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#27d2df73b86eb7bb048f62eaabe79657">nbMaxUV</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="58161110ebdff495ecde551d019df559"></a><!-- doxytag: member="UVManager::modification" ref="58161110ebdff495ecde551d019df559" args="" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>modification</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ce844550b9018b15815e04d3b5c115c4"></a><!-- doxytag: member="UVManager::file" ref="ce844550b9018b15815e04d3b5c115c4" args="" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
+
+<tr><td colspan="2"><br><h2>Static Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d92af7d007c4440ea039a7a49cdc2ffa"></a><!-- doxytag: member="UVManager::handler" ref="d92af7d007c4440ea039a7a49cdc2ffa" args="" -->
+static Handler&nbsp;</td><td class="memItemRight" valign="bottom"><b>handler</b> = Handler()</td></tr>
+
 <tr><td colspan="2"><br><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager.html#7ab9a1e3d1a8ab9a8badf544bf7e0197">Handler</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Singleton gérant l'ensemble des UVs proposées. <hr><h2>Member Function Documentation</h2>
+Singleton gérant l'ensemble des UVs proposées. <hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="86fd03130dd0eecc7a51a111fc63d05f"></a><!-- doxytag: member="UVManager::UVManager" ref="86fd03130dd0eecc7a51a111fc63d05f" args="(const UVManager &amp;um)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UVManager::UVManager           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_u_v_manager.html">UVManager</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>um</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur par recopie, mis en privé pour ne pas être utilisé. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>um</em>&nbsp;</td><td>: <a class="el" href="class_u_v_manager.html" title="Singleton gérant l&#39;ensemble des UVs proposées.">UVManager</a> à recopier =&gt; impossible </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="bb882e747093abbc89707893d32a6f4a"></a><!-- doxytag: member="UVManager::addItem" ref="bb882e747093abbc89707893d32a6f4a" args="(UV *uv)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UVManager::addItem           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_u_v.html">UV</a> *&nbsp;</td>
+          <td class="paramname"> <em>uv</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ajout d'une <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a>. 
+<p>
+nombre maximum d'UVs <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>uv</em>&nbsp;</td><td>: <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a> à ajouter </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
 <a class="anchor" name="e356bbc490312c58a02d2b00afee8fc3"></a><!-- doxytag: member="UVManager::ajouterUV" ref="e356bbc490312c58a02d2b00afee8fc3" args="(const QString &amp;c, const QString &amp;t, unsigned int nbc, Categorie cat, bool a, bool p)" -->
 <div class="memitem">
 <div class="memproto">
@@ -264,30 +359,31 @@ handler <dl compact><dt><b>Parameters:</b></dt><dd>
 
 </div>
 </div><p>
-<a class="anchor" name="1e52ce1b69c6239d19016ec3cb74bd1c"></a><!-- doxytag: member="UVManager::save" ref="1e52ce1b69c6239d19016ec3cb74bd1c" args="(const QString &amp;f)" -->
+<a class="anchor" name="30c6874d8c7d148714e8124df815f83b"></a><!-- doxytag: member="UVManager::operator=" ref="30c6874d8c7d148714e8124df815f83b" args="(const UVManager &amp;um)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void UVManager::save           </td>
+          <td class="memname"><a class="el" href="class_u_v_manager.html">UVManager</a>&amp; UVManager::operator=           </td>
           <td>(</td>
-          <td class="paramtype">const QString &amp;&nbsp;</td>
-          <td class="paramname"> <em>f</em>          </td>
+          <td class="paramtype">const <a class="el" href="class_u_v_manager.html">UVManager</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>um</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Sauver le fichier contenant les UVs. 
+Surcharge de l'opérateur =. 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>f</em>&nbsp;</td><td>: chemin du fichier contenant les UVs </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>um</em>&nbsp;</td><td>: <a class="el" href="class_u_v_manager.html" title="Singleton gérant l&#39;ensemble des UVs proposées.">UVManager</a> à affecter au nouveau <a class="el" href="class_u_v_manager.html" title="Singleton gérant l&#39;ensemble des UVs proposées.">UVManager</a> </td></tr>
   </table>
 </dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>référence sur le nouvel <a class="el" href="class_u_v_manager.html" title="Singleton gérant l&#39;ensemble des UVs proposées.">UVManager</a> </dd></dl>
 
 </div>
 </div><p>
@@ -318,6 +414,34 @@ Supprimer une <a class="el" href="class_u_v.html" title="Classe permettant de d�
 
 </div>
 </div><p>
+<a class="anchor" name="a528356346c494c31bceed7efab47408"></a><!-- doxytag: member="UVManager::trouverUV" ref="a528356346c494c31bceed7efab47408" args="(const QString &amp;c) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_u_v.html">UV</a> * UVManager::trouverUV           </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&nbsp;</td>
+          <td class="paramname"> <em>c</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Rechercher une <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a>. 
+<p>
+true si une modification a été effectuée <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>c</em>&nbsp;</td><td>: code de l'UV recherchée </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>l'adresse de l'UV recherchée </dd></dl>
+
+</div>
+</div><p>
 <hr><h2>Friends And Related Function Documentation</h2>
 <a class="anchor" name="7ab9a1e3d1a8ab9a8badf544bf7e0197"></a><!-- doxytag: member="UVManager::Handler" ref="7ab9a1e3d1a8ab9a8badf544bf7e0197" args="" -->
 <div class="memitem">
@@ -334,10 +458,41 @@ Supprimer une <a class="el" href="class_u_v.html" title="Classe permettant de d�
 fichier contenant l'ensemble des UVs existantes 
 </div>
 </div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="27d2df73b86eb7bb048f62eaabe79657"></a><!-- doxytag: member="UVManager::nbMaxUV" ref="27d2df73b86eb7bb048f62eaabe79657" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_u_v_manager.html#27d2df73b86eb7bb048f62eaabe79657">UVManager::nbMaxUV</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nombre d'UVs existantes 
+</div>
+</div><p>
+<a class="anchor" name="70847e54bb3c77704dd82b5c47c72465"></a><!-- doxytag: member="UVManager::nbUV" ref="70847e54bb3c77704dd82b5c47c72465" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_u_v_manager.html#70847e54bb3c77704dd82b5c47c72465">UVManager::nbUV</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+tableau contenant les adresses de l'ensemble des UVs existantes 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/<a class="el" href="_u_t_profiler_8h-source.html">UTProfiler.h</a><li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/UTProfiler.cpp</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:35 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

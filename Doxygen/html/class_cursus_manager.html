@@ -43,9 +43,10 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#b03f486ce73488f45b491cf822a367b4">load</a> (const QString &amp;f)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charge le fichier contenant la description des cursus.  <a href="#b03f486ce73488f45b491cf822a367b4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#725df7acfadba394c88e64d17697253b">save</a> (const QString &amp;f)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="154e37c82c4688eeb2ad8618c33f050a"></a><!-- doxytag: member="CursusManager::save" ref="154e37c82c4688eeb2ad8618c33f050a" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#154e37c82c4688eeb2ad8618c33f050a">save</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauvegarde et met à jour le fichier contenant les cursus.  <a href="#725df7acfadba394c88e64d17697253b"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauvegarde et met à jour le fichier contenant les cursus. <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#b4d077b6f6ab1dab074fea41e0a921a7">ajouterCursus</a> (const QString n, const QString *t, unsigned int nbU, <a class="el" href="cursus_8h.html#be9790179e0a28256945dfc6c7135378">CategorieCursus</a> c, unsigned int CS, unsigned int TM, unsigned int TSH, unsigned int SP)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ajout de cursus au cursusManager  <a href="#b4d077b6f6ab1dab074fea41e0a921a7"></a><br></td></tr>
@@ -81,13 +82,98 @@ static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr><td colspan="2"><br><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#ec00e9f8c9399f6f4ea012a58df1ecfb">file</a></td></tr>
 
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#6329f18522193fac091dd0466a3c5c92">addItem</a> (<a class="el" href="class_cursus.html">Cursus</a> *newcursus)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajout de cursus dans le tableau.  <a href="#6329f18522193fac091dd0466a3c5c92"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#c200bedfb59f7d53b31d7055fc1157fb">CursusManager</a> (const <a class="el" href="class_cursus_manager.html">CursusManager</a> &amp;cm)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur par recopie mis en privé pour ne pas pouvoir l'utiliser.  <a href="#c200bedfb59f7d53b31d7055fc1157fb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_cursus_manager.html">CursusManager</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#7960c060dbd8aa3b5fa79e6527b3f5ef">operator=</a> (const <a class="el" href="class_cursus_manager.html">CursusManager</a> &amp;cm)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Surcharge de l'opérateur = mis en privé pour ne pas pouvoir l'utiliser.  <a href="#7960c060dbd8aa3b5fa79e6527b3f5ef"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="7bc81cd4baa960ebc26bbe2b39e4c2e6"></a><!-- doxytag: member="CursusManager::CursusManager" ref="7bc81cd4baa960ebc26bbe2b39e4c2e6" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#7bc81cd4baa960ebc26bbe2b39e4c2e6">CursusManager</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur sans arguments. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="1f077d2570507633a9ef34dae2d7aace"></a><!-- doxytag: member="CursusManager::~CursusManager" ref="1f077d2570507633a9ef34dae2d7aace" args="()" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#1f077d2570507633a9ef34dae2d7aace">~CursusManager</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">destructeur <br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="afabf126080cf144cfddc8022b8e00cf"></a><!-- doxytag: member="CursusManager::mesCursus" ref="afabf126080cf144cfddc8022b8e00cf" args="" -->
+<a class="el" href="class_cursus.html">Cursus</a> **&nbsp;</td><td class="memItemRight" valign="bottom"><b>mesCursus</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#92a2a2ead0236983134ca2c0577abcf8">nbCursus</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager.html#abe4b570b4f4e09437da298d64c72881">nbMaxCursus</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Static Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="bb8287402e9e1eeb168530ed285cab68"></a><!-- doxytag: member="CursusManager::handler" ref="bb8287402e9e1eeb168530ed285cab68" args="" -->
+static Handler&nbsp;</td><td class="memItemRight" valign="bottom"><b>handler</b> = Handler()</td></tr>
+
 <tr><td colspan="2"><br><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="7ab9a1e3d1a8ab9a8badf544bf7e0197"></a><!-- doxytag: member="CursusManager::Handler" ref="7ab9a1e3d1a8ab9a8badf544bf7e0197" args="" -->
 struct&nbsp;</td><td class="memItemRight" valign="bottom"><b>Handler</b></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-singleton qui gère les différents cursus existant <hr><h2>Member Function Documentation</h2>
+singleton qui gère les différents cursus existant <hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="c200bedfb59f7d53b31d7055fc1157fb"></a><!-- doxytag: member="CursusManager::CursusManager" ref="c200bedfb59f7d53b31d7055fc1157fb" args="(const CursusManager &amp;cm)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CursusManager::CursusManager           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_cursus_manager.html">CursusManager</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>cm</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur par recopie mis en privé pour ne pas pouvoir l'utiliser. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>cm</em>&nbsp;</td><td>: constructeur à recopier </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="6329f18522193fac091dd0466a3c5c92"></a><!-- doxytag: member="CursusManager::addItem" ref="6329f18522193fac091dd0466a3c5c92" args="(Cursus *newcursus)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CursusManager::addItem           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_cursus.html">Cursus</a> *&nbsp;</td>
+          <td class="paramname"> <em>newcursus</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ajout de cursus dans le tableau. 
+<p>
+nombre maximum de cursus <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>newcursus</em>&nbsp;</td><td>: cursus à ajouter </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
 <a class="anchor" name="2c5c7fb1c0d4166d1775fe9c510d3adf"></a><!-- doxytag: member="CursusManager::ajouterCursus" ref="2c5c7fb1c0d4166d1775fe9c510d3adf" args="(Cursus *cur)" -->
 <div class="memitem">
 <div class="memproto">
@@ -365,30 +451,31 @@ Charge le fichier contenant la description des cursus.
 
 </div>
 </div><p>
-<a class="anchor" name="725df7acfadba394c88e64d17697253b"></a><!-- doxytag: member="CursusManager::save" ref="725df7acfadba394c88e64d17697253b" args="(const QString &amp;f)" -->
+<a class="anchor" name="7960c060dbd8aa3b5fa79e6527b3f5ef"></a><!-- doxytag: member="CursusManager::operator=" ref="7960c060dbd8aa3b5fa79e6527b3f5ef" args="(const CursusManager &amp;cm)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CursusManager::save           </td>
+          <td class="memname"><a class="el" href="class_cursus_manager.html">CursusManager</a>&amp; CursusManager::operator=           </td>
           <td>(</td>
-          <td class="paramtype">const QString &amp;&nbsp;</td>
-          <td class="paramname"> <em>f</em>          </td>
+          <td class="paramtype">const <a class="el" href="class_cursus_manager.html">CursusManager</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>cm</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Sauvegarde et met à jour le fichier contenant les cursus. 
+Surcharge de l'opérateur = mis en privé pour ne pas pouvoir l'utiliser. 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>f</em>&nbsp;</td><td>: chemin contenant le fichier </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>cm</em>&nbsp;</td><td>: <a class="el" href="class_cursus_manager.html" title="singleton qui gère les différents cursus existant">CursusManager</a> </td></tr>
   </table>
 </dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>une référence sur le cursusManager </dd></dl>
 
 </div>
 </div><p>
@@ -463,10 +550,40 @@ fichier contenant les cursus exitants <dl compact><dt><b>Parameters:</b></dt><dd
 handler 
 </div>
 </div><p>
+<a class="anchor" name="92a2a2ead0236983134ca2c0577abcf8"></a><!-- doxytag: member="CursusManager::nbCursus" ref="92a2a2ead0236983134ca2c0577abcf8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus_manager.html#92a2a2ead0236983134ca2c0577abcf8">CursusManager::nbCursus</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+tableau contenant les cursus existant 
+</div>
+</div><p>
+<a class="anchor" name="abe4b570b4f4e09437da298d64c72881"></a><!-- doxytag: member="CursusManager::nbMaxCursus" ref="abe4b570b4f4e09437da298d64c72881" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_cursus_manager.html#abe4b570b4f4e09437da298d64c72881">CursusManager::nbMaxCursus</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+nombre de cursus existant 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/<a class="el" href="_cursus_manager_8h-source.html">CursusManager.h</a><li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/CursusManager.cpp</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

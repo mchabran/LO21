@@ -37,33 +37,36 @@
 <a name="l00023"></a><a class="code" href="class_menu_editeur.html">00023</a> <span class="keyword">class </span><a class="code" href="class_menu_editeur.html" title="Editeur du menu permettant d&amp;#39;accéder aux différentes fonctions de l&amp;#39;application...">MenuEditeur</a> : <span class="keyword">public</span> QWidget{
 <a name="l00024"></a>00024     Q_OBJECT
 <a name="l00025"></a>00025     <a class="code" href="class_u_v_manager.html" title="Singleton gérant l&amp;#39;ensemble des UVs proposées.">UVManager</a>&amp; um;
-<a name="l00026"></a>00026     QPushButton* ajoutDoss; 
-<a name="l00027"></a>00027     QPushButton* consultDoss; 
-<a name="l00028"></a>00028     QPushButton* ajoutEqui;
-<a name="l00029"></a>00029     QPushButton* ajoutInscr;
-<a name="l00030"></a>00030     QPushButton* consultUV;
-<a name="l00031"></a>00031    <span class="comment">// QPushButton* ajoutCursus;</span>
-<a name="l00032"></a>00032     QPushButton* consultCursus;
-<a name="l00033"></a>00033     QVBoxLayout* couche;
-<a name="l00034"></a>00034     QHBoxLayout* coucheH1;
-<a name="l00035"></a>00035     QHBoxLayout* coucheH2;
-<a name="l00036"></a>00036     QHBoxLayout* coucheH3;
-<a name="l00037"></a>00037     QHBoxLayout* coucheH4;
-<a name="l00038"></a>00038 
-<a name="l00039"></a>00039 <span class="keyword">public</span> :
-<a name="l00045"></a>00045     <a class="code" href="class_menu_editeur.html#54b444766f8265c0493b2023380022fd" title="Constructeur.">MenuEditeur</a>(<a class="code" href="class_u_v_manager.html" title="Singleton gérant l&amp;#39;ensemble des UVs proposées.">UVManager</a> &amp;u, QWidget* parent=0);
-<a name="l00046"></a>00046 <span class="keyword">public</span> slots :
-<a name="l00050"></a>00050     <span class="keywordtype">void</span> <a class="code" href="class_menu_editeur.html#ed1665518ac8d4248a17207a8237dab1" title="ajout d&amp;#39;une nouvelle instance unique de Dossier">ajouterDossier</a>();
-<a name="l00051"></a>00051     <span class="comment">//void EditionCursus();</span>
-<a name="l00052"></a>00052     <span class="comment">//void ajouterEquivalence();</span>
-<a name="l00053"></a>00053     <span class="comment">//void ajouterInscription();</span>
-<a name="l00057"></a>00057 <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_menu_editeur.html#0846feee19bad78695ea129e19bf3637" title="recherche d&amp;#39;une UV">consulterUV</a>();
-<a name="l00061"></a>00061     <span class="keywordtype">void</span> <a class="code" href="class_menu_editeur.html#49a113b25708676758b9424ac7b60492" title="recherche d&amp;#39;un cursus">consulterCursus</a>();
-<a name="l00062"></a>00062 };
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 <span class="preprocessor">#endif // MENUEDITEUR_H</span>
+<a name="l00026"></a><a class="code" href="class_menu_editeur.html#3b536981347f7ce67f6bc8ef83355d0d">00026</a>     QPushButton* <a class="code" href="class_menu_editeur.html#3b536981347f7ce67f6bc8ef83355d0d">ajoutDoss</a>; 
+<a name="l00027"></a><a class="code" href="class_menu_editeur.html#30bdf3e3518f5ef9b08b3f10d008074a">00027</a>     QPushButton* <a class="code" href="class_menu_editeur.html#30bdf3e3518f5ef9b08b3f10d008074a">consultDoss</a>; 
+<a name="l00028"></a><a class="code" href="class_menu_editeur.html#ba12292b24c622334edaf1dcf57d48c9">00028</a>     QPushButton* <a class="code" href="class_menu_editeur.html#ba12292b24c622334edaf1dcf57d48c9">ajoutEqui</a>;
+<a name="l00029"></a><a class="code" href="class_menu_editeur.html#58b4c7ab2d2ef126e4647f9c95f3b12f">00029</a>     QPushButton* <a class="code" href="class_menu_editeur.html#58b4c7ab2d2ef126e4647f9c95f3b12f">ajoutInscr</a>;
+<a name="l00030"></a><a class="code" href="class_menu_editeur.html#ff3f7c562601e9432cbff884be25119f">00030</a>     QPushButton* <a class="code" href="class_menu_editeur.html#ff3f7c562601e9432cbff884be25119f">consultUV</a>;
+<a name="l00031"></a><a class="code" href="class_menu_editeur.html#5d06600d0e2579b22d4d3bac77a9e3dd">00031</a>     QPushButton* <a class="code" href="class_menu_editeur.html#5d06600d0e2579b22d4d3bac77a9e3dd">fermeture</a>;
+<a name="l00032"></a>00032    <span class="comment">// QPushButton* ajoutCursus;</span>
+<a name="l00033"></a><a class="code" href="class_menu_editeur.html#fbfe8b53c44662e6f0d118025cd20aeb">00033</a>     QPushButton* <a class="code" href="class_menu_editeur.html#fbfe8b53c44662e6f0d118025cd20aeb">consultCursus</a>;
+<a name="l00034"></a><a class="code" href="class_menu_editeur.html#2bae8e9b0a6fa847f83b360801247c70">00034</a>     QVBoxLayout* <a class="code" href="class_menu_editeur.html#2bae8e9b0a6fa847f83b360801247c70">couche</a>;
+<a name="l00035"></a>00035     QHBoxLayout* coucheH1;
+<a name="l00036"></a>00036     QHBoxLayout* coucheH2;
+<a name="l00037"></a>00037     QHBoxLayout* coucheH3;
+<a name="l00038"></a>00038     QHBoxLayout* coucheH4;
+<a name="l00039"></a>00039     QHBoxLayout* coucheH5;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="keyword">public</span> :
+<a name="l00047"></a>00047     <a class="code" href="class_menu_editeur.html#54b444766f8265c0493b2023380022fd" title="Constructeur.">MenuEditeur</a>(<a class="code" href="class_u_v_manager.html" title="Singleton gérant l&amp;#39;ensemble des UVs proposées.">UVManager</a> &amp;u, QWidget* parent=0);
+<a name="l00048"></a>00048 <span class="keyword">public</span> slots :
+<a name="l00052"></a>00052     <span class="keywordtype">void</span> <a class="code" href="class_menu_editeur.html#ed1665518ac8d4248a17207a8237dab1" title="ajout d&amp;#39;une nouvelle instance unique de Dossier">ajouterDossier</a>();
+<a name="l00053"></a>00053     <span class="comment">//void EditionCursus();</span>
+<a name="l00054"></a>00054     <span class="comment">//void ajouterEquivalence();</span>
+<a name="l00055"></a>00055     <span class="comment">//void ajouterInscription();</span>
+<a name="l00059"></a>00059 <span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="class_menu_editeur.html#0846feee19bad78695ea129e19bf3637" title="recherche d&amp;#39;une UV">consulterUV</a>();
+<a name="l00063"></a>00063     <span class="keywordtype">void</span> <a class="code" href="class_menu_editeur.html#49a113b25708676758b9424ac7b60492" title="recherche d&amp;#39;un cursus">consulterCursus</a>();
+<a name="l00064"></a>00064     <span class="keywordtype">void</span> fin();
+<a name="l00065"></a>00065 };
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="preprocessor">#endif // MENUEDITEUR_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

@@ -278,6 +278,9 @@ public:
  */
 QTextStream& operator<<(QTextStream& f, const UV& uv);
 
+
+
+
 /**
  * \class UVManager
  * \brief Singleton gérant l'ensemble des UVs proposées
@@ -334,7 +337,7 @@ private:
           */
         ~Handler(){ if (instance) delete instance; instance=0; }
     };
-    static Handler handler;/**handler*/
+    static Handler handler;/** handler*/
 
 public:
     /**
@@ -408,7 +411,7 @@ public:
              */
             bool isDone() const { return nbRemain==0; }
             /**
-             * \brief Accéder à l'élément suivant dans le tableau
+             * \brief Accéder à l'élément suivant dans le tableau, s'il en existe un
              */
             void next() {
                 if (isDone())
@@ -433,50 +436,6 @@ public:
     Iterator getIterator() {
         return Iterator(uvs,nbUV);
    }
-
-    //est-ce vraiment utile de garder les 3 itérateurs ? ^^
-   /*class iterator {
-        UV** current;
-        iterator(UV** u):current(u){}
-        friend class UVManager;
-        public:
-            iterator():current(0){}
-            UV& operator*() const { return **current; }
-            bool operator!=(iterator it) const { return current!=it.current; }
-            iterator& operator++(){ ++current; return *this; }
-    };
-    iterator begin() { return iterator(uvs); }
-    iterator end() { return iterator(uvs+nbUV); }
-
-    class FilterIterator {
-        friend class UVManager;
-        UV** currentUV;
-        unsigned int nbRemain;
-        Categorie categorie;
-        FilterIterator(UV** u, unsigned nb, Categorie c):currentUV(u),nbRemain(nb),categorie(c){
-                while(nbRemain>0 && (*currentUV)->getCategorie()!=categorie){
-                        nbRemain--; currentUV++;
-                }
-        }
-        public:
-            FilterIterator():nbRemain(0),currentUV(0){}
-            bool isDone() const { return nbRemain==0; }
-            void next() {
-                if (isDone())
-                        throw UTProfilerException("error, next on an iterator which is done");
-                do {
-                    nbRemain--; currentUV++;
-                }while(nbRemain>0 && (*currentUV)->getCategorie()!=categorie);
-            }
-            UV& current() const {
-                if (isDone())
-                        throw UTProfilerException("error, indirection on an iterator which is done");
-                return **currentUV;
-            }
-     };
-     FilterIterator getFilterIterator(Categorie c) {
-        return FilterIterator(uvs,nbUV,c);
-     }*/
 };
 
 

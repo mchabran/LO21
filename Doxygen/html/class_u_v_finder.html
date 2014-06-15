@@ -43,6 +43,29 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_finder.html#fd6cd9f112d6cd2ebbcbecff679edc64">UVFinder</a> (<a class="el" href="class_u_v_manager.html">UVManager</a> *m, QWidget *parent=0)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur.  <a href="#fd6cd9f112d6cd2ebbcbecff679edc64"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2039cf9dd310816fd9fe796e94ab56be"></a><!-- doxytag: member="UVFinder::manager" ref="2039cf9dd310816fd9fe796e94ab56be" args="" -->
+<a class="el" href="class_u_v_manager.html">UVManager</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>manager</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QLineEdit *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_finder.html#b967057ffa17cee001c45be49fb7ce20">code</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QLabel *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_finder.html#5a05abc75a0d05e4e816b308b3716792">codeLabel</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1c992932250d178577216f9fae9869c"></a><!-- doxytag: member="UVFinder::ajouter" ref="a1c992932250d178577216f9fae9869c" args="" -->
+QPushButton *&nbsp;</td><td class="memItemRight" valign="bottom"><b>ajouter</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QPushButton *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_finder.html#748536e88957400f4088503b738b683b">rechercher</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QPushButton *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_finder.html#72da6f8d0df2dab47342feaac441dcb8">annuler</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QVBoxLayout *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_finder.html#e622c014f2ab1f269ef8058bcbc3942c">couche</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="baf98968006fca942c2d4362ecd36d9e"></a><!-- doxytag: member="UVFinder::coucheH1" ref="baf98968006fca942c2d4362ecd36d9e" args="" -->
+QHBoxLayout *&nbsp;</td><td class="memItemRight" valign="bottom"><b>coucheH1</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="23177f4ae9ee773edd98fa7b73ea43e9"></a><!-- doxytag: member="UVFinder::coucheH2" ref="23177f4ae9ee773edd98fa7b73ea43e9" args="" -->
+QHBoxLayout *&nbsp;</td><td class="memItemRight" valign="bottom"><b>coucheH2</b></td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Classe permettant de rechercher une <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a>, hérite de QWidget. <hr><h2>Constructor &amp; Destructor Documentation</h2>
@@ -83,10 +106,86 @@ Constructeur.
 
 </div>
 </div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="72da6f8d0df2dab47342feaac441dcb8"></a><!-- doxytag: member="UVFinder::annuler" ref="72da6f8d0df2dab47342feaac441dcb8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPushButton* <a class="el" href="class_u_v_finder.html#72da6f8d0df2dab47342feaac441dcb8">UVFinder::annuler</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+boutton permettant de rechercher l'UV dont le code est entré dans la zone de texte si elle existe 
+</div>
+</div><p>
+<a class="anchor" name="b967057ffa17cee001c45be49fb7ce20"></a><!-- doxytag: member="UVFinder::code" ref="b967057ffa17cee001c45be49fb7ce20" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QLineEdit* <a class="el" href="class_u_v_finder.html#b967057ffa17cee001c45be49fb7ce20">UVFinder::code</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+adresse de l'instance unique d'UVManager 
+</div>
+</div><p>
+<a class="anchor" name="5a05abc75a0d05e4e816b308b3716792"></a><!-- doxytag: member="UVFinder::codeLabel" ref="5a05abc75a0d05e4e816b308b3716792" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QLabel* <a class="el" href="class_u_v_finder.html#5a05abc75a0d05e4e816b308b3716792">UVFinder::codeLabel</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+zone de texte contenant l'UV à rechercher 
+</div>
+</div><p>
+<a class="anchor" name="e622c014f2ab1f269ef8058bcbc3942c"></a><!-- doxytag: member="UVFinder::couche" ref="e622c014f2ab1f269ef8058bcbc3942c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVBoxLayout* <a class="el" href="class_u_v_finder.html#e622c014f2ab1f269ef8058bcbc3942c">UVFinder::couche</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+bouton permettant de fermer l'éditeur 
+</div>
+</div><p>
+<a class="anchor" name="748536e88957400f4088503b738b683b"></a><!-- doxytag: member="UVFinder::rechercher" ref="748536e88957400f4088503b738b683b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPushButton* <a class="el" href="class_u_v_finder.html#748536e88957400f4088503b738b683b">UVFinder::rechercher</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+bouton permettant d'ajouter l'UV dont le code est entré dans la zone de texte si elle n'existe pas 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/<a class="el" href="_u_v_editeur_8h-source.html">UVEditeur.h</a><li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/UVEditeur.cpp</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

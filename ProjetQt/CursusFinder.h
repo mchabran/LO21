@@ -2,7 +2,7 @@
 #define CURSUSFINDER_H
 /**
   *\file CursusFinder.h
-  * \brief Affichage des caractéristiques d'un cursus
+  *\brief Affichage des caractéristiques d'un cursus
   */
 #include "CursusManager.h"
 

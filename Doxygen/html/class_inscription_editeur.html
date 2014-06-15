@@ -36,9 +36,38 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enregistrement des modifications faites graphiquements. <br></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inscription_editeur.html#accf5fece2d51823cf2d1d6729034c03">InscriptionEditeur</a> (<a class="el" href="class_dossier.html">Dossier</a> *d, Inscription *ins=0, QWidget *parent=0)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inscription_editeur.html#accf5fece2d51823cf2d1d6729034c03">InscriptionEditeur</a> (<a class="el" href="class_dossier.html">Dossier</a> *d, <a class="el" href="class_inscription.html">Inscription</a> *ins=0, QWidget *parent=0)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">constructeur avec arguments  <a href="#accf5fece2d51823cf2d1d6729034c03"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b501c49faabc3d31906ef4acc7156a42"></a><!-- doxytag: member="InscriptionEditeur::unDossier" ref="b501c49faabc3d31906ef4acc7156a42" args="" -->
+<a class="el" href="class_dossier.html">Dossier</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>unDossier</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_inscription.html">Inscription</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inscription_editeur.html#e5a81407e23a53f496858c229e522153">inscription</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QLabel *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inscription_editeur.html#056efb1937eede57d978d7f96f79a1a0">UVLabel</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="40ebab9b5a1dd0c2d3fef41f55a11b0b"></a><!-- doxytag: member="InscriptionEditeur::uv" ref="40ebab9b5a1dd0c2d3fef41f55a11b0b" args="" -->
+QLineEdit *&nbsp;</td><td class="memItemRight" valign="bottom"><b>uv</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QLabel *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inscription_editeur.html#35fd9ddb517ca158a91cdf499cc68388">semestreLabel</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="fb33e19b3b554f4ab8e8841cf0c6c423"></a><!-- doxytag: member="InscriptionEditeur::semestre" ref="fb33e19b3b554f4ab8e8841cf0c6c423" args="" -->
+QLineEdit *&nbsp;</td><td class="memItemRight" valign="bottom"><b>semestre</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QLabel *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inscription_editeur.html#f5845e0d17e75f2077f689c5aa0f703c">resultatLabel</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="205250a2160cbc31714b2e585ecfb8a4"></a><!-- doxytag: member="InscriptionEditeur::resultat" ref="205250a2160cbc31714b2e585ecfb8a4" args="" -->
+QComboBox *&nbsp;</td><td class="memItemRight" valign="bottom"><b>resultat</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">QVBoxLayout *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_inscription_editeur.html#af569967effb8d06b9f531493c76237c">couche</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3b9ba9f1f13078fa8ba47d371f5d23d9"></a><!-- doxytag: member="InscriptionEditeur::coucheh" ref="3b9ba9f1f13078fa8ba47d371f5d23d9" args="" -->
+QHBoxLayout *&nbsp;</td><td class="memItemRight" valign="bottom"><b>coucheh</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="25a478a6cccca6342d7743e8cc35f110"></a><!-- doxytag: member="InscriptionEditeur::sauver" ref="25a478a6cccca6342d7743e8cc35f110" args="" -->
+QPushButton *&nbsp;</td><td class="memItemRight" valign="bottom"><b>sauver</b></td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Editeur d'inscription, hérite de la classe QWidget. <hr><h2>Constructor &amp; Destructor Documentation</h2>
@@ -55,7 +84,7 @@ Editeur d'inscription, hérite de la classe QWidget. <hr><h2>Constructor &amp; D
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Inscription *&nbsp;</td>
+          <td class="paramtype"><a class="el" href="class_inscription.html">Inscription</a> *&nbsp;</td>
           <td class="paramname"> <em>ins</em> = <code>0</code>, </td>
         </tr>
         <tr>
@@ -86,10 +115,86 @@ bouton permettant de sauver les modifications <dl compact><dt><b>Parameters:</b>
 
 </div>
 </div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="af569967effb8d06b9f531493c76237c"></a><!-- doxytag: member="InscriptionEditeur::couche" ref="af569967effb8d06b9f531493c76237c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVBoxLayout* <a class="el" href="class_inscription_editeur.html#af569967effb8d06b9f531493c76237c">InscriptionEditeur::couche</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+liste déroulante des résultats possibles à une inscription 
+</div>
+</div><p>
+<a class="anchor" name="e5a81407e23a53f496858c229e522153"></a><!-- doxytag: member="InscriptionEditeur::inscription" ref="e5a81407e23a53f496858c229e522153" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_inscription.html">Inscription</a>* <a class="el" href="class_inscription_editeur.html#e5a81407e23a53f496858c229e522153">InscriptionEditeur::inscription</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+unique instance de la classe <a class="el" href="class_dossier.html" title="Singleton permettant de créer le dossier à gérer dans l&#39;application.">Dossier</a> 
+</div>
+</div><p>
+<a class="anchor" name="f5845e0d17e75f2077f689c5aa0f703c"></a><!-- doxytag: member="InscriptionEditeur::resultatLabel" ref="f5845e0d17e75f2077f689c5aa0f703c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QLabel* <a class="el" href="class_inscription_editeur.html#f5845e0d17e75f2077f689c5aa0f703c">InscriptionEditeur::resultatLabel</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+zone de texte contenant le semestre à modifier 
+</div>
+</div><p>
+<a class="anchor" name="35fd9ddb517ca158a91cdf499cc68388"></a><!-- doxytag: member="InscriptionEditeur::semestreLabel" ref="35fd9ddb517ca158a91cdf499cc68388" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QLabel* <a class="el" href="class_inscription_editeur.html#35fd9ddb517ca158a91cdf499cc68388">InscriptionEditeur::semestreLabel</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+zone de texte contenant l'UV dont l'inscription est à modifier 
+</div>
+</div><p>
+<a class="anchor" name="056efb1937eede57d978d7f96f79a1a0"></a><!-- doxytag: member="InscriptionEditeur::UVLabel" ref="056efb1937eede57d978d7f96f79a1a0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QLabel* <a class="el" href="class_inscription_editeur.html#056efb1937eede57d978d7f96f79a1a0">InscriptionEditeur::UVLabel</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+inscription à éditer 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/<a class="el" href="_inscription_8h-source.html">Inscription.h</a><li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/Inscriptions.cpp</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

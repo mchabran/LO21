@@ -12,6 +12,7 @@
 
 /**
  * \class Equivalence
+ * \brief Permet à l'étudiant d'ajouter des crédits qu'il aurait obtenu en équivalence dans d'autres établissements que l'UTC
  */
 class Equivalence{
     QString nomEtablissement;/** nom de l'établissement*/

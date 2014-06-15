@@ -43,17 +43,65 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5eb563eeb58976932a1175759b0649c"></a><!-- doxytag: member="UVManager::Iterator::next" ref="a5eb563eeb58976932a1175759b0649c" args="()" -->
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager_1_1_iterator.html#a5eb563eeb58976932a1175759b0649c">next</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Accéder à l'élément suivant dans le tableau. <br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Accéder à l'élément suivant dans le tableau, s'il en existe un. <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_u_v.html">UV</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager_1_1_iterator.html#8d040d767d4c79f767d40794f6a2bfa3">current</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Accéder à l'élément pointé.  <a href="#8d040d767d4c79f767d40794f6a2bfa3"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager_1_1_iterator.html#6a2068ea4a20e6d502af1f5e1d378d0d">Iterator</a> (<a class="el" href="class_u_v.html">UV</a> **u, unsigned nb)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">constructeur  <a href="#6a2068ea4a20e6d502af1f5e1d378d0d"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="1023904d874d774aa7642b6ade8473c8"></a><!-- doxytag: member="UVManager::Iterator::currentUV" ref="1023904d874d774aa7642b6ade8473c8" args="" -->
+<a class="el" href="class_u_v.html">UV</a> **&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentUV</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager_1_1_iterator.html#ecaef3ac4e82ddca3615f7fc55417c33">nbRemain</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="335ec2026467669b89518b0c67372f3b"></a><!-- doxytag: member="UVManager::Iterator::UVManager" ref="335ec2026467669b89518b0c67372f3b" args="" -->
 class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_u_v_manager_1_1_iterator.html#335ec2026467669b89518b0c67372f3b">UVManager</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Permet d'itérer sur les différentes UVs d'UVManager. <hr><h2>Member Function Documentation</h2>
+Permet d'itérer sur les différentes UVs d'UVManager. <hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="6a2068ea4a20e6d502af1f5e1d378d0d"></a><!-- doxytag: member="UVManager::Iterator::Iterator" ref="6a2068ea4a20e6d502af1f5e1d378d0d" args="(UV **u, unsigned nb)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UVManager::UVManager::Iterator::Iterator           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_u_v.html">UV</a> **&nbsp;</td>
+          <td class="paramname"> <em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&nbsp;</td>
+          <td class="paramname"> <em>nb</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+constructeur 
+<p>
+nb d'UVs restantes avans la fin du tableau <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>u</em>&nbsp;</td><td>: <a class="el" href="class_u_v.html" title="Classe permettant de définir des UVs.">UV</a> par laquelle commencer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nb</em>&nbsp;</td><td>: nb d'UVs restantes avant la fin du tableau </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="8d040d767d4c79f767d40794f6a2bfa3"></a><!-- doxytag: member="UVManager::Iterator::current" ref="8d040d767d4c79f767d40794f6a2bfa3" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -98,10 +146,26 @@ Vérifie si la fin du tableau est atteinte.
 
 </div>
 </div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="ecaef3ac4e82ddca3615f7fc55417c33"></a><!-- doxytag: member="UVManager::Iterator::nbRemain" ref="ecaef3ac4e82ddca3615f7fc55417c33" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int UVManager::UVManager::Iterator::nbRemain<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+adresse de l'UV pointée 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/<a class="el" href="_u_t_profiler_8h-source.html">UTProfiler.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:35 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>

@@ -47,13 +47,60 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_cursus.html">Cursus</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager_1_1_iterator.html#ed4caf85dd9d32818edd42174617a36d">current</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="class_cursus.html" title="Contient les informations liées aux cursus.">Cursus</a> actuellement pointé.  <a href="#ed4caf85dd9d32818edd42174617a36d"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager_1_1_iterator.html#3f47afc781cb9ed1bc68dbe7118d1f91">Iterator</a> (<a class="el" href="class_cursus.html">Cursus</a> **c, unsigned nb)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur.  <a href="#3f47afc781cb9ed1bc68dbe7118d1f91"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_cursus.html">Cursus</a> **&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager_1_1_iterator.html#1a8f1b45d8e8251508a48161fb5b99bb">currentCursus</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager_1_1_iterator.html#1bd5470275e2e31afb4dc5cb2e6d86b5">nbRemain</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d7b70270d863b07633b819227cbed42d"></a><!-- doxytag: member="CursusManager::Iterator::CursusManager" ref="d7b70270d863b07633b819227cbed42d" args="" -->
 class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cursus_manager_1_1_iterator.html#d7b70270d863b07633b819227cbed42d">CursusManager</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Permet d'avoir un itérateur sur les cursus. <hr><h2>Member Function Documentation</h2>
+Permet d'avoir un itérateur sur les cursus. <hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="3f47afc781cb9ed1bc68dbe7118d1f91"></a><!-- doxytag: member="CursusManager::Iterator::Iterator" ref="3f47afc781cb9ed1bc68dbe7118d1f91" args="(Cursus **c, unsigned nb)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CursusManager::CursusManager::Iterator::Iterator           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_cursus.html">Cursus</a> **&nbsp;</td>
+          <td class="paramname"> <em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&nbsp;</td>
+          <td class="paramname"> <em>nb</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur. 
+<p>
+nb de cursus restant avant d'atteindre la fin du tableau <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>c</em>&nbsp;</td><td>: cursus sur lequel commencer l'itération </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nb</em>&nbsp;</td><td>: nombre de cursus restant avant la fin du tableau </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="ed4caf85dd9d32818edd42174617a36d"></a><!-- doxytag: member="CursusManager::Iterator::current" ref="ed4caf85dd9d32818edd42174617a36d" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -98,10 +145,41 @@ Teste si la fin du tableau est atteinte.
 
 </div>
 </div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="1a8f1b45d8e8251508a48161fb5b99bb"></a><!-- doxytag: member="CursusManager::Iterator::currentCursus" ref="1a8f1b45d8e8251508a48161fb5b99bb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_cursus.html">Cursus</a>** CursusManager::CursusManager::Iterator::currentCursus<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+définition de la classe <a class="el" href="class_cursus_manager.html" title="singleton qui gère les différents cursus existant">CursusManager</a> en ami pour pouvoir itérer sur ses éléments 
+</div>
+</div><p>
+<a class="anchor" name="1bd5470275e2e31afb4dc5cb2e6d86b5"></a><!-- doxytag: member="CursusManager::Iterator::nbRemain" ref="1bd5470275e2e31afb4dc5cb2e6d86b5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int CursusManager::CursusManager::Iterator::nbRemain<code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+pointeur sur un cursus 
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/geffray/Documents/Clem/UTC/GI02/LO21/PROJET/LO21/ProjetQt/<a class="el" href="_cursus_manager_8h-source.html">CursusManager.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Jun 12 21:39:34 2014 for ProjetQt by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jun 15 11:04:09 2014 for ProjetQt by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
 </body>
